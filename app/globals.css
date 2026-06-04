@@ -3561,3 +3561,47 @@ h3,
     height: 112px;
   }
 }
+
+/* Product hero collision guard. */
+.product-tour-hero {
+  grid-template-columns: minmax(0, 0.92fr) minmax(420px, 0.88fr);
+  gap: clamp(24px, 3vw, 42px);
+  align-items: center;
+}
+
+.product-tour-hero-copy,
+.product-tour-brand-lockup,
+.product-tour-brand-lockup > div {
+  min-width: 0;
+}
+
+.product-tour-brand-lockup > img {
+  width: clamp(92px, 9vw, 132px);
+}
+
+.product-tour-hero h1 {
+  max-width: 100%;
+  font-size: clamp(3rem, 5.4vw, 4.85rem);
+  line-height: 0.96;
+}
+
+.product-tour-hero .product-title-kicker {
+  max-width: 680px;
+  font-size: clamp(1.16rem, 1.85vw, 1.62rem);
+  line-height: 1.24;
+}
+
+.product-tour-hero .hero-console {
+  width: min(100%, 560px);
+  justify-self: end;
+}
+
+@media (max-width: 900px) {
+  .product-tour-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .product-tour-hero .hero-console {
+    justify-self: stretch;
+  }
+}
