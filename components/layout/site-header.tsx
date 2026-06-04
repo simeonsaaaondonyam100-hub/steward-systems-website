@@ -4,18 +4,19 @@ import { ArrowRight } from "lucide-react";
 export function SiteHeader() {
   return (
     <header className="site-header">
-      <Link className="brand-mark" href="/" aria-label="Operavault homepage">
-        <span className="brand-symbol">O</span>
+      <Link className="brand-mark" href="/" aria-label="Steward Systems homepage">
+        <span className="brand-symbol">S</span>
         <span className="brand-copy">
-          <strong>Operavault</strong>
-          <small>School Operations SaaS</small>
+          <strong>Steward Systems</strong>
+          <small>Practical institutional software</small>
         </span>
       </Link>
       <nav className="site-nav" aria-label="Primary navigation">
-        <Link href="/features">Features</Link>
+        <Link href="/products">Products</Link>
+        <Link href="/products/operavault">Operavault</Link>
         <Link href="/pricing">Pricing</Link>
         <Link href="/company">Company</Link>
-        <Link href="/request-demo">Book demo</Link>
+        <Link href="/contact">Contact</Link>
       </nav>
       <Link className="nav-cta" href="/request-demo">
         <span>Request a demo</span>

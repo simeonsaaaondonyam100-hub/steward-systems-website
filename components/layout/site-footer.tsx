@@ -7,21 +7,28 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div>
         <Link className="brand-mark footer-brand" href="/">
-          <span className="brand-symbol">O</span>
+          <span className="brand-symbol">S</span>
           <span className="brand-copy">
-            <strong>Operavault</strong>
-            <small>By Steward Systems</small>
+            <strong>Steward Systems</strong>
+            <small>Product company</small>
           </span>
         </Link>
         <p>
-          Institutional school operations software by Steward Systems for
-          records, academic workflows, parent engagement, finance visibility,
-          and management evidence.
+          Steward Systems builds practical software products for institutions
+          that need dependable records, workflow discipline, and management
+          visibility.
         </p>
       </div>
       <div className="footer-links">
         <div>
-          <h2>Tour</h2>
+          <h2>Company</h2>
+          <Link href="/products">Products</Link>
+          <Link href="/company">About</Link>
+          <Link href="/contact">Contact</Link>
+        </div>
+        <div>
+          <h2>Operavault</h2>
+          <Link href="/products/operavault">Product tour</Link>
           <Link href="/features">Modules</Link>
           <Link href="/pricing">Pricing</Link>
           <Link href="/request-demo">Request demo</Link>
@@ -33,11 +40,6 @@ export function SiteFooter() {
               {product.name}
             </Link>
           ))}
-        </div>
-        <div>
-          <h2>Company</h2>
-          <Link href="/company">About Steward Systems</Link>
-          <Link href="/contact">Contact</Link>
         </div>
       </div>
     </footer>

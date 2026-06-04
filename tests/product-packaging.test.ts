@@ -110,6 +110,9 @@ test("Operavault pricing exposes the required plan options", () => {
 
 test("product-tour pages mention core module examples", () => {
   const homepage = readProjectFile("app/page.tsx");
+  const operavaultTour = readProjectFile(
+    "components/marketing/operavault-product-tour.tsx"
+  );
   const featureDetail = readProjectFile("app/features/[featureSlug]/page.tsx");
 
   for (const slug of [
@@ -138,9 +141,12 @@ test("product-tour pages mention core module examples", () => {
     );
   }
 
-  assert.match(homepage, /operavaultHeroLede/);
-  assert.match(homepage, /feature-universe-grid/);
-  assert.match(homepage, /operavaultTourSections/);
+  assert.match(homepage, /Steward Systems/);
+  assert.match(homepage, /Explore products/);
+  assert.match(homepage, /View Operavault/);
+  assert.match(operavaultTour, /operavaultHeroLede/);
+  assert.match(operavaultTour, /feature-universe-grid/);
+  assert.match(operavaultTour, /operavaultTourSections/);
   assert.match(featureDetail, /problem/i);
   assert.match(featureDetail, /Plan availability/);
 });

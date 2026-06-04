@@ -1,243 +1,190 @@
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, Layers3 } from "lucide-react";
+import {
+  ArrowRight,
+  Building2,
+  CheckCircle2,
+  Landmark,
+  Music2,
+  ShieldCheck
+} from "lucide-react";
 
 import { CtaBand } from "@/components/marketing/cta-band";
-import {
-  getOperavaultModulesByGroup,
-  getOperavaultStatusLabel,
-  getOperavaultModuleBySlug,
-  operavaultHeroLede,
-  operavaultHeroStatement,
-  operavaultModuleGroups,
-  operavaultModules,
-  operavaultTourSections
-} from "@/modules/product/operavault-product";
+import { ProductCard } from "@/components/marketing/product-card";
+import { products } from "@/modules/products/product-registry";
 
-const groupSummaries = {
-  "People Records": "Tenant-aware records for the people who make the school work.",
-  "Academic Operations":
-    "Score entry, reports, broadsheets, lesson evidence, timetable, and academic accountability.",
-  "Attendance and Discipline":
-    "Daily records, behaviour evidence, escalation, and operational accountability.",
-  "Finance and Administration":
-    "Fees, procurement, loans, approvals, audit trail, and controlled finance execution.",
-  "Communication and Parent Engagement":
-    "Parent portal, notices, acknowledgement, class noticeboards, and safe publication.",
-  "Intelligence and Analytics":
-    "Management visibility, workload evidence, appraisal readiness, and performance intelligence."
-} satisfies Record<(typeof operavaultModuleGroups)[number], string>;
+const operavault = products.find((product) => product.slug === "operavault");
+
+const companySignals = [
+  "Public product tours and pricing stay in Steward Systems Core.",
+  "Each product keeps its own operational backend and private records.",
+  "Demo, enquiry, and early-access requests flow into one company pipeline."
+];
+
+const focusAreas = [
+  {
+    title: "Institutional operations",
+    description:
+      "School administration, academic records, staff workflows, parent engagement, finance visibility, and compliance evidence.",
+    icon: Building2
+  },
+  {
+    title: "Music and rehearsal systems",
+    description:
+      "Notation, solfa, SATB, playback, part extraction, print, and rehearsal-support workflows for music teams.",
+    icon: Music2
+  },
+  {
+    title: "Governance and treasury",
+    description:
+      "Member-led finance, meetings, resolutions, treasury movement, approvals, reports, and audit-ready accountability.",
+    icon: Landmark
+  }
+];
 
 export default function HomePage() {
   return (
     <main>
-      <section className="product-tour-hero">
-        <div className="product-tour-hero-copy">
-          <p className="eyebrow">Unified School Operations Platform</p>
-          <h1>{operavaultHeroStatement}</h1>
-          <p>{operavaultHeroLede}</p>
+      <section className="company-landing-hero">
+        <div className="company-landing-copy">
+          <p className="eyebrow">Steward Systems</p>
+          <h1>Practical software systems for serious institutional work.</h1>
+          <p>
+            Steward Systems builds and operates focused software products for
+            schools, music teams, investment clubs, cooperatives, and
+            organisations that need dependable records, workflow discipline, and
+            management visibility.
+          </p>
           <div className="hero-actions">
-            <Link className="button button-primary" href="/request-demo">
+            <Link className="button button-primary" href="/products">
+              <span>Explore products</span>
+              <ArrowRight aria-hidden="true" size={18} />
+            </Link>
+            <Link className="button button-secondary" href="/products/operavault">
+              <span>View Operavault</span>
+              <ArrowRight aria-hidden="true" size={18} />
+            </Link>
+            <Link className="button button-secondary" href="/request-demo">
               <span>Request a demo</span>
               <ArrowRight aria-hidden="true" size={18} />
             </Link>
-            <Link className="button button-secondary" href="/features">
-              <span>Explore modules</span>
-              <Layers3 aria-hidden="true" size={18} />
-            </Link>
           </div>
         </div>
-        <div className="hero-console" aria-label="Operavault product overview mockup">
-          <div className="hero-console-top">
-            <span>Command Center</span>
-            <strong>Institutional visibility</strong>
+        <div className="company-hero-panel" aria-label="Steward Systems product map">
+          <div className="company-hero-panel-top">
+            <ShieldCheck aria-hidden="true" size={22} />
+            <span>Product lines under Steward Systems</span>
           </div>
-          <div className="hero-console-grid">
-            <div>
-              <span>Academic readiness</span>
-              <strong>86%</strong>
-            </div>
-            <div>
-              <span>Attendance signals</span>
-              <strong>Live</strong>
-            </div>
-            <div>
-              <span>Finance exceptions</span>
-              <strong>12</strong>
-            </div>
-            <div>
-              <span>Audit evidence</span>
-              <strong>Tracked</strong>
-            </div>
-            <div className="wide">
-              <strong>Profile to Workflow to Review to Report</strong>
-              <span>Public-safe product tour mockup. No tenant records are connected.</span>
-            </div>
+          <div className="company-product-stack">
+            {products.map((product) => (
+              <Link key={product.slug} href={`/products/${product.slug}`}>
+                <span>{product.eyebrow}</span>
+                <strong>{product.name}</strong>
+                <small>{product.status.replace("_", " ")}</small>
+              </Link>
+            ))}
           </div>
-        </div>
-      </section>
-
-      <section className="page-section">
-        <div className="steward-positioning-card">
-          <p className="eyebrow">By Steward Systems</p>
-          <h2>Built by a software company focused on practical institutional systems.</h2>
-          <p>
-            Operavault is a product of Steward Systems, a full-stack software
-            development company building practical institutional systems for
-            real operational problems. The platform is designed around records,
-            permissions, audit evidence, usability, and continuity rather than
-            isolated school-office screens.
-          </p>
-          <Link className="button button-secondary" href="/company">
-            Learn about Steward Systems
-          </Link>
         </div>
       </section>
 
       <section className="page-section product-section-tight">
         <div className="section-heading">
-          <p className="eyebrow">Feature Universe</p>
-          <h2>Built around the operational truth of school work.</h2>
+          <p className="eyebrow">Product Portfolio</p>
+          <h2>One company view, separate product operations.</h2>
           <p>
-            Plans decide what a school owns. Permissions decide what each user
-            can do. That separation keeps growth commercial and governance safe.
+            The website helps visitors understand each product and request the
+            right conversation. The products themselves remain independent
+            systems with their own records, permissions, and operational data.
           </p>
         </div>
-        <div className="feature-universe-grid">
-          {operavaultModules.slice(0, 18).map((moduleData) => (
-            <Link
-              key={moduleData.slug}
-              className="feature-universe-card"
-              href={`/features/${moduleData.slug}`}
-            >
-              <span>{moduleData.group}</span>
-              <strong>{moduleData.name}</strong>
-              <p>{moduleData.summary}</p>
-              <em className={`module-status module-status-${moduleData.status}`}>
-                {getOperavaultStatusLabel(moduleData.status)}
-              </em>
-            </Link>
+        <div className="product-grid">
+          {products.map((product) => (
+            <ProductCard
+              key={product.slug}
+              product={product}
+              showFeaturedActions={product.slug === "operavault"}
+            />
           ))}
         </div>
       </section>
 
-      <section className="page-section product-section-tight">
-        <div className="section-heading">
-          <p className="eyebrow">Product Tour</p>
-          <h2>See how the major school workflows connect.</h2>
-          <p>
-            Each module is presented with honest status language: operational
-            foundations are named clearly, and active roadmap areas are
-            described as active development or structured institutional testing.
-          </p>
-        </div>
-        <div className="product-tour-grid">
-          {operavaultTourSections.map((section) => {
-            const moduleData = getOperavaultModuleBySlug(section.moduleSlug);
+      {operavault ? (
+        <section className="page-section company-featured-product product-section-tight">
+          <div>
+            <p className="eyebrow">Featured Rollout Product</p>
+            <h2>Operavault is the product currently being prepared for wider institutional rollout.</h2>
+            <p>
+              Operavault brings the serious work of running a school into one
+              secure, tenant-aware platform: people records, academics,
+              attendance, discipline, finance workflows, parent communication,
+              audit trails, staff duties, and decision intelligence.
+            </p>
+            <div className="hero-actions">
+              <Link className="button button-primary" href="/products/operavault">
+                <span>Tour Operavault</span>
+                <ArrowRight aria-hidden="true" size={18} />
+              </Link>
+              <Link className="button button-secondary" href="/pricing">
+                <span>View pricing</span>
+                <ArrowRight aria-hidden="true" size={18} />
+              </Link>
+            </div>
+          </div>
+          <div className="company-featured-card">
+            <p className="eyebrow">{operavault.eyebrow}</p>
+            <h3>{operavault.brandLine}</h3>
+            <p>{operavault.summary}</p>
+            <div className="capability-list">
+              {operavault.capabilities.map((capability) => (
+                <div key={capability} className="capability-item">
+                  <CheckCircle2 aria-hidden="true" size={18} />
+                  <span>{capability}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
 
-            if (!moduleData) {
-              return null;
-            }
+      <section className="page-section product-section-tight">
+        <div className="portfolio-highlight-grid">
+          {focusAreas.map((area) => {
+            const Icon = area.icon;
 
             return (
-              <article key={section.title} className="product-tour-card">
-                <div className="product-tour-card-copy">
-                  <div className="demo-slide-top">
-                    <span>{moduleData.group}</span>
-                    <em className={`module-status module-status-${moduleData.status}`}>
-                      {getOperavaultStatusLabel(moduleData.status)}
-                    </em>
-                  </div>
-                  <h3>{section.title}</h3>
-                  <p>{section.summary}</p>
-                  <ul>
-                    {section.proofPoints.map((point) => (
-                      <li key={point}>{point}</li>
-                    ))}
-                  </ul>
-                  <Link href={`/features/${moduleData.slug}`}>
-                    Explore {moduleData.name}
-                  </Link>
-                </div>
-                <div className="product-tour-mock" aria-hidden="true">
-                  <div className="mock-toolbar">
-                    <span />
-                    <span />
-                    <span />
-                  </div>
-                  <div className="product-tour-mock-title">{moduleData.group}</div>
-                  <div className="mock-kpi-row">
-                    <b />
-                    <b />
-                    <b />
-                  </div>
-                  <div className="mock-table-lines">
-                    <i />
-                    <i />
-                    <i />
-                    <i />
-                  </div>
-                </div>
+              <article key={area.title}>
+                <Icon aria-hidden="true" size={22} />
+                <h3>{area.title}</h3>
+                <p>{area.description}</p>
               </article>
             );
           })}
         </div>
       </section>
 
-      <section className="page-section product-section-tight">
-        <div className="section-heading">
-          <p className="eyebrow">Workflow Categories</p>
-          <h2>From daily records to board-level evidence.</h2>
-        </div>
-        <div className="marketing-category-stack">
-          {operavaultModuleGroups.map((group) => (
-            <section key={group} className="marketing-category-block">
-              <div>
-                <p className="eyebrow">Workflow Category</p>
-                <h2>{group}</h2>
-                <p>{groupSummaries[group]}</p>
-              </div>
-              <div className="marketing-category-modules">
-                {getOperavaultModulesByGroup(group).map((moduleData) => (
-                  <Link key={moduleData.slug} href={`/features/${moduleData.slug}`}>
-                    <strong>{moduleData.name}</strong>
-                    <small>{getOperavaultStatusLabel(moduleData.status)}</small>
-                  </Link>
-                ))}
-              </div>
-            </section>
-          ))}
-        </div>
-      </section>
-
       <section className="page-section two-column product-section-tight">
         <div>
-          <p className="eyebrow">Institutional posture</p>
-          <h2>Built for administrators who need evidence, controls, and visibility.</h2>
+          <p className="eyebrow">Core Boundary</p>
+          <h2>The public website controls product presentation, not private operations.</h2>
           <p>
-            Operavault is positioned for school leadership teams that need a
-            mature administrative layer, not a lightweight classroom app. The
-            public website explains capabilities while Core only captures demo
-            interest and follow-up.
+            Steward Systems Core owns public product pages, pricing overview,
+            demo requests, contact messages, and business pipeline follow-up. It
+            does not connect to school tenant data, music project data, or
+            finance-governance operational ledgers.
           </p>
         </div>
         <div className="capability-list">
-          {[
-            "Synthetic public demo content only.",
-            "No tenant data is connected to the public website.",
-            "Active-development modules are labelled with testing boundaries.",
-            "Demo requests flow into the Steward Systems Core pipeline."
-          ].map((item) => (
-            <div key={item} className="capability-item">
+          {companySignals.map((signal) => (
+            <div key={signal} className="capability-item">
               <CheckCircle2 aria-hidden="true" size={18} />
-              <span>{item}</span>
+              <span>{signal}</span>
             </div>
           ))}
         </div>
       </section>
 
       <CtaBand
-        title="Review Operavault with the team."
-        description="Request a demo and choose the modules your administrators need to inspect first."
+        title="Start with the product that matches the work."
+        description="Explore Steward Systems products, then request a demo or early-access conversation from the public site."
       />
     </main>
   );
