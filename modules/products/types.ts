@@ -12,6 +12,11 @@ export type ProductAction = ProductCta & {
   variant?: "primary" | "secondary" | "ghost";
 };
 
+export type ProductLogo = {
+  src: string;
+  alt: string;
+};
+
 export type Product = {
   slug: ProductSlug;
   coreSlug: ProductInterest;
@@ -27,5 +32,6 @@ export type Product = {
   demoUrl?: string;
   cta: ProductCta;
   featuredActions?: ProductAction[];
+  logo: ProductLogo;
   accent: "gold" | "teal" | "graphite";
 };

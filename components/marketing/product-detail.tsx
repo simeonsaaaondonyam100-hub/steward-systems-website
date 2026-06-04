@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, ShieldCheck, Sparkles } from "lucide-react";
 
@@ -26,8 +27,20 @@ export function ProductDetail({
     <main>
       <section className={`product-hero accent-${product.accent}`}>
         <div className="product-hero-copy">
-          <p className="eyebrow">{product.eyebrow}</p>
-          <h1>{product.brandLine}</h1>
+          <div className="product-hero-brand">
+            <Image
+              src={product.logo.src}
+              alt={product.logo.alt}
+              width={112}
+              height={112}
+              priority
+            />
+            <div>
+              <p className="eyebrow">{product.eyebrow}</p>
+              <h1>{product.name}</h1>
+            </div>
+          </div>
+          <p className="product-title-kicker">{product.brandLine}</p>
           <p>{product.valueProposition}</p>
           <div className="hero-actions">
             {productActions.map((action) => (
@@ -43,6 +56,16 @@ export function ProductDetail({
           </div>
         </div>
         <div className="product-preview" aria-label={`${product.name} preview`}>
+          <div className="product-preview-brand">
+            <Image
+              src={product.logo.src}
+              alt=""
+              width={58}
+              height={58}
+              aria-hidden="true"
+            />
+            <span>{product.name}</span>
+          </div>
           <div className="preview-toolbar">
             <span />
             <span />

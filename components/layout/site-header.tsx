@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
@@ -5,10 +6,18 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <Link className="brand-mark" href="/" aria-label="Steward Systems homepage">
-        <span className="brand-symbol">S</span>
+        <span className="brand-symbol brand-symbol-image" aria-hidden="true">
+          <Image
+            src="/steward-systems-logo.png"
+            alt=""
+            width={58}
+            height={58}
+            priority
+          />
+        </span>
         <span className="brand-copy">
           <strong>Steward Systems</strong>
-          <small>Practical institutional software</small>
+          <small>Full-stack software company</small>
         </span>
       </Link>
       <nav className="site-nav" aria-label="Primary navigation">

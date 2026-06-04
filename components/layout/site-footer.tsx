@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { products } from "@/modules/products/product-registry";
@@ -7,16 +8,23 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div>
         <Link className="brand-mark footer-brand" href="/">
-          <span className="brand-symbol">S</span>
+          <span className="brand-symbol brand-symbol-image" aria-hidden="true">
+            <Image
+              src="/steward-systems-logo.png"
+              alt=""
+              width={58}
+              height={58}
+            />
+          </span>
           <span className="brand-copy">
             <strong>Steward Systems</strong>
-            <small>Product company</small>
+            <small>Full-stack software company</small>
           </span>
         </Link>
         <p>
-          Steward Systems builds practical software products for institutions
-          that need dependable records, workflow discipline, and management
-          visibility.
+          Steward Systems designs, builds, and operates practical software
+          products for institutions and teams that need dependable workflows,
+          strong records, and management visibility.
         </p>
       </div>
       <div className="footer-links">

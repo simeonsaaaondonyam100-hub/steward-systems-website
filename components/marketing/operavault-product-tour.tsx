@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, Layers3 } from "lucide-react";
 
@@ -31,8 +32,20 @@ export function OperavaultProductTour() {
     <main>
       <section className="product-tour-hero">
         <div className="product-tour-hero-copy">
-          <p className="eyebrow">Unified School Operations Platform</p>
-          <h1>{operavaultHeroStatement}</h1>
+          <div className="product-tour-brand-lockup">
+            <Image
+              src="/operavault-logo.png"
+              alt="Operavault logo"
+              width={150}
+              height={100}
+              priority
+            />
+            <div>
+              <p className="eyebrow">Unified School Operations Platform</p>
+              <h1>Operavault</h1>
+            </div>
+          </div>
+          <p className="product-title-kicker">{operavaultHeroStatement}</p>
           <p>{operavaultHeroLede}</p>
           <div className="hero-actions">
             <Link className="button button-primary" href="/request-demo">

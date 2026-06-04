@@ -1,14 +1,13 @@
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
   Building2,
   CheckCircle2,
-  Code2,
   Compass,
   Landmark,
   Music2,
-  Rocket,
-  ShieldCheck
+  Rocket
 } from "lucide-react";
 
 import { CtaBand } from "@/components/marketing/cta-band";
@@ -87,8 +86,20 @@ export default function HomePage() {
     <main>
       <section className="company-landing-hero">
         <div className="company-landing-copy">
-          <p className="eyebrow">Steward Systems</p>
-          <h1>Full-stack software for real-world operations.</h1>
+          <div className="hero-brand-lockup">
+            <Image
+              src="/steward-systems-logo.png"
+              alt="Steward Systems logo"
+              width={132}
+              height={99}
+              priority
+            />
+            <div>
+              <p className="eyebrow">Full-stack software company</p>
+              <h1>Steward Systems</h1>
+            </div>
+          </div>
+          <p className="hero-kicker">Full-stack software for real-world operations.</p>
           <p>
             Steward Systems designs, builds, and operates operating systems,
             applications, Progressive Web Applications, websites, portals, and
@@ -98,10 +109,6 @@ export default function HomePage() {
           <div className="hero-actions">
             <Link className="button button-primary" href="/products">
               <span>Explore products</span>
-              <ArrowRight aria-hidden="true" size={18} />
-            </Link>
-            <Link className="button button-secondary" href="/products/operavault">
-              <span>View Operavault</span>
               <ArrowRight aria-hidden="true" size={18} />
             </Link>
             <Link className="button button-secondary" href="/request-demo">
@@ -117,12 +124,29 @@ export default function HomePage() {
         </div>
         <div className="company-hero-panel" aria-label="Steward Systems product map">
           <div className="company-hero-panel-top">
-            <ShieldCheck aria-hidden="true" size={22} />
-            <span>Product lines under Steward Systems</span>
+            <Image
+              src="/steward-systems-logo.png"
+              alt=""
+              width={62}
+              height={46}
+              aria-hidden="true"
+            />
+            <div>
+              <span>Product lines under Steward Systems</span>
+              <strong>One parent company. Independent product systems.</strong>
+            </div>
           </div>
           <div className="company-product-stack">
             {products.map((product) => (
               <Link key={product.slug} href={`/products/${product.slug}`}>
+                <Image
+                  src={product.logo.src}
+                  alt=""
+                  width={58}
+                  height={58}
+                  aria-hidden="true"
+                  className="company-product-stack-logo"
+                />
                 <span>{product.eyebrow}</span>
                 <strong>{product.name}</strong>
                 <small>{getPublicStatusLabel(product.slug, product.status)}</small>
@@ -162,7 +186,7 @@ export default function HomePage() {
             </p>
             <div className="hero-actions">
               <Link className="button button-primary" href="/products/operavault">
-                <span>Tour Operavault</span>
+                <span>View Operavault</span>
                 <ArrowRight aria-hidden="true" size={18} />
               </Link>
               <Link className="button button-secondary" href="/pricing">
@@ -237,20 +261,22 @@ export default function HomePage() {
           </p>
         </div>
         <div className="founder-profile-card">
-          <div className="founder-avatar" aria-hidden="true">
-            <Code2 size={30} />
+          <div className="founder-photo-frame">
+            <Image
+              src="/founder-ceo.jpeg"
+              alt="Founder and CEO of Steward Systems"
+              width={160}
+              height={160}
+              className="founder-photo"
+            />
           </div>
-          <p className="eyebrow">Founder Profile</p>
+          <p className="eyebrow">Founder / CEO</p>
           <h3>Founder and product architect</h3>
           <p>
             Leads product direction across Steward Systems, from idea and
             workflow modelling to interface design, backend architecture,
             rollout planning, and product-source reviews.
           </p>
-          <small>
-            Public name, portrait, and detailed biography can be added once the
-            final founder profile is approved for publication.
-          </small>
         </div>
       </section>
 

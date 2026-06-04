@@ -42,6 +42,10 @@ export const products: Product[] = [
         variant: "ghost"
       }
     ],
+    logo: {
+      src: "/operavault-logo.png",
+      alt: "Operavault logo"
+    },
     accent: "gold"
   },
   {
@@ -68,6 +72,10 @@ export const products: Product[] = [
       label: "Join early access",
       href: "/contact?interest=cantoria&type=early_access"
     },
+    logo: {
+      src: "/cantoria-logo.png",
+      alt: "Cantoria logo"
+    },
     accent: "teal"
   },
   {
@@ -93,6 +101,10 @@ export const products: Product[] = [
     cta: {
       label: "Request walkthrough",
       href: "/request-demo"
+    },
+    logo: {
+      src: "/triple-twenty-five-logo.jpeg",
+      alt: "Triple Twenty-Five logo for the Steward Ledger product line"
     },
     accent: "graphite"
   }

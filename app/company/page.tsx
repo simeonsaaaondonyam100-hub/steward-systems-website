@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
   Building2,
-  Code2,
   Compass,
   GitBranch,
   Rocket,
@@ -21,8 +21,22 @@ export default function CompanyPage() {
   return (
     <main>
       <section className="page-hero compact-hero">
-        <p className="eyebrow">Company</p>
-        <h1>Steward Systems is a full-stack software company for practical operating systems.</h1>
+        <div className="page-hero-brand-lockup">
+          <Image
+            src="/steward-systems-logo.png"
+            alt="Steward Systems logo"
+            width={118}
+            height={88}
+            priority
+          />
+          <div>
+            <p className="eyebrow">Company</p>
+            <h1>Steward Systems</h1>
+          </div>
+        </div>
+        <p className="product-title-kicker">
+          A full-stack software company for practical operating systems.
+        </p>
         <p>
           We design and build operating systems, applications, Progressive Web
           Applications, websites, portals, and focused product lines that solve
@@ -103,10 +117,16 @@ export default function CompanyPage() {
           </p>
         </div>
         <div className="founder-profile-card">
-          <div className="founder-avatar" aria-hidden="true">
-            <Code2 size={30} />
+          <div className="founder-photo-frame">
+            <Image
+              src="/founder-ceo.jpeg"
+              alt="Founder and CEO of Steward Systems"
+              width={160}
+              height={160}
+              className="founder-photo"
+            />
           </div>
-          <p className="eyebrow">Founder Profile</p>
+          <p className="eyebrow">Founder / CEO</p>
           <h3>Founder and product architect</h3>
           <p>
             Leads product direction, technical architecture, interface quality,

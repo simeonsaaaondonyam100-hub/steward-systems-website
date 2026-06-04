@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -31,11 +32,26 @@ export function ProductCard({
 
   return (
     <article className={`product-card accent-${product.accent}`}>
-      <div className="product-icon" aria-hidden="true">
-        <Icon size={22} />
+      <div className="product-card-head">
+        <div className="product-logo-frame" aria-hidden="true">
+          {product.logo ? (
+            <Image
+              src={product.logo.src}
+              alt=""
+              width={88}
+              height={88}
+              className="product-logo-image"
+            />
+          ) : (
+            <Icon size={22} />
+          )}
+        </div>
+        <div>
+          <p className="eyebrow">{product.eyebrow}</p>
+          <h3>{product.name}</h3>
+        </div>
       </div>
-      <p className="eyebrow">{product.eyebrow}</p>
-      <h3>{product.brandLine}</h3>
+      <p className="product-brand-line">{product.brandLine}</p>
       <p>{product.summary}</p>
       <div className="product-card-actions">
         <Link className="text-link" href={`/products/${product.slug}`}>
