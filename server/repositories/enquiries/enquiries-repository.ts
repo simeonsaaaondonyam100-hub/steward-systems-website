@@ -27,11 +27,5 @@ export function assertValidStatusTransition(
     return;
   }
 
-  if (currentStatus === "spam" && nextStatus !== "closed") {
-    throw new Error("Spam enquiries can only move to closed.");
-  }
-
-  if (currentStatus === "closed" && nextStatus !== "spam") {
-    throw new Error("Closed enquiries can only be marked as spam.");
-  }
+  return;
 }

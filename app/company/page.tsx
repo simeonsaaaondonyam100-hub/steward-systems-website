@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Compass, GitBranch, ShieldCheck } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Building2, GitBranch, ShieldCheck, Workflow } from "lucide-react";
 
 import { CtaBand } from "@/components/marketing/cta-band";
 
@@ -10,55 +11,78 @@ export const metadata: Metadata = {
 export default function CompanyPage() {
   return (
     <main>
-      <section className="page-hero">
-        <p className="eyebrow">Company</p>
-        <h1>Steward Systems builds focused software for serious operating domains.</h1>
+      <section className="page-hero compact-hero">
+        <p className="eyebrow">Steward Systems</p>
+        <h1>The company behind Operavault.</h1>
         <p>
-          The company direction is simple: create reliable product lines with
-          strong boundaries, clear records, and practical workflows.
+          Operavault is a product of Steward Systems, a full-stack software
+          development company building practical institutional systems for real
+          operational problems.
         </p>
+        <div className="hero-actions">
+          <Link className="button button-primary" href="/request-demo">
+            <span>Request a demo</span>
+            <ArrowRight aria-hidden="true" size={18} />
+          </Link>
+          <Link className="button button-ghost" href="/features">
+            <span>Explore modules</span>
+            <ArrowRight aria-hidden="true" size={18} />
+          </Link>
+        </div>
       </section>
 
       <section className="page-section split-section">
         <div>
-          <p className="eyebrow">Mission</p>
-          <h2>Help organizations steward complex work with clarity.</h2>
+          <p className="eyebrow">Operating belief</p>
+          <h2>Schools need systems that respect the depth of administration.</h2>
           <p>
-            Steward Systems serves teams that need more than a generic portal:
-            institutions, choirs, cooperatives, and member-led finance groups
-            with work that deserves disciplined systems.
+            Steward Systems builds with the realities of school leadership,
+            academic coordination, HR, finance, compliance evidence, parent
+            communication, and management reporting in view.
           </p>
         </div>
         <div className="principle-list">
           <div>
-            <Compass aria-hidden="true" size={22} />
-            <span>Build for real operating contexts, not abstract dashboards.</span>
+            <Building2 aria-hidden="true" size={22} />
+            <span>Built for real institutional operations.</span>
           </div>
           <div>
-            <GitBranch aria-hidden="true" size={22} />
-            <span>Keep each product independent and domain-specific.</span>
+            <Workflow aria-hidden="true" size={22} />
+            <span>Product workflows are designed around accountable handoffs.</span>
           </div>
           <div>
             <ShieldCheck aria-hidden="true" size={22} />
-            <span>Use Core for company pipeline, not product operations.</span>
+            <span>Public pages use synthetic data and clear privacy boundaries.</span>
           </div>
         </div>
       </section>
 
-      <section className="page-section muted-section">
-        <p className="eyebrow">Product philosophy</p>
-        <h2>One company layer, separate product systems.</h2>
-        <p className="wide-copy">
-          Steward Systems Core should make the public business workflow easier:
-          product discovery, demo capture, contact handling, admin follow-up,
-          and audit-ready enquiry events. The operating details of each product
-          should remain inside that product&apos;s own backend.
-        </p>
+      <section className="page-section muted-section two-column">
+        <div>
+          <p className="eyebrow">Product boundary</p>
+          <h2>Steward Systems Core captures interest. Operavault owns school operations.</h2>
+          <p>
+            The website explains Operavault, captures demo requests, and routes
+            leads into Steward Systems Core. Operational school data, tenant
+            records, module enforcement, and authenticated workflows remain
+            inside Operavault.
+          </p>
+        </div>
+        <div className="capability-list">
+          <div className="capability-item">
+            <GitBranch aria-hidden="true" size={18} />
+            <span>Product systems remain independently governable.</span>
+          </div>
+          <div className="capability-item">
+            <ShieldCheck aria-hidden="true" size={18} />
+            <span>No institution-specific content belongs in reusable public pages.</span>
+          </div>
+        </div>
       </section>
 
       <CtaBand
-        title="Talk to Steward Systems."
-        description="Bring the operating problem. We will route the conversation to the right product line."
+        title="Start with an Operavault walkthrough."
+        description="Request a demo and Steward Systems will route the conversation around your school's operational priorities."
       />
     </main>
   );

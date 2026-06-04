@@ -11,11 +11,13 @@ export function SiteHeader() {
         <span>{siteConfig.name}</span>
       </Link>
       <nav className="site-nav" aria-label="Primary navigation">
-        {siteConfig.navItems.slice(0, 3).map((item) => (
-          <Link key={item.href} href={item.href}>
-            {item.label}
-          </Link>
-        ))}
+        {siteConfig.navItems
+          .filter((item) => item.href !== "/request-demo")
+          .map((item) => (
+            <Link key={item.href} href={item.href}>
+              {item.label}
+            </Link>
+          ))}
       </nav>
       <Link className="nav-cta" href="/request-demo">
         <span>Request demo</span>

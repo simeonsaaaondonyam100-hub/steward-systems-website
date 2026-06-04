@@ -20,11 +20,28 @@ export const products: Product[] = [
     ],
     status: "active",
     publicUrl: "/products/operavault",
-    demoUrl: "/request-demo?product=operavault",
+    demoUrl: "/request-demo",
     cta: {
       label: "Request demo",
-      href: "/request-demo?product=operavault"
+      href: "/request-demo"
     },
+    featuredActions: [
+      {
+        label: "View Public Demo",
+        href: "/products/operavault/demo",
+        variant: "primary"
+      },
+      {
+        label: "Request Live Demo",
+        href: "/request-demo",
+        variant: "secondary"
+      },
+      {
+        label: "View Pricing Overview",
+        href: "/products/operavault/pricing",
+        variant: "ghost"
+      }
+    ],
     accent: "gold"
   },
   {
@@ -72,10 +89,10 @@ export const products: Product[] = [
     ],
     status: "planned",
     publicUrl: "/products/steward-ledger",
-    demoUrl: "/request-demo?product=steward_ledger",
+    demoUrl: "/request-demo",
     cta: {
       label: "Request walkthrough",
-      href: "/request-demo?product=steward_ledger"
+      href: "/request-demo"
     },
     accent: "graphite"
   }

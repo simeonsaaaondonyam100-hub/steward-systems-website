@@ -34,4 +34,26 @@ describe("product registry seed shape", () => {
       publicUrl: "/products/steward-ledger"
     });
   });
+
+  it("exposes Operavault public demo and pricing actions from the registry", () => {
+    const operavault = products.find((product) => product.slug === "operavault");
+
+    expect(operavault?.featuredActions).toEqual([
+      expect.objectContaining({
+        label: "View Public Demo",
+        href: "/products/operavault/demo",
+        variant: "primary"
+      }),
+      expect.objectContaining({
+        label: "Request Live Demo",
+        href: "/request-demo",
+        variant: "secondary"
+      }),
+      expect.objectContaining({
+        label: "View Pricing Overview",
+        href: "/products/operavault/pricing",
+        variant: "ghost"
+      })
+    ]);
+  });
 });

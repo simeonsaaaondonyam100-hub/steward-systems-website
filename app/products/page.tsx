@@ -29,7 +29,11 @@ export default function ProductsPage() {
         />
         <div className="product-grid">
           {products.map((product) => (
-            <ProductCard key={product.slug} product={product} />
+            <ProductCard
+              key={product.slug}
+              product={product}
+              showFeaturedActions
+            />
           ))}
         </div>
       </section>

@@ -11,11 +11,17 @@ export function SiteFooter() {
           <span>Steward Systems</span>
         </Link>
         <p>
-          Company-level software foundation for product discovery, demos, and
-          pipeline readiness.
+          Steward Systems builds Operavault for serious school administration,
+          academic operations, staff workflows, and management visibility.
         </p>
       </div>
       <div className="footer-links">
+        <div>
+          <h2>Tour</h2>
+          <Link href="/features">Modules</Link>
+          <Link href="/pricing">Pricing</Link>
+          <Link href="/request-demo">Request demo</Link>
+        </div>
         <div>
           <h2>Products</h2>
           {products.map((product) => (
@@ -28,7 +34,6 @@ export function SiteFooter() {
           <h2>Company</h2>
           <Link href="/company">About Steward Systems</Link>
           <Link href="/contact">Contact</Link>
-          <Link href="/request-demo">Request demo</Link>
         </div>
       </div>
     </footer>

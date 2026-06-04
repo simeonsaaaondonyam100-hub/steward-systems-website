@@ -8,6 +8,10 @@ export type ProductCta = {
   href: string;
 };
 
+export type ProductAction = ProductCta & {
+  variant?: "primary" | "secondary" | "ghost";
+};
+
 export type Product = {
   slug: ProductSlug;
   coreSlug: ProductInterest;
@@ -22,5 +26,6 @@ export type Product = {
   publicUrl: string;
   demoUrl?: string;
   cta: ProductCta;
+  featuredActions?: ProductAction[];
   accent: "gold" | "teal" | "graphite";
 };

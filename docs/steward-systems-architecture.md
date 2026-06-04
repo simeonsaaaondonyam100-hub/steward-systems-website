@@ -42,6 +42,14 @@ Each product line should remain independent:
 
 Core may pass product interest downstream later, but it should do so through explicit integration boundaries such as webhook handoff, API call, or manual admin workflow. Product operational records should not be stored in Core as a shortcut.
 
+## Public Demo And Pricing Boundary
+
+The Steward Systems public website may own public product positioning, public-safe demo pages, indicative pricing overview pages, request-demo funnels, and company-level business pipeline records.
+
+Operavault public demo and pricing overview belong on the Steward Systems website. Operavault tenant plan enforcement belongs inside the Operavault portal later, including tenant subscription plan, enabled modules, feature limits, billing/subscription status, module access enforcement, and internal plan configuration.
+
+Public demo content must use synthetic sample data only. It must not connect to Operavault operational data or expose private school, student, parent, staff, result, HR, advisory, attendance, or finance records.
+
 ## Proposed Data Model
 
 These tables are proposed for a later backend phase. They should not be created until explicitly requested.

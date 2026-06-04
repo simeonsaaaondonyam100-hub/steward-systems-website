@@ -14,13 +14,15 @@ Operavault helps institutions coordinate departments, academics, HR, accounts, a
 
 ### Website CTA
 
-Request an Operavault demo.
+View the public Operavault demo, review the indicative pricing overview, or request a live Operavault demo.
 
 ### Backend Boundary
 
 Operavault owns school and institution operational data, including tenant setup, departments, students, employees, academics, finance records, admissions, procurement, attendance, reports, workload, and appraisal data.
 
 Steward Systems Core may store that a visitor is interested in Operavault or requested an Operavault demo. Core must not store Operavault tenant operational data.
+
+The Steward Systems public website owns Operavault product positioning, the public-safe demo, pricing overview, request-demo funnel, and company-level business pipeline. The Operavault portal later owns tenant subscription plan, enabled modules, feature limits, billing/subscription status, module access enforcement, and internal plan configuration.
 
 ## Cantoria
 

@@ -17,10 +17,17 @@ const productIcons: Record<Product["slug"], LucideIcon> = {
 
 type ProductCardProps = {
   product: Product;
+  showFeaturedActions?: boolean;
 };
 
-export function ProductCard({ product }: ProductCardProps) {
+export function ProductCard({
+  product,
+  showFeaturedActions = false
+}: ProductCardProps) {
   const Icon = productIcons[product.slug];
+  const featuredActions = showFeaturedActions
+    ? (product.featuredActions ?? [])
+    : [];
 
   return (
     <article className={`product-card accent-${product.accent}`}>
@@ -30,10 +37,18 @@ export function ProductCard({ product }: ProductCardProps) {
       <p className="eyebrow">{product.eyebrow}</p>
       <h3>{product.brandLine}</h3>
       <p>{product.summary}</p>
-      <Link className="text-link" href={`/products/${product.slug}`}>
-        <span>View product</span>
-        <ArrowRight aria-hidden="true" size={16} />
-      </Link>
+      <div className="product-card-actions">
+        <Link className="text-link" href={`/products/${product.slug}`}>
+          <span>View product</span>
+          <ArrowRight aria-hidden="true" size={16} />
+        </Link>
+        {featuredActions.map((action) => (
+          <Link key={action.href} className="text-link" href={action.href}>
+            <span>{action.label}</span>
+            <ArrowRight aria-hidden="true" size={16} />
+          </Link>
+        ))}
+      </div>
     </article>
   );
 }

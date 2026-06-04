@@ -1,14 +1,27 @@
 import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
-import type { Product } from "@/modules/products/types";
+import type { Product, ProductAction } from "@/modules/products/types";
 
 type ProductDetailProps = {
   product: Product;
   proofPoints: string[];
+  actions?: ProductAction[];
 };
 
-export function ProductDetail({ product, proofPoints }: ProductDetailProps) {
+export function ProductDetail({
+  product,
+  proofPoints,
+  actions
+}: ProductDetailProps) {
+  const productActions = actions ?? product.featuredActions ?? [
+    {
+      label: product.cta.label,
+      href: product.cta.href,
+      variant: "primary" as const
+    }
+  ];
+
   return (
     <main>
       <section className={`product-hero accent-${product.accent}`}>
@@ -16,10 +29,18 @@ export function ProductDetail({ product, proofPoints }: ProductDetailProps) {
           <p className="eyebrow">{product.eyebrow}</p>
           <h1>{product.brandLine}</h1>
           <p>{product.valueProposition}</p>
-          <Link className="button button-primary" href={product.cta.href}>
-            <span>{product.cta.label}</span>
-            <ArrowRight aria-hidden="true" size={18} />
-          </Link>
+          <div className="hero-actions">
+            {productActions.map((action) => (
+              <Link
+                key={action.href}
+                className={`button button-${action.variant ?? "primary"}`}
+                href={action.href}
+              >
+                <span>{action.label}</span>
+                <ArrowRight aria-hidden="true" size={18} />
+              </Link>
+            ))}
+          </div>
         </div>
         <div className="product-preview" aria-label={`${product.name} preview`}>
           <div className="preview-toolbar">

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { CheckCircle2, ShieldCheck } from "lucide-react";
 
-import { EnquiryForm } from "@/components/forms/enquiry-form";
+import { DemoRequestForm } from "@/components/forms/demo-request-form";
+import { operavaultHeroStatement } from "@/modules/product/operavault-product";
 import type { ProductInterest } from "@/modules/enquiries/types";
 
 export const metadata: Metadata = {
@@ -28,7 +30,7 @@ function parseProductInterest(value: string | undefined): ProductInterest {
     return "steward_ledger";
   }
 
-  return "general";
+  return "operavault";
 }
 
 export default async function RequestDemoPage({
@@ -39,19 +41,34 @@ export default async function RequestDemoPage({
 
   return (
     <main>
-      <section className="form-page">
-        <div>
-          <p className="eyebrow">Request demo</p>
-          <h1>Explore a Steward Systems product with the team.</h1>
-          <p>
-            Request a walkthrough for Operavault, Cantoria, Steward Ledger, or
-            a general Steward Systems conversation.
-          </p>
+      <section className="request-demo-page">
+        <div className="request-demo-copy">
+          <p className="eyebrow">Request an Operavault demo</p>
+          <h1>See how Operavault fits your school operations.</h1>
+          <p>{operavaultHeroStatement}</p>
+          <div className="request-demo-points">
+            {[
+              "Choose the modules your administrators need to inspect first.",
+              "Review plan fit, implementation scope, and active-development modules.",
+              "Demo requests are captured in Steward Systems Core for follow-up."
+            ].map((point) => (
+              <div key={point}>
+                <CheckCircle2 aria-hidden="true" size={18} />
+                <span>{point}</span>
+              </div>
+            ))}
+          </div>
+          <div className="security-note">
+            <ShieldCheck aria-hidden="true" size={20} />
+            <span>
+              Public demo materials use synthetic data only. No private school,
+              student, parent, staff, finance, or tenant data is connected here.
+            </span>
+          </div>
         </div>
         <div className="form-panel">
-          <EnquiryForm
+          <DemoRequestForm
             defaultProductInterest={defaultProductInterest}
-            defaultRequestType="demo"
             sourcePage="/request-demo"
           />
         </div>
