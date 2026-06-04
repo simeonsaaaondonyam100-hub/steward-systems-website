@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, ShieldCheck, Sparkles } from "lucide-react";
 
 import type { Product, ProductAction } from "@/modules/products/types";
 
@@ -57,32 +57,65 @@ export function ProductDetail({
         </div>
       </section>
 
-      <section className="page-section two-column">
+      <section className="page-section product-story-grid company-section">
         <div>
-          <p className="eyebrow">Audience</p>
-          <h2>Built for serious operating teams.</h2>
+          <p className="eyebrow">Product Fit</p>
+          <h2>{product.name} is built for teams that need ordered work, not another disconnected tool.</h2>
           <p>{product.audience}</p>
         </div>
-        <div className="capability-list">
+        <div className="product-outcome-card">
+          <Sparkles aria-hidden="true" size={22} />
+          <h3>What it improves</h3>
+          <p>{product.summary}</p>
+        </div>
+      </section>
+
+      <section className="page-section company-section">
+        <div className="section-heading">
+          <p className="eyebrow">Core Capabilities</p>
+          <h2>The product is shaped around practical workflows.</h2>
+        </div>
+        <div className="product-capability-grid">
           {product.capabilities.map((capability) => (
-            <div key={capability} className="capability-item">
+            <article key={capability}>
               <CheckCircle2 aria-hidden="true" size={18} />
-              <span>{capability}</span>
-            </div>
+              <h3>{capability}</h3>
+              <p>
+                Public pages explain this capability at product level while the
+                operating system keeps real records inside the product boundary.
+              </p>
+            </article>
           ))}
         </div>
       </section>
 
-      <section className="page-section muted-section">
+      <section className="page-section muted-section product-boundary-section">
         <p className="eyebrow">Backend boundary</p>
         <h2>Product operations stay inside the product.</h2>
         <div className="proof-grid">
           {proofPoints.map((point) => (
             <article key={point} className="proof-item">
+              <ShieldCheck aria-hidden="true" size={18} />
               {point}
             </article>
           ))}
         </div>
+      </section>
+
+      <section className="page-section product-next-step company-section">
+        <div>
+          <p className="eyebrow">Next Step</p>
+          <h2>Start with the right product conversation.</h2>
+          <p>
+            Steward Systems can route demo requests, walkthroughs, and
+            early-access interest without merging product operations into the
+            public website.
+          </p>
+        </div>
+        <Link className="button button-primary" href={product.cta.href}>
+          <span>{product.cta.label}</span>
+          <ArrowRight aria-hidden="true" size={18} />
+        </Link>
       </section>
     </main>
   );

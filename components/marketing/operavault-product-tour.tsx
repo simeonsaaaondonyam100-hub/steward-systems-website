@@ -9,7 +9,6 @@ import {
   operavaultHeroLede,
   operavaultHeroStatement,
   operavaultModuleGroups,
-  operavaultModules,
   operavaultTourSections
 } from "@/modules/product/operavault-product";
 
@@ -95,43 +94,53 @@ export function OperavaultProductTour() {
 
       <section className="page-section product-section-tight">
         <div className="section-heading">
-          <p className="eyebrow">Feature Universe</p>
-          <h2>Built around the operational truth of school work.</h2>
+          <p className="eyebrow">Operating Model</p>
+          <h2>Six connected workstreams, one school operating layer.</h2>
           <p>
             Plans decide what a school owns. Permissions decide what each user
             can do. That separation keeps growth commercial and governance safe.
           </p>
         </div>
-        <div className="feature-universe-grid">
-          {operavaultModules.slice(0, 18).map((moduleData) => (
-            <Link
-              key={moduleData.slug}
-              className="feature-universe-card"
-              href={`/features/${moduleData.slug}`}
-            >
-              <span>{moduleData.group}</span>
-              <strong>{moduleData.name}</strong>
-              <p>{moduleData.summary}</p>
-              <em className={`module-status module-status-${moduleData.status}`}>
-                {getOperavaultStatusLabel(moduleData.status)}
-              </em>
-            </Link>
-          ))}
+        <div className="operavault-category-grid">
+          {operavaultModuleGroups.map((group) => {
+            const modules = getOperavaultModulesByGroup(group);
+
+            return (
+              <article key={group} className="operavault-category-card">
+                <p className="eyebrow">{group}</p>
+                <h3>{groupSummaries[group]}</h3>
+                <div>
+                  {modules.slice(0, 4).map((moduleData) => (
+                    <Link key={moduleData.slug} href={`/features/${moduleData.slug}`}>
+                      {moduleData.name}
+                    </Link>
+                  ))}
+                </div>
+                <small>{modules.length} modules in this workstream</small>
+              </article>
+            );
+          })}
+        </div>
+        <div className="section-action-row">
+          <Link className="button button-secondary" href="/features">
+            <span>Open full module catalogue</span>
+            <ArrowRight aria-hidden="true" size={18} />
+          </Link>
         </div>
       </section>
 
       <section className="page-section product-section-tight">
         <div className="section-heading">
-          <p className="eyebrow">Product Tour</p>
-          <h2>See how the major school workflows connect.</h2>
+          <p className="eyebrow">Guided Product Tour</p>
+          <h2>The workflows leaders usually ask to see first.</h2>
           <p>
-            Each module is presented with honest status language: operational
-            foundations are named clearly, and active roadmap areas are
-            described as active development or structured institutional testing.
+            The full catalogue is available on the modules page. This product
+            page keeps the first tour focused on the workflows that explain the
+            operating system fastest.
           </p>
         </div>
-        <div className="product-tour-grid">
-          {operavaultTourSections.map((section) => {
+        <div className="product-tour-grid compact-product-tour-grid">
+          {operavaultTourSections.slice(0, 6).map((section) => {
             const moduleData = getOperavaultModuleBySlug(section.moduleSlug);
 
             if (!moduleData) {
@@ -181,31 +190,11 @@ export function OperavaultProductTour() {
             );
           })}
         </div>
-      </section>
-
-      <section className="page-section product-section-tight">
-        <div className="section-heading">
-          <p className="eyebrow">Workflow Categories</p>
-          <h2>From daily records to board-level evidence.</h2>
-        </div>
-        <div className="marketing-category-stack">
-          {operavaultModuleGroups.map((group) => (
-            <section key={group} className="marketing-category-block">
-              <div>
-                <p className="eyebrow">Workflow Category</p>
-                <h2>{group}</h2>
-                <p>{groupSummaries[group]}</p>
-              </div>
-              <div className="marketing-category-modules">
-                {getOperavaultModulesByGroup(group).map((moduleData) => (
-                  <Link key={moduleData.slug} href={`/features/${moduleData.slug}`}>
-                    <strong>{moduleData.name}</strong>
-                    <small>{getOperavaultStatusLabel(moduleData.status)}</small>
-                  </Link>
-                ))}
-              </div>
-            </section>
-          ))}
+        <div className="section-action-row">
+          <Link className="button button-secondary" href="/features">
+            <span>View every module</span>
+            <Layers3 aria-hidden="true" size={18} />
+          </Link>
         </div>
       </section>
 

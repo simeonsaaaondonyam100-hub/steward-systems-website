@@ -141,11 +141,11 @@ test("product-tour pages mention core module examples", () => {
     );
   }
 
-  assert.match(homepage, /Steward Systems/);
+  assert.match(homepage, /Full-stack software for real-world operations/);
   assert.match(homepage, /Explore products/);
   assert.match(homepage, /View Operavault/);
   assert.match(operavaultTour, /operavaultHeroLede/);
-  assert.match(operavaultTour, /feature-universe-grid/);
+  assert.match(operavaultTour, /operavault-category-grid/);
   assert.match(operavaultTour, /operavaultTourSections/);
   assert.match(featureDetail, /problem/i);
   assert.match(featureDetail, /Plan availability/);

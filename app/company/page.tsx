@@ -1,6 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Building2, GitBranch, ShieldCheck, Workflow } from "lucide-react";
+import {
+  ArrowRight,
+  Building2,
+  Code2,
+  Compass,
+  GitBranch,
+  Rocket,
+  ShieldCheck,
+  Workflow
+} from "lucide-react";
 
 import { CtaBand } from "@/components/marketing/cta-band";
 
@@ -13,64 +22,109 @@ export default function CompanyPage() {
     <main>
       <section className="page-hero compact-hero">
         <p className="eyebrow">Company</p>
-        <h1>Operavault is a product of Steward Systems.</h1>
+        <h1>Steward Systems is a full-stack software company for practical operating systems.</h1>
         <p>
-          Operavault is a product of Steward Systems, a full-stack software
-          development company building practical institutional systems for real
-          operational problems. We are shaping Operavault as a secure school
-          operations SaaS for leadership teams, administrators, teachers,
-          advisors, parents, and operational departments who need one dependable
-          source of truth.
+          We design and build operating systems, applications, Progressive Web
+          Applications, websites, portals, and focused product lines that solve
+          real operational problems for institutions, teams, and growing
+          organisations.
         </p>
         <div className="hero-actions">
           <Link className="button button-primary" href="/request-demo">
             <span>Request a demo</span>
             <ArrowRight aria-hidden="true" size={18} />
           </Link>
-          <Link className="button button-ghost" href="/features">
-            <span>Explore modules</span>
+          <Link className="button button-ghost" href="/products">
+            <span>Explore products</span>
             <ArrowRight aria-hidden="true" size={18} />
           </Link>
         </div>
       </section>
 
-      <section className="page-section company-grid product-section-tight">
+      <section className="page-section company-grid company-section">
         <article>
           <Building2 aria-hidden="true" size={24} />
-          <h2>Institutional seriousness</h2>
+          <h2>Product seriousness</h2>
           <p>
-            The product identity is restrained, secure, and built around
-            governance, records, data protection, and operational accountability.
+            We build products around records, governance, accountability,
+            usability, and continuity instead of decorative software that does
+            not survive daily operations.
           </p>
         </article>
         <article>
           <Workflow aria-hidden="true" size={24} />
-          <h2>Tenant-aware architecture</h2>
+          <h2>Full-stack delivery</h2>
           <p>
-            Each school owns its operational scope while RBAC controls what
-            individual users can access and do inside that institution.
+            Steward Systems can shape public websites, portals, application
+            workflows, backend services, access control, database boundaries,
+            and Progressive Web Application experiences.
           </p>
         </article>
         <article>
           <ShieldCheck aria-hidden="true" size={24} />
-          <h2>Usability and continuity</h2>
+          <h2>Operational boundaries</h2>
           <p>
-            Steward Systems designs around real user workflows so institutions
-            can preserve knowledge, reduce re-entry, and continue operations
-            with clearer evidence.
+            Product lines remain independently governable. Public pages can
+            explain products and collect interest without exposing private
+            operational data.
           </p>
         </article>
+      </section>
+
+      <section className="page-section company-principles company-section">
+        <article>
+          <Compass aria-hidden="true" size={24} />
+          <p className="eyebrow">Vision</p>
+          <h2>Dependable software for institutions that cannot afford confusion.</h2>
+          <p>
+            Steward Systems exists to make serious operating work easier to
+            see, manage, review, and improve.
+          </p>
+        </article>
+        <article>
+          <Rocket aria-hidden="true" size={24} />
+          <p className="eyebrow">Mission</p>
+          <h2>Turn real workflows into software products that people can actually adopt.</h2>
+          <p>
+            We combine workflow analysis, product design, full-stack
+            development, rollout thinking, and careful public positioning.
+          </p>
+        </article>
+      </section>
+
+      <section className="page-section company-team-section company-section">
+        <div>
+          <p className="eyebrow">Founder-Led</p>
+          <h2>Product leadership close to the work.</h2>
+          <p>
+            Steward Systems is being built with founder-led attention to real
+            product use: what users need to do, which records must be protected,
+            and how public claims should match actual product capability.
+          </p>
+        </div>
+        <div className="founder-profile-card">
+          <div className="founder-avatar" aria-hidden="true">
+            <Code2 size={30} />
+          </div>
+          <p className="eyebrow">Founder Profile</p>
+          <h3>Founder and product architect</h3>
+          <p>
+            Leads product direction, technical architecture, interface quality,
+            product-source reviews, and rollout planning across the Steward
+            Systems product family.
+          </p>
+        </div>
       </section>
 
       <section className="page-section muted-section two-column">
         <div>
           <p className="eyebrow">Product boundary</p>
-          <h2>Steward Systems Core captures interest. Operavault owns school operations.</h2>
+          <h2>Steward Systems Core captures interest. Product systems own operations.</h2>
           <p>
-            The website explains Operavault, captures demo requests, and routes
-            leads into Steward Systems Core. Operational school data, tenant
-            records, module enforcement, and authenticated workflows remain
-            inside Operavault.
+            The website explains products, captures demo requests, and routes
+            leads into Steward Systems Core. Operational school data, music
+            projects, financial governance records, module enforcement, and
+            authenticated workflows remain inside their product systems.
           </p>
         </div>
         <div className="capability-list">
@@ -86,8 +140,8 @@ export default function CompanyPage() {
       </section>
 
       <CtaBand
-        title="Start with an Operavault walkthrough."
-        description="Request a demo and Steward Systems will route the conversation around your school's operational priorities."
+        title="Start with the product that matches the work."
+        description="Explore Steward Systems products and request the right demo, walkthrough, or early-access conversation."
       />
     </main>
   );

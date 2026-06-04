@@ -14,20 +14,21 @@ export default function ProductsPage() {
     <main>
       <section className="page-hero compact-hero">
         <p className="eyebrow">Products</p>
-        <h1>Three focused products. One Steward Systems standard.</h1>
+        <h1>Products built from real operating problems.</h1>
         <p>
-          Operavault, Cantoria, and Steward Ledger each solve a different
-          operational problem without merging their operational data into Core.
+          Steward Systems builds focused software product lines for schools,
+          music teams, investment clubs, cooperatives, and organisations that
+          need dependable workflows and clear records.
         </p>
       </section>
 
-      <section className="page-section">
+      <section className="page-section company-section">
         <SectionHeading
           eyebrow="Portfolio"
-          title="Choose the product line that matches your work."
-          description="The public site routes interest. The product systems own their own operating records."
+          title="Choose the product line that matches the work."
+          description="The public site routes interest and product discovery. The product systems own their own operating records."
         />
-        <div className="product-grid">
+        <div className="product-grid company-product-grid">
           {products.map((product) => (
             <ProductCard
               key={product.slug}

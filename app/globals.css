@@ -2493,3 +2493,600 @@ textarea {
     grid-template-columns: 1fr;
   }
 }
+
+/* Premium layout tightening for Steward Systems and product landing pages. */
+.company-section {
+  padding-block: clamp(34px, 5vw, 58px);
+}
+
+.company-landing-hero {
+  min-height: auto;
+  padding-block: clamp(42px, 7vw, 78px) clamp(34px, 5vw, 56px);
+}
+
+.company-landing-copy {
+  gap: 18px;
+}
+
+.company-landing-hero h1 {
+  max-width: 680px;
+  font-size: clamp(2.35rem, 4.4vw, 4.15rem);
+}
+
+.company-landing-hero p:not(.eyebrow) {
+  max-width: 690px;
+}
+
+.studio-capability-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.studio-capability-row span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 7px 12px;
+  color: var(--navy);
+  background: rgba(255, 255, 255, 0.74);
+  border: 1px solid rgba(6, 26, 47, 0.1);
+  border-radius: 999px;
+  font-size: 0.84rem;
+  font-weight: 850;
+}
+
+.company-hero-panel {
+  align-self: stretch;
+}
+
+.company-product-stack a {
+  min-height: 92px;
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.company-product-stack a:hover,
+.product-card:hover,
+.portfolio-highlight-grid article:hover,
+.operavault-category-card:hover,
+.product-update-list article:hover {
+  transform: translateY(-2px);
+  border-color: rgba(213, 166, 50, 0.42);
+}
+
+.company-product-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+}
+
+.company-product-grid .product-card,
+.product-grid .product-card {
+  min-height: 0;
+  padding: 22px;
+  border-radius: 22px;
+}
+
+.company-product-grid .product-card h3 {
+  font-size: 1.18rem;
+}
+
+.company-product-grid .product-card p:not(.eyebrow) {
+  margin-bottom: 18px;
+}
+
+.company-product-grid .product-icon {
+  margin-bottom: 14px;
+}
+
+.company-featured-product {
+  align-items: stretch;
+}
+
+.company-featured-card {
+  min-height: 100%;
+}
+
+.portfolio-highlight-grid article {
+  min-height: 0;
+}
+
+.company-principles,
+.company-team-section {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  align-items: stretch;
+}
+
+.company-principles article,
+.founder-profile-card,
+.company-team-section > div:first-child,
+.product-outcome-card,
+.product-capability-grid article {
+  display: grid;
+  gap: 14px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(6, 26, 47, 0.1);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+}
+
+.company-principles svg,
+.company-team-section svg,
+.product-outcome-card svg,
+.product-capability-grid svg {
+  color: var(--gold);
+}
+
+.company-principles p:not(.eyebrow),
+.company-team-section p:not(.eyebrow),
+.founder-profile-card p,
+.product-update-list p,
+.product-outcome-card p,
+.product-capability-grid p,
+.product-next-step p {
+  color: var(--muted);
+}
+
+.founder-avatar {
+  display: inline-grid;
+  width: 70px;
+  height: 70px;
+  place-items: center;
+  color: #fffaf0;
+  background: linear-gradient(135deg, #061a2f, #0f5d47);
+  border-radius: 22px;
+}
+
+.founder-profile-card small {
+  color: #66727a;
+  line-height: 1.6;
+}
+
+.product-update-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.product-update-list article {
+  display: grid;
+  gap: 10px;
+  padding: 22px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(6, 26, 47, 0.1);
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+}
+
+.product-update-list span {
+  color: var(--deep-green);
+  font-size: 0.78rem;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.product-story-grid,
+.product-next-step {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 0.72fr);
+  gap: 22px;
+  align-items: stretch;
+}
+
+.product-capability-grid,
+.operavault-category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.product-capability-grid article {
+  min-height: 210px;
+}
+
+.product-boundary-section .proof-grid {
+  align-items: stretch;
+}
+
+.product-boundary-section .proof-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  min-height: 0;
+  border-radius: 20px;
+}
+
+.product-boundary-section .proof-item svg {
+  flex: 0 0 auto;
+  color: var(--deep-green);
+  margin-top: 4px;
+}
+
+.product-next-step {
+  align-items: center;
+}
+
+.product-next-step .button {
+  justify-self: end;
+}
+
+.operavault-category-card {
+  display: grid;
+  gap: 14px;
+  min-height: 290px;
+  padding: 22px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(6, 26, 47, 0.1);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+}
+
+.operavault-category-card h3 {
+  font-size: 1.08rem;
+  line-height: 1.35;
+}
+
+.operavault-category-card div {
+  display: grid;
+  gap: 8px;
+}
+
+.operavault-category-card a {
+  color: var(--navy);
+  font-weight: 850;
+}
+
+.operavault-category-card small {
+  align-self: end;
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.section-action-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 22px;
+}
+
+.compact-product-tour-grid {
+  gap: 16px;
+}
+
+.compact-product-tour-grid .product-tour-card {
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 0.55fr);
+}
+
+.compact-product-tour-grid .product-tour-mock {
+  min-height: 210px;
+}
+
+.product-tour-card {
+  min-height: 0;
+}
+
+.site-footer {
+  margin-top: 46px;
+}
+
+@media (max-width: 1100px) {
+  .company-product-grid,
+  .product-update-list,
+  .product-capability-grid,
+  .operavault-category-grid,
+  .portfolio-highlight-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .company-landing-hero {
+    gap: 20px;
+  }
+
+  .company-principles,
+  .company-team-section,
+  .product-story-grid,
+  .product-next-step,
+  .compact-product-tour-grid .product-tour-card {
+    grid-template-columns: 1fr;
+  }
+
+  .product-next-step .button {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 720px) {
+  .company-landing-hero,
+  .page-section,
+  .page-hero,
+  .request-demo-page,
+  .form-page,
+  .admin-shell {
+    padding-inline: 16px;
+  }
+
+  .company-section,
+  .product-section-tight {
+    padding-block: 30px;
+  }
+
+  .company-landing-hero {
+    padding-block: 36px 24px;
+  }
+
+  .company-landing-hero h1 {
+    font-size: 2.22rem;
+    line-height: 1.04;
+  }
+
+  .company-landing-hero p:not(.eyebrow) {
+    font-size: 1rem;
+    line-height: 1.58;
+  }
+
+  .company-product-grid,
+  .product-update-list,
+  .product-capability-grid,
+  .operavault-category-grid,
+  .portfolio-highlight-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .company-product-grid .product-card,
+  .product-grid .product-card,
+  .company-principles article,
+  .founder-profile-card,
+  .company-team-section > div:first-child,
+  .product-update-list article,
+  .product-outcome-card,
+  .product-capability-grid article,
+  .operavault-category-card {
+    padding: 18px;
+    border-radius: 18px;
+  }
+
+  .company-hero-panel {
+    padding: 16px;
+    border-radius: 20px;
+  }
+
+  .company-product-stack a {
+    min-height: 0;
+    padding: 14px;
+    border-radius: 14px;
+  }
+
+  .studio-capability-row span {
+    min-height: 30px;
+    font-size: 0.78rem;
+  }
+
+  .section-heading {
+    margin-bottom: 20px;
+  }
+
+  .product-card-actions {
+    gap: 8px 14px;
+  }
+
+  .cta-band {
+    margin-top: 28px;
+    border-radius: 22px;
+  }
+}
+
+@media (max-width: 720px) and (min-width: 540px) {
+  .company-product-stack {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .company-product-stack a {
+    align-content: start;
+    gap: 6px;
+  }
+
+  .company-product-stack span {
+    font-size: 0.7rem;
+  }
+
+  .company-product-stack strong {
+    font-size: 0.95rem;
+  }
+
+  .company-product-stack small {
+    font-size: 0.68rem;
+  }
+
+  .portfolio-highlight-grid,
+  .product-update-list,
+  .operavault-category-grid,
+  .company-product-grid,
+  .company-principles,
+  .product-capability-grid,
+  .compact-product-tour-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .compact-product-tour-grid .product-tour-card {
+    min-width: 0;
+  }
+
+  .compact-product-tour-grid .product-tour-card-copy h3 {
+    font-size: 1.34rem;
+  }
+
+  .compact-product-tour-grid .product-tour-card-copy p,
+  .compact-product-tour-grid .product-tour-card-copy li,
+  .operavault-category-card h3,
+  .operavault-category-card a {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .site-header {
+    gap: 12px;
+    padding-block: 12px;
+  }
+
+  .site-nav {
+    gap: 10px;
+    padding: 8px 10px;
+    font-size: 0.82rem;
+  }
+
+  .company-hero-panel-top {
+    font-size: 0.9rem;
+  }
+
+  .company-featured-product h2,
+  .company-principles h2,
+  .company-team-section h2,
+  .company-updates-section h2,
+  .product-story-grid h2,
+  .product-next-step h2 {
+    font-size: clamp(1.55rem, 6vw, 2rem);
+  }
+
+  .product-card p,
+  .portfolio-highlight-grid p,
+  .company-featured-product p,
+  .company-principles p,
+  .company-team-section p,
+  .product-update-list p,
+  .product-capability-grid p,
+  .operavault-category-card h3,
+  .operavault-category-card small {
+    line-height: 1.5;
+  }
+
+  .product-icon {
+    width: 38px;
+    height: 38px;
+    margin-bottom: 10px;
+  }
+
+  .product-card-actions {
+    margin-top: 12px;
+  }
+
+  .company-landing-hero {
+    gap: 16px;
+  }
+
+  .company-landing-hero .hero-actions {
+    margin-top: 8px;
+  }
+
+  .company-landing-hero h1,
+  .product-tour-hero h1 {
+    font-size: 2.08rem;
+  }
+
+  .product-tour-hero {
+    gap: 20px;
+    padding-block: 38px 28px;
+  }
+
+  .product-tour-hero p:not(.eyebrow) {
+    font-size: 0.98rem;
+    line-height: 1.55;
+  }
+
+  .hero-console-grid {
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .hero-console-grid div,
+  .tour-mockup-row div {
+    min-height: 70px;
+    padding: 12px;
+    border-radius: 12px;
+  }
+
+  .hero-console-grid strong {
+    font-size: 1.12rem;
+  }
+
+  .hero-console-top {
+    padding: 14px;
+  }
+
+  .operavault-category-card {
+    min-height: 0;
+  }
+
+  .operavault-category-card div {
+    gap: 6px;
+  }
+
+  .compact-product-tour-grid .product-tour-card {
+    padding: 18px;
+  }
+
+  .compact-product-tour-grid .product-tour-mock {
+    display: none;
+  }
+
+  .product-tour-card-copy h3 {
+    margin-top: 12px;
+    font-size: 1.55rem;
+  }
+
+  .product-tour-card-copy ul {
+    margin: 12px 0;
+  }
+
+  .product-hero {
+    gap: 20px;
+    min-height: auto;
+    padding-block: 40px;
+  }
+
+  .product-hero h1 {
+    font-size: 2.25rem;
+  }
+
+  .product-hero p:not(.eyebrow) {
+    font-size: 0.98rem;
+    line-height: 1.55;
+  }
+
+  .product-preview {
+    min-height: 190px;
+  }
+
+  .preview-column {
+    min-height: 72px;
+  }
+
+  .preview-column.wide {
+    min-height: 96px;
+  }
+
+  .product-capability-grid article {
+    min-height: 0;
+  }
+
+  .proof-grid {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 720px) and (min-width: 540px) {
+  .company-product-grid,
+  .company-principles,
+  .portfolio-highlight-grid,
+  .product-update-list,
+  .product-capability-grid,
+  .operavault-category-grid,
+  .compact-product-tour-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Steward Systems",
   description:
-    "Steward Systems builds practical software products for institutional operations, music and rehearsal workflows, and governance and treasury accountability.",
+    "Steward Systems is a full-stack software company building operating systems, applications, Progressive Web Applications, websites, portals, and product lines that solve real-world operational problems.",
   url: "https://stewardsystems.com",
   navItems: [
     { label: "Products", href: "/products" },

@@ -3,8 +3,11 @@ import {
   ArrowRight,
   Building2,
   CheckCircle2,
+  Code2,
+  Compass,
   Landmark,
   Music2,
+  Rocket,
   ShieldCheck
 } from "lucide-react";
 
@@ -13,6 +16,15 @@ import { ProductCard } from "@/components/marketing/product-card";
 import { products } from "@/modules/products/product-registry";
 
 const operavault = products.find((product) => product.slug === "operavault");
+
+const studioCapabilities = [
+  "Institutional operating systems",
+  "Progressive Web Applications",
+  "Websites and portals",
+  "Custom product lines",
+  "Workflow automation",
+  "Secure backend systems"
+];
 
 const companySignals = [
   "Public product tours and pricing stay in Steward Systems Core.",
@@ -41,18 +53,47 @@ const focusAreas = [
   }
 ];
 
+const productUpdates = [
+  {
+    product: "Operavault",
+    status: "Rollout preparation",
+    detail:
+      "The school-operations product tour, module catalogue, pricing overview, and demo-request flow are now public-facing."
+  },
+  {
+    product: "Cantoria",
+    status: "Early-access foundations",
+    detail:
+      "Score projects, SATB notation, playback, part extraction, print, and selected-part export foundations are being shaped for public positioning."
+  },
+  {
+    product: "Steward Ledger",
+    status: "Governance product review",
+    detail:
+      "Member, treasury, meetings, resolutions, reports, permissions, and audit workflows are being prepared for a later public product tour."
+  }
+];
+
+function getPublicStatusLabel(productSlug: string, status: string) {
+  if (productSlug === "steward-ledger" && status === "planned") {
+    return "active development";
+  }
+
+  return status.replace("_", " ");
+}
+
 export default function HomePage() {
   return (
     <main>
       <section className="company-landing-hero">
         <div className="company-landing-copy">
           <p className="eyebrow">Steward Systems</p>
-          <h1>Practical software systems for serious institutional work.</h1>
+          <h1>Full-stack software for real-world operations.</h1>
           <p>
-            Steward Systems builds and operates focused software products for
-            schools, music teams, investment clubs, cooperatives, and
-            organisations that need dependable records, workflow discipline, and
-            management visibility.
+            Steward Systems designs, builds, and operates operating systems,
+            applications, Progressive Web Applications, websites, portals, and
+            specialist product lines for teams that need dependable digital
+            systems instead of scattered manual work.
           </p>
           <div className="hero-actions">
             <Link className="button button-primary" href="/products">
@@ -68,6 +109,11 @@ export default function HomePage() {
               <ArrowRight aria-hidden="true" size={18} />
             </Link>
           </div>
+          <div className="studio-capability-row" aria-label="Steward Systems capabilities">
+            {studioCapabilities.map((capability) => (
+              <span key={capability}>{capability}</span>
+            ))}
+          </div>
         </div>
         <div className="company-hero-panel" aria-label="Steward Systems product map">
           <div className="company-hero-panel-top">
@@ -79,36 +125,32 @@ export default function HomePage() {
               <Link key={product.slug} href={`/products/${product.slug}`}>
                 <span>{product.eyebrow}</span>
                 <strong>{product.name}</strong>
-                <small>{product.status.replace("_", " ")}</small>
+                <small>{getPublicStatusLabel(product.slug, product.status)}</small>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="page-section product-section-tight">
+      <section className="page-section company-section">
         <div className="section-heading">
           <p className="eyebrow">Product Portfolio</p>
-          <h2>One company view, separate product operations.</h2>
+          <h2>Focused products with one Steward Systems standard.</h2>
           <p>
-            The website helps visitors understand each product and request the
-            right conversation. The products themselves remain independent
-            systems with their own records, permissions, and operational data.
+            Each product solves a real operating problem. Steward Systems keeps
+            the public view, product positioning, pricing context, and enquiry
+            flow in one place while each product keeps its own private records.
           </p>
         </div>
-        <div className="product-grid">
+        <div className="product-grid company-product-grid">
           {products.map((product) => (
-            <ProductCard
-              key={product.slug}
-              product={product}
-              showFeaturedActions={product.slug === "operavault"}
-            />
+            <ProductCard key={product.slug} product={product} />
           ))}
         </div>
       </section>
 
       {operavault ? (
-        <section className="page-section company-featured-product product-section-tight">
+        <section className="page-section company-featured-product company-section">
           <div>
             <p className="eyebrow">Featured Rollout Product</p>
             <h2>Operavault is the product currently being prepared for wider institutional rollout.</h2>
@@ -145,7 +187,7 @@ export default function HomePage() {
         </section>
       ) : null}
 
-      <section className="page-section product-section-tight">
+      <section className="page-section company-section">
         <div className="portfolio-highlight-grid">
           {focusAreas.map((area) => {
             const Icon = area.icon;
@@ -161,7 +203,79 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="page-section two-column product-section-tight">
+      <section className="page-section company-principles company-section">
+        <article>
+          <Compass aria-hidden="true" size={24} />
+          <p className="eyebrow">Vision</p>
+          <h2>To make practical institutional software feel dependable, intelligent, and ready for daily work.</h2>
+          <p>
+            We want schools, music teams, finance groups, cooperatives, and
+            growing organisations to have systems that preserve knowledge,
+            clarify responsibility, and turn scattered operations into evidence.
+          </p>
+        </article>
+        <article>
+          <Rocket aria-hidden="true" size={24} />
+          <p className="eyebrow">Mission</p>
+          <h2>Build software products that solve real problems with strong engineering and careful rollout.</h2>
+          <p>
+            Steward Systems combines product design, full-stack development,
+            data boundaries, workflow thinking, and user support so teams can
+            adopt useful systems without losing control of their operations.
+          </p>
+        </article>
+      </section>
+
+      <section className="page-section company-team-section company-section">
+        <div>
+          <p className="eyebrow">Meet The Team</p>
+          <h2>Founder-led product architecture with room to grow.</h2>
+          <p>
+            Steward Systems is currently shaped by founder-led product thinking:
+            close to real users, careful about data boundaries, and practical
+            about what institutions actually need to run well.
+          </p>
+        </div>
+        <div className="founder-profile-card">
+          <div className="founder-avatar" aria-hidden="true">
+            <Code2 size={30} />
+          </div>
+          <p className="eyebrow">Founder Profile</p>
+          <h3>Founder and product architect</h3>
+          <p>
+            Leads product direction across Steward Systems, from idea and
+            workflow modelling to interface design, backend architecture,
+            rollout planning, and product-source reviews.
+          </p>
+          <small>
+            Public name, portrait, and detailed biography can be added once the
+            final founder profile is approved for publication.
+          </small>
+        </div>
+      </section>
+
+      <section className="page-section company-updates-section company-section">
+        <div className="section-heading">
+          <p className="eyebrow">Product Updates</p>
+          <h2>What Steward Systems is actively shaping.</h2>
+          <p>
+            Public product pages should move with the actual software, so every
+            product claim is tracked against source-of-truth notes and product
+            evidence.
+          </p>
+        </div>
+        <div className="product-update-list">
+          {productUpdates.map((update) => (
+            <article key={update.product}>
+              <span>{update.status}</span>
+              <h3>{update.product}</h3>
+              <p>{update.detail}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="page-section two-column company-section">
         <div>
           <p className="eyebrow">Core Boundary</p>
           <h2>The public website controls product presentation, not private operations.</h2>
