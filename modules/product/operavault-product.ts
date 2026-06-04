@@ -13,6 +13,7 @@ export type OperavaultModuleStatus =
 
 export type OperavaultModule = {
   slug: string;
+  aliases?: string[];
   name: string;
   group: OperavaultModuleGroup;
   summary: string;
@@ -37,8 +38,31 @@ export type OperavaultPlan = {
   highlighted?: boolean;
 };
 
+export type OperavaultTourSection = {
+  title: string;
+  moduleSlug: string;
+  summary: string;
+  proofPoints: string[];
+};
+
+type OperavaultModuleSeed = {
+  slug: string;
+  aliases?: string[];
+  name: string;
+  group: OperavaultModuleGroup;
+  summary: string;
+  status: OperavaultModuleStatus;
+  workflows: string[];
+  planAvailability?: string;
+  problem?: string;
+  users?: string[];
+};
+
 export const operavaultHeroStatement =
   "One operating system for school administration, academic records, parent engagement, compliance evidence, staff workflows, and management visibility.";
+
+export const operavaultHeroLede =
+  "Operavault brings the serious work of running a school into one secure, tenant-aware platform: people records, academics, attendance, discipline, finance workflows, parent communication, audit trails, staff duties, and decision intelligence.";
 
 export const operavaultModuleGroups: OperavaultModuleGroup[] = [
   "People Records",
@@ -49,616 +73,710 @@ export const operavaultModuleGroups: OperavaultModuleGroup[] = [
   "Intelligence and Analytics"
 ];
 
-export const operavaultModules: OperavaultModule[] = [
+const groupUsers: Record<OperavaultModuleGroup, string[]> = {
+  "People Records": ["Registrars", "HR teams", "school administrators"],
+  "Academic Operations": ["Teachers", "academic leaders", "examination teams"],
+  "Attendance and Discipline": ["Class teams", "discipline officers", "school leadership"],
+  "Finance and Administration": ["Accounts teams", "operations teams", "approvers"],
+  "Communication and Parent Engagement": ["Parents", "advisers", "communication teams"],
+  "Intelligence and Analytics": ["Management teams", "HR leaders", "school leadership"]
+};
+
+const moduleSeeds: OperavaultModuleSeed[] = [
   {
-    slug: "student-records",
-    name: "Student Records",
+    slug: "students-management",
+    aliases: ["student-records"],
+    name: "Students Management",
     group: "People Records",
-    summary:
-      "Structured learner profiles for admissions context, academic history, contacts, classes, and operational follow-up.",
-    problem:
-      "Schools often spread learner information across paper files, spreadsheets, and disconnected portals.",
-    users: ["Registrars", "school administrators", "heads of school"],
-    workflows: [
-      "Maintain learner profile records",
-      "Review class and cohort placement",
-      "Prepare records for academic and administrative workflows"
-    ],
-    planAvailability: "Basic and above",
     status: "available",
-    mockupCards: [
-      {
-        label: "Profile completeness",
-        value: "96%",
-        detail: "Synthetic record-readiness indicator"
-      },
-      {
-        label: "Cohorts",
-        value: "18",
-        detail: "Class groups represented in the tour"
-      }
-    ]
+    summary:
+      "Student records, class placement, academic profile, documents, and operational history.",
+    workflows: [
+      "Maintain student biodata and admission context",
+      "Review class and year-group placement",
+      "Connect academic and attendance records"
+    ],
+    planAvailability: "Basic and above"
   },
   {
-    slug: "staff-records",
-    name: "Staff Records",
+    slug: "staff-management",
+    aliases: ["staff-records"],
+    name: "Staff Management",
     group: "People Records",
-    summary:
-      "Staff profiles for HR readiness, department ownership, attendance context, workload review, and appraisal evidence.",
-    problem:
-      "Staff data becomes difficult to govern when HR, departments, and leadership use separate records.",
-    users: ["HR teams", "department heads", "school leadership"],
-    workflows: [
-      "Maintain staff profiles",
-      "Track department ownership",
-      "Prepare HR and appraisal evidence"
-    ],
-    planAvailability: "Basic and above",
     status: "available",
-    mockupCards: [
-      {
-        label: "Department owners",
-        value: "12",
-        detail: "Synthetic department assignments"
-      },
-      {
-        label: "Review packs",
-        value: "8",
-        detail: "Prepared for leadership review"
-      }
-    ]
+    summary:
+      "Employee records, departments, positions, credentials, attendance, workload, and HR context.",
+    workflows: [
+      "Maintain department and position records",
+      "Track credentials and onboarding",
+      "Prepare workload and appraisal readiness"
+    ],
+    planAvailability: "Basic and above"
   },
   {
-    slug: "report-card-generation",
-    name: "Report Card Generation",
-    group: "Academic Operations",
-    summary:
-      "Generate report cards from reviewed scores, comments, attendance context, and school-approved publishing workflows.",
-    problem:
-      "Report cards become slow and error-prone when grades, comments, approvals, and publishing are managed manually.",
-    users: ["Academic leads", "class teachers", "school administrators"],
-    workflows: [
-      "Collect reviewed scores",
-      "Route comments and approvals",
-      "Prepare report cards for release"
-    ],
-    planAvailability: "Standard and above",
+    slug: "parents-guardians-management",
+    name: "Parents/Guardians Management",
+    group: "People Records",
     status: "available",
-    mockupCards: [
-      {
-        label: "Ready reports",
-        value: "142",
-        detail: "Synthetic reports pending release"
-      },
-      {
-        label: "Approval stage",
-        value: "Leadership",
-        detail: "Final review before publishing"
-      }
-    ]
+    summary:
+      "Parent records, linked children, requests, documents, appointments, and communication history.",
+    workflows: [
+      "Maintain parent-child linkage",
+      "Review parent portal records",
+      "Track documents and requests"
+    ],
+    planAvailability: "Basic and above"
+  },
+  {
+    slug: "employee-onboarding",
+    name: "Employee Onboarding",
+    group: "People Records",
+    status: "available",
+    summary:
+      "Invite-led employee onboarding that connects staff accounts to operational profiles.",
+    workflows: [
+      "Issue onboarding invites",
+      "Connect staff accounts to employee profiles",
+      "Track tenant-safe onboarding progress"
+    ],
+    planAvailability: "Basic and above"
+  },
+  {
+    slug: "role-permission-management",
+    name: "Role and Permission Management",
+    group: "People Records",
+    status: "available",
+    summary:
+      "Role-based governance where plans define school ownership and permissions define user action.",
+    workflows: [
+      "Manage RBAC controls",
+      "Review permission overrides",
+      "Support audit-aware access decisions"
+    ],
+    planAvailability: "Standard and above"
   },
   {
     slug: "gradebook",
     name: "Gradebook",
     group: "Academic Operations",
-    summary:
-      "A structured grade-entry and review workspace for assessment scores, subject ownership, and moderation readiness.",
-    problem:
-      "Subject scores are hard to audit when teachers submit them through loose spreadsheets or messages.",
-    users: ["Subject teachers", "academic leads", "examination officers"],
-    workflows: [
-      "Enter assessment scores",
-      "Review missing entries",
-      "Prepare moderation and broadsheet data"
-    ],
-    planAvailability: "Standard and above",
     status: "available",
-    mockupCards: [
-      {
-        label: "Entry progress",
-        value: "82%",
-        detail: "Synthetic gradebook completion"
-      },
-      {
-        label: "Missing scores",
-        value: "17",
-        detail: "Flagged for subject review"
-      }
-    ]
+    summary:
+      "Gradebook reads from teacher score-entry records so teachers do not duplicate work.",
+    problem:
+      "Teachers should not enter scores in one place and then rebuild a gradebook elsewhere. Gradebook keeps score-entry records as the academic source of truth.",
+    users: ["Subject teachers", "HODs", "academic administrators"],
+    workflows: [
+      "Use CA and exam score-entry records",
+      "Scope records by teacher, class, and subject",
+      "Review score status before compilation"
+    ],
+    planAvailability: "Standard and above"
+  },
+  {
+    slug: "report-card-generation",
+    name: "Report Card Generation",
+    group: "Academic Operations",
+    status: "active_development",
+    summary:
+      "Report cards are being refined around locked snapshots, TIC handoff, and parent publication.",
+    problem:
+      "Schools often compile results from scattered teacher score sheets, comments, behaviour records, and approval notes. This module creates a controlled path toward report-card integrity.",
+    users: ["IT / school section", "academic administrators", "TICs"],
+    workflows: [
+      "Prepare snapshot-ready reporting",
+      "Support TIC handoff discipline",
+      "Prepare parent publication readiness"
+    ],
+    planAvailability: "Standard and above"
+  },
+  {
+    slug: "broadsheet-publishing",
+    aliases: ["broadsheet-class-noticeboard"],
+    name: "Broadsheet Publishing",
+    group: "Academic Operations",
+    status: "active_development",
+    summary:
+      "IT broadsheets support class and year-group review before final report-card locking.",
+    workflows: [
+      "Review CA1, CA2, and exam visibility",
+      "Track correction flags",
+      "Prepare noticeboard-safe output"
+    ],
+    planAvailability: "Premium and above"
+  },
+  {
+    slug: "cbt-waec-jamb-testing",
+    aliases: ["waec-jamb-standard-cbt"],
+    name: "CBT / WAEC-JAMB Standard Testing",
+    group: "Academic Operations",
+    status: "active_development",
+    summary:
+      "CBT and examination-standard testing are currently being developed as part of the Operavault roadmap.",
+    workflows: [
+      "Prepare question-bank direction",
+      "Support timed testing workflows",
+      "Build performance analytics readiness"
+    ],
+    planAvailability: "Premium roadmap / Founder partner evaluation"
   },
   {
     slug: "lesson-plan-submission",
     name: "Lesson Plan Submission",
     group: "Academic Operations",
-    summary:
-      "Submission, review, and evidence tracking for lesson plans across subjects and departments.",
-    problem:
-      "Lesson plan evidence can be difficult to collect consistently across teachers, classes, and departments.",
-    users: ["Teachers", "heads of department", "academic leadership"],
-    workflows: [
-      "Submit weekly lesson plans",
-      "Route plans for department review",
-      "Track submission evidence"
-    ],
-    planAvailability: "Standard and above",
     status: "active_development",
-    mockupCards: [
-      {
-        label: "Submitted plans",
-        value: "64",
-        detail: "Currently being developed within the Operavault roadmap"
-      },
-      {
-        label: "Review queue",
-        value: "HOD",
-        detail: "Prepared for structured institutional testing"
-      }
-    ]
+    summary:
+      "Lesson plans connect teacher assignments to weekly submission and HOD review evidence.",
+    workflows: [
+      "Submit weekly lesson evidence",
+      "Route plans to department review",
+      "Feed workload and appraisal signals"
+    ],
+    planAvailability: "Premium and above"
   },
   {
     slug: "diary-filling",
     name: "Diary Filling",
     group: "Academic Operations",
-    summary:
-      "Daily diary entries for classroom work, follow-up notes, homework context, and institutional evidence.",
-    problem:
-      "Daily classroom records are easy to lose when diary filling remains informal or paper-based.",
-    users: ["Teachers", "class advisers", "academic administrators"],
-    workflows: [
-      "Record class activity",
-      "Share homework and follow-up notes",
-      "Prepare evidence for academic review"
-    ],
-    planAvailability: "Standard and above",
     status: "active_development",
-    mockupCards: [
-      {
-        label: "Diary coverage",
-        value: "71%",
-        detail: "In active development for structured daily evidence"
-      },
-      {
-        label: "Follow-up notes",
-        value: "24",
-        detail: "Synthetic notes in the public tour"
-      }
-    ]
+    summary:
+      "Class diary records connect scheme topics, taught status, homework evidence, and HOD checks.",
+    workflows: [
+      "Record topic-by-topic diary entries",
+      "Track taught and carried-over status",
+      "Support HOD verification"
+    ],
+    planAvailability: "Premium and above"
   },
   {
-    slug: "broadsheet-class-noticeboard",
-    name: "Broadsheet/Class Noticeboard",
+    slug: "timetable",
+    name: "Timetable",
     group: "Academic Operations",
-    summary:
-      "Class-level academic summaries, noticeboard context, score review, and leadership-ready broadsheet visibility.",
-    problem:
-      "Academic leaders need a shared view of class performance without exposing unmanaged spreadsheets.",
-    users: ["Academic leads", "class teachers", "heads of school"],
-    workflows: [
-      "Review class-level broadsheets",
-      "Publish class notices",
-      "Prepare academic decision summaries"
-    ],
-    planAvailability: "Premium and Enterprise",
     status: "available",
-    mockupCards: [
-      {
-        label: "Class summary",
-        value: "SS2",
-        detail: "Synthetic noticeboard focus"
-      },
-      {
-        label: "Moderation flags",
-        value: "6",
-        detail: "Prepared for academic review"
-      }
-    ]
+    summary:
+      "Teacher and class timetable context is driven by durable academic assignments.",
+    workflows: [
+      "Review teacher timetable context",
+      "Review class timetable context",
+      "Prepare generator input readiness"
+    ],
+    planAvailability: "Standard and above"
+  },
+  {
+    slug: "subject-class-attendance",
+    name: "Subject/Class Attendance",
+    group: "Academic Operations",
+    status: "active_development",
+    summary:
+      "Subject and class attendance is being aligned with timetable and academic records.",
+    workflows: [
+      "Link attendance to class context",
+      "Add subject attendance context",
+      "Prepare trend reporting readiness"
+    ],
+    planAvailability: "Premium and above"
+  },
+  {
+    slug: "schemes-of-work",
+    name: "Schemes of Work",
+    group: "Academic Operations",
+    status: "active_development",
+    summary:
+      "Schemes of Work support file evidence and structured topic rows for diary automation.",
+    workflows: [
+      "Capture structured weekly topics",
+      "Record homework and activity plans",
+      "Prepare diary population"
+    ],
+    planAvailability: "Premium and above"
+  },
+  {
+    slug: "advisory-records",
+    name: "Advisory Records",
+    group: "Academic Operations",
+    status: "active_development",
+    summary:
+      "Advisory records capture fortnight cycles, advisee meetings, parent meetings, and report evidence.",
+    workflows: [
+      "Track advisee cycle reports",
+      "Capture father and mother meeting evidence",
+      "Prepare advisory score basis"
+    ],
+    planAvailability: "Premium and above"
   },
   {
     slug: "student-attendance",
     name: "Student Attendance",
     group: "Attendance and Discipline",
-    summary:
-      "Daily attendance registers, exceptions, cohort visibility, and follow-up queues for student office teams.",
-    problem:
-      "Attendance teams need timely visibility without manually reconciling registers after the school day.",
-    users: ["Attendance officers", "class teachers", "school administrators"],
-    workflows: [
-      "Record daily attendance",
-      "Flag exceptions",
-      "Prepare follow-up digests"
-    ],
-    planAvailability: "Basic and above",
     status: "available",
-    mockupCards: [
-      {
-        label: "Present today",
-        value: "96%",
-        detail: "Synthetic cohort attendance"
-      },
-      {
-        label: "Exceptions",
-        value: "11",
-        detail: "Routed for adviser follow-up"
-      }
-    ]
+    summary: "Daily, weekly, term, and student-level attendance records.",
+    users: ["Class teachers", "attendance officers", "school leadership"],
+    workflows: [
+      "Record daily registers",
+      "Review weekly attendance views",
+      "Prepare term summaries"
+    ],
+    planAvailability: "Basic and above"
   },
   {
     slug: "staff-attendance",
     name: "Staff Attendance",
     group: "Attendance and Discipline",
-    summary:
-      "Staff attendance context for HR, substitution planning, daily readiness, and leadership review.",
-    problem:
-      "Schools need a reliable way to understand staff readiness without waiting for manual HR updates.",
-    users: ["HR teams", "operations teams", "department heads"],
-    workflows: [
-      "Record staff attendance",
-      "Flag substitution needs",
-      "Prepare HR readiness summaries"
-    ],
-    planAvailability: "Standard and above",
     status: "available",
-    mockupCards: [
-      {
-        label: "Staff present",
-        value: "94%",
-        detail: "Synthetic staff readiness"
-      },
-      {
-        label: "Cover required",
-        value: "3",
-        detail: "Routed to operations"
-      }
-    ]
+    summary:
+      "Staff attendance, late/absent status, import workflows, and HR visibility.",
+    users: ["HR", "line managers", "school leadership"],
+    workflows: [
+      "Maintain staff attendance register",
+      "Support attendance imports",
+      "Prepare HR dashboard signals"
+    ],
+    planAvailability: "Basic and above"
   },
   {
     slug: "discipline-booking",
     name: "Discipline Booking",
     group: "Attendance and Discipline",
+    status: "available",
     summary:
-      "Structured conduct booking, review queues, follow-up evidence, and leadership visibility.",
-    problem:
-      "Discipline records need consistency, context, and review controls without becoming informal message threads.",
-    users: ["Discipline teams", "class advisers", "school leadership"],
+      "Behaviour and discipline case records with review, resolution, and parent context.",
+    users: ["Discipline officers", "TICs", "advisers"],
     workflows: [
-      "Record conduct incidents",
-      "Route review and follow-up",
-      "Prepare evidence summaries"
+      "Record conduct case records",
+      "Track resolution history",
+      "Apply parent visibility controls"
     ],
-    planAvailability: "Standard and above",
-    status: "active_development",
-    mockupCards: [
-      {
-        label: "Open reviews",
-        value: "9",
-        detail: "In active development for controlled follow-up"
-      },
-      {
-        label: "Evidence status",
-        value: "Draft",
-        detail: "Prepared for structured institutional testing"
-      }
-    ]
+    planAvailability: "Standard and above"
   },
   {
-    slug: "loans",
-    name: "Loans",
-    group: "Finance and Administration",
-    summary:
-      "Administrative tracking for staff or institutional loan workflows, approvals, schedules, and review evidence.",
-    problem:
-      "Loan requests and approvals can become difficult to track when finance records are separated from approval evidence.",
-    users: ["Accounts teams", "HR teams", "approvers"],
-    workflows: [
-      "Record loan requests",
-      "Route approval checks",
-      "Track repayment and review status"
-    ],
-    planAvailability: "Premium and Enterprise",
+    slug: "advisory-meetings-reporting",
+    name: "Advisory Meetings and Reporting",
+    group: "Attendance and Discipline",
     status: "active_development",
-    mockupCards: [
-      {
-        label: "Approval queue",
-        value: "5",
-        detail: "Currently being developed within the Operavault roadmap"
-      },
-      {
-        label: "Review state",
-        value: "Accounts",
-        detail: "Synthetic finance workflow"
-      }
-    ]
+    summary:
+      "Fortnightly advisory reports are in active development with separate advisee, father, and mother evidence.",
+    users: ["Advisers", "formation leadership", "parents where permitted"],
+    workflows: [
+      "Capture cycle-based reports",
+      "Separate advisee, father, and mother evidence",
+      "Track report submission status"
+    ],
+    planAvailability: "Premium and above"
+  },
+  {
+    slug: "behavioural-records",
+    name: "Behavioural Records",
+    group: "Attendance and Discipline",
+    status: "available",
+    summary:
+      "Behavioural history links student discipline, advisory, and parent engagement contexts.",
+    workflows: [
+      "Review student behaviour history",
+      "Support escalation visibility",
+      "Maintain review trail"
+    ],
+    planAvailability: "Standard and above"
+  },
+  {
+    slug: "notifications-escalations",
+    name: "Notifications and Escalations",
+    group: "Attendance and Discipline",
+    status: "available",
+    summary:
+      "Role-aware notifications for operational events, reviews, and accountability signals.",
+    workflows: [
+      "Route in-app notifications",
+      "Apply role-aware routing",
+      "Attach audit-friendly action links"
+    ],
+    planAvailability: "Basic and above"
+  },
+  {
+    slug: "school-fees-sync-records",
+    aliases: ["fees-parent-notification"],
+    name: "School Fees Sync / Records",
+    group: "Finance and Administration",
+    status: "available",
+    summary:
+      "Fee definitions, charges, payment imports, ledger summaries, and reconciliation readiness.",
+    users: ["Accounts", "parents", "school leadership"],
+    workflows: [
+      "Maintain fee ledger records",
+      "Import payment records",
+      "Review outstanding balance visibility"
+    ],
+    planAvailability: "Standard and above"
+  },
+  {
+    slug: "parent-notifications",
+    name: "Parent Notifications",
+    group: "Finance and Administration",
+    status: "available",
+    summary:
+      "Parent notifications route operational and finance-related updates through controlled channels.",
+    workflows: [
+      "Prepare parent portal notices",
+      "Connect request workflows",
+      "Maintain linked-child visibility"
+    ],
+    planAvailability: "Standard and above"
   },
   {
     slug: "procurement",
     name: "Procurement",
     group: "Finance and Administration",
-    summary:
-      "Purchasing requests, vendor review, budget checks, receiving notes, and approval trails.",
-    problem:
-      "Procurement needs a controlled route from request to approval without losing budget and audit context.",
-    users: ["Procurement teams", "accounts teams", "department heads"],
-    workflows: [
-      "Submit purchasing requests",
-      "Review vendors and budgets",
-      "Track approvals and receiving notes"
-    ],
-    planAvailability: "Standard and above",
     status: "available",
-    mockupCards: [
-      {
-        label: "Open requests",
-        value: "18",
-        detail: "Synthetic procurement queue"
-      },
-      {
-        label: "Budget checks",
-        value: "6",
-        detail: "Routed to accounts"
-      }
-    ]
+    summary:
+      "Procurement requests, funding controls, fulfilment, reporting, and exceptions.",
+    users: ["Requesters", "department heads", "procurement", "accounts"],
+    workflows: [
+      "Route request approvals",
+      "Track funding pipeline",
+      "Review department spend summaries"
+    ],
+    planAvailability: "Premium and above"
   },
   {
-    slug: "fees-parent-notification",
-    name: "Fees and Parent Notification",
+    slug: "staff-loans",
+    aliases: ["loans"],
+    name: "Staff Loans",
     group: "Finance and Administration",
-    summary:
-      "Fee workflow visibility and parent-facing notification preparation for payment reminders and administrative follow-up.",
-    problem:
-      "Finance and communication teams need aligned fee follow-up without exposing private finance records publicly.",
-    users: ["Accounts teams", "parent communication teams", "school administrators"],
-    workflows: [
-      "Prepare fee follow-up queues",
-      "Route parent notifications",
-      "Review communication status"
-    ],
-    planAvailability: "Standard and above",
     status: "available",
-    mockupCards: [
-      {
-        label: "Notification queue",
-        value: "42",
-        detail: "Synthetic parent follow-up"
-      },
-      {
-        label: "Finance review",
-        value: "Ready",
-        detail: "Prepared before communication"
-      }
-    ]
+    summary:
+      "Loan applications, review, disbursement, repayment tracking, and payslip linkage.",
+    users: ["Employees", "HR", "accounts", "management reviewers"],
+    workflows: [
+      "Review loan applications",
+      "Track disbursement records",
+      "Maintain repayment traceability"
+    ],
+    planAvailability: "Premium and above"
+  },
+  {
+    slug: "workflow-approvals",
+    name: "Workflow Approvals",
+    group: "Finance and Administration",
+    status: "available",
+    summary:
+      "Workflow engine for approvals, assignments, and operational action history.",
+    workflows: [
+      "Route approval decisions",
+      "Maintain workflow history",
+      "Support role-aware review"
+    ],
+    planAvailability: "Standard and above"
+  },
+  {
+    slug: "audit-trail",
+    name: "Audit Trail",
+    group: "Finance and Administration",
+    status: "available",
+    summary:
+      "Audit records support governance, accountability, and compliance evidence.",
+    workflows: [
+      "Preserve action history",
+      "Record actor context",
+      "Support administrative visibility"
+    ],
+    planAvailability: "Standard and above"
+  },
+  {
+    slug: "parent-portal",
+    name: "Parent Portal",
+    group: "Communication and Parent Engagement",
+    status: "available",
+    summary:
+      "Parents access linked-child records, requests, documents, notifications, and reports where published.",
+    workflows: [
+      "Provide linked-child access",
+      "Collect parent requests",
+      "Publish approved report visibility"
+    ],
+    planAvailability: "Standard and above"
   },
   {
     slug: "notifications",
     name: "Notifications",
     group: "Communication and Parent Engagement",
-    summary:
-      "Operational alerts, approval reminders, parent communication preparation, and leadership notification digests.",
-    problem:
-      "Important school workflows stall when reminders and status changes are scattered across informal channels.",
-    users: ["Administrators", "teachers", "parent communication teams"],
-    workflows: [
-      "Prepare workflow notifications",
-      "Route parent and staff updates",
-      "Track delivery readiness"
-    ],
-    planAvailability: "Basic and above",
     status: "available",
-    mockupCards: [
-      {
-        label: "Today alerts",
-        value: "42",
-        detail: "Synthetic notification count"
-      },
-      {
-        label: "Delivery state",
-        value: "Queued",
-        detail: "Ready for approved messages"
-      }
-    ]
+    summary:
+      "In-app notifications for staff, parents, managers, and operational review queues.",
+    workflows: [
+      "Deliver role-aware updates",
+      "Attach action links",
+      "Track read status"
+    ],
+    planAvailability: "Basic and above"
   },
   {
-    slug: "advisory-meetings-reporting",
-    name: "Advisory Meetings and Reporting",
+    slug: "acknowledgements",
+    name: "Acknowledgements",
     group: "Communication and Parent Engagement",
+    status: "available",
     summary:
-      "Advisory meeting preparation, follow-up records, reporting evidence, and pastoral workflow visibility.",
-    problem:
-      "Advisory work needs careful evidence and follow-up without exposing sensitive student or family details.",
-    users: ["Advisers", "formation teams", "school leadership"],
+      "Parent and staff acknowledgement workflows for documents, policies, and notices.",
     workflows: [
-      "Schedule advisory meetings",
-      "Prepare follow-up records",
-      "Summarize advisory reporting"
+      "Track acknowledgement status",
+      "Support policy readiness",
+      "Keep parent records current"
     ],
-    planAvailability: "Premium and Enterprise",
-    status: "active_development",
-    mockupCards: [
-      {
-        label: "Meeting queue",
-        value: "18",
-        detail: "In active development for advisory follow-up"
-      },
-      {
-        label: "Report state",
-        value: "Restricted",
-        detail: "Prepared for careful institutional testing"
-      }
-    ]
+    planAvailability: "Standard and above"
   },
   {
-    slug: "appraisal-workload-visualisation",
-    name: "Appraisal and Workload Visualisation",
-    group: "Intelligence and Analytics",
+    slug: "class-noticeboard",
+    name: "Class Noticeboard",
+    group: "Communication and Parent Engagement",
+    status: "active_development",
     summary:
-      "Workload views, appraisal preparation, evidence readiness, and leadership visibility across staff responsibilities.",
-    problem:
-      "Leadership teams need workload clarity before appraisal conversations, not after the cycle has ended.",
-    users: ["HR teams", "department heads", "school leadership"],
+      "Class noticeboard publishing is being refined for class and arm visibility and masked student outputs.",
     workflows: [
-      "Visualize workload distribution",
-      "Prepare appraisal evidence",
-      "Review department-level pressure points"
+      "Target notices by class",
+      "Prepare masked broadsheet publishing",
+      "Apply student dignity controls"
     ],
-    planAvailability: "Premium and Enterprise",
+    planAvailability: "Premium and above"
+  },
+  {
+    slug: "masked-broadsheet-publishing",
+    name: "Masked Broadsheet Publishing",
+    group: "Communication and Parent Engagement",
+    status: "active_development",
+    summary:
+      "Masked broadsheet publication protects student dignity by using admission numbers for noticeboard views.",
+    workflows: [
+      "Use admission-number display",
+      "Support class noticeboard handoff",
+      "Review before publication"
+    ],
+    planAvailability: "Premium and above"
+  },
+  {
+    slug: "absence-notices",
+    name: "Absence Notices",
+    group: "Communication and Parent Engagement",
     status: "available",
-    mockupCards: [
-      {
-        label: "Load balance",
-        value: "Medium",
-        detail: "Synthetic workload indicator"
-      },
-      {
-        label: "Appraisal packs",
-        value: "14",
-        detail: "Prepared for review"
-      }
-    ]
+    summary: "Parent absence notices and operational review records.",
+    workflows: [
+      "Collect parent submissions",
+      "Route review queue",
+      "Connect linked-child context"
+    ],
+    planAvailability: "Standard and above"
+  },
+  {
+    slug: "appointments",
+    name: "Appointments",
+    group: "Communication and Parent Engagement",
+    status: "available",
+    summary: "Parent appointment records and review workflows.",
+    workflows: [
+      "Capture appointment requests",
+      "Track review status",
+      "Preserve parent communication history"
+    ],
+    planAvailability: "Standard and above"
   },
   {
     slug: "ai-system-analytics",
     name: "AI System Analytics",
     group: "Intelligence and Analytics",
-    summary:
-      "AI-assisted operating summaries, anomaly prompts, workflow insights, and management visibility across the system.",
-    problem:
-      "Administrators need signals from school operations without manually inspecting every module and queue.",
-    users: ["Heads of school", "administrators", "management teams"],
-    workflows: [
-      "Review operating summaries",
-      "Surface workflow anomalies",
-      "Prepare management visibility digests"
-    ],
-    planAvailability: "Enterprise and Founder Institutional Partner",
     status: "active_development",
-    mockupCards: [
-      {
-        label: "Signal digest",
-        value: "12",
-        detail: "Currently being developed within the Operavault roadmap"
-      },
-      {
-        label: "Review mode",
-        value: "Pilot",
-        detail: "Being prepared for structured institutional testing"
-      }
-    ]
+    summary:
+      "AI-assisted operational analytics are currently being developed to support management insight.",
+    users: ["Principal", "directors", "administrators"],
+    workflows: [
+      "Surface operational signals",
+      "Support trend detection",
+      "Prepare management summaries"
+    ],
+    planAvailability: "Enterprise / Founder partner evaluation"
   },
   {
-    slug: "waec-jamb-standard-cbt",
-    name: "WAEC/JAMB Standard CBT",
+    slug: "workload-visualisation",
+    aliases: ["appraisal-workload-visualisation"],
+    name: "Workload Visualisation",
     group: "Intelligence and Analytics",
+    status: "available",
     summary:
-      "Structured CBT preparation aligned to examination-style practice, testing controls, and institutional review.",
-    problem:
-      "Schools need controlled examination practice environments that support preparation without loose tooling.",
-    users: ["Examination officers", "academic leads", "students through school-controlled access"],
+      "Workload points, task history, duty sources, and performance readiness from real assignments.",
+    users: ["Employees", "supervisors", "HR", "school leadership"],
     workflows: [
-      "Prepare CBT practice sessions",
-      "Review performance summaries",
-      "Support examination-readiness workflows"
+      "Break down duty sources",
+      "Review completion and overdue metrics",
+      "Prepare appraisal evidence"
     ],
-    planAvailability: "Enterprise and Founder Institutional Partner",
-    status: "structured_testing",
-    mockupCards: [
-      {
-        label: "Testing mode",
-        value: "Controlled",
-        detail: "Being prepared for structured institutional testing"
-      },
-      {
-        label: "Exam standard",
-        value: "WAEC/JAMB",
-        detail: "In active development for school readiness"
-      }
-    ]
+    planAvailability: "Premium and above"
+  },
+  {
+    slug: "appraisal",
+    name: "Appraisal",
+    group: "Intelligence and Analytics",
+    status: "active_development",
+    summary:
+      "Appraisal is being built from real workload, attendance, lesson/diary, advisory, and review evidence.",
+    workflows: [
+      "Build evidence-based scoring",
+      "Support supervisor accountability",
+      "Prepare five-point measurement readiness"
+    ],
+    planAvailability: "Premium and above"
   },
   {
     slug: "waec-wassce-essay-grading-engine",
     name: "WAEC/WASSCE Essay Grading Engine",
     group: "Intelligence and Analytics",
+    status: "active_development",
     summary:
-      "Essay-review support for structured marking assistance, rubric evidence, teacher review, and examination preparation.",
-    problem:
-      "Essay grading support needs careful institutional testing, teacher oversight, and transparent rubric evidence.",
-    users: ["English teachers", "examination officers", "academic leadership"],
+      "Essay grading support is currently being developed as part of the assessment intelligence roadmap.",
+    users: ["English teachers", "exam reviewers", "academic leadership"],
     workflows: [
-      "Prepare essay submissions",
-      "Review rubric-assisted grading evidence",
-      "Route teacher oversight and final decisions"
+      "Support rubric-aligned review",
+      "Keep teacher support central",
+      "Prepare assessment analytics"
     ],
-    planAvailability: "Enterprise and Founder Institutional Partner",
-    status: "structured_testing",
-    mockupCards: [
-      {
-        label: "Rubric view",
-        value: "Draft",
-        detail: "Being prepared for structured institutional testing"
-      },
-      {
-        label: "Teacher oversight",
-        value: "Required",
-        detail: "In active development with human review"
-      }
-    ]
+    planAvailability: "Premium roadmap / Founder partner evaluation"
+  },
+  {
+    slug: "cbt-performance-analytics",
+    name: "CBT Performance Analytics",
+    group: "Intelligence and Analytics",
+    status: "active_development",
+    summary:
+      "CBT analytics will connect testing records to class, subject, and student performance insight.",
+    workflows: [
+      "Review test analytics",
+      "Compare class performance",
+      "Track improvement signals"
+    ],
+    planAvailability: "Premium roadmap / Founder partner evaluation"
+  },
+  {
+    slug: "attendance-discipline-trends",
+    name: "Attendance and Discipline Trends",
+    group: "Intelligence and Analytics",
+    status: "available",
+    summary:
+      "Attendance and discipline records can be inspected for operational patterns and interventions.",
+    workflows: [
+      "Prepare trend reporting",
+      "Review behaviour visibility",
+      "Feed management dashboard inputs"
+    ],
+    planAvailability: "Premium and above"
+  },
+  {
+    slug: "management-dashboards",
+    name: "Management Dashboards",
+    group: "Intelligence and Analytics",
+    status: "available",
+    summary:
+      "Role-aware dashboards bring together academic, people, finance, operations, and compliance signals.",
+    workflows: [
+      "Review command center signals",
+      "Inspect department dashboards",
+      "Connect finance and academic visibility"
+    ],
+    planAvailability: "Standard and above"
   }
 ];
+
+function makeProblem(module: OperavaultModuleSeed) {
+  if (module.problem) {
+    return module.problem;
+  }
+
+  return `${module.name} helps schools keep ${module.summary
+    .replace(/\.$/, "")
+    .toLowerCase()} connected to tenant-aware records, permissions, audit context, and the wider school operating model.`;
+}
+
+function makeMockupCards(module: OperavaultModuleSeed) {
+  return [
+    {
+      label: "Status",
+      value: module.status === "available" ? "Ready" : "Roadmap",
+      detail: getOperavaultStatusLabel(module.status)
+    },
+    {
+      label: "Workflow focus",
+      value: module.group.split(" ")[0],
+      detail: module.workflows[0]
+    }
+  ];
+}
+
+export const operavaultModules: OperavaultModule[] = moduleSeeds.map(
+  (module) => ({
+    ...module,
+    problem: makeProblem(module),
+    users: module.users ?? groupUsers[module.group],
+    planAvailability:
+      module.planAvailability ?? "Plan availability depends on implementation scope",
+    mockupCards: makeMockupCards(module)
+  })
+);
 
 export const operavaultPlans: OperavaultPlan[] = [
   {
     name: "Basic",
-    positioning: "Essential records and operating visibility.",
-    idealFor: "Schools starting with people records, attendance, notifications, and core administrative readiness.",
+    positioning: "Start with core records and day-to-day visibility.",
+    idealFor:
+      "Small schools starting digital operations without overwhelming the school team.",
     availability: "Core foundation",
     features: [
-      "Student records",
-      "Staff records",
-      "Student attendance",
-      "Basic notifications",
-      "Basic operating reports"
+      "Students, staff, and parents/guardians",
+      "Basic attendance",
+      "Calendar and basic notifications",
+      "Core records",
+      "Standard support"
     ]
   },
   {
     name: "Standard",
-    positioning: "Academic and administrative workflow foundation.",
-    idealFor: "Institutions ready to coordinate gradebook, reports, staff attendance, procurement, and parent communication.",
+    positioning: "Strengthen daily operations, reporting, and parent communication.",
+    idealFor:
+      "Private schools needing stronger daily operations, parent communication, reporting, and academic consolidation.",
     availability: "Most school operations",
     features: [
-      "Gradebook",
-      "Report card generation",
-      "Lesson plan submission",
-      "Diary filling",
-      "Staff attendance",
-      "Procurement",
-      "Fees and parent notification"
+      "Everything in Basic",
+      "Admissions",
+      "Discipline",
+      "Report cards and gradebook",
+      "Parent portal",
+      "School fees records",
+      "Dashboards"
     ],
     highlighted: true
   },
   {
     name: "Premium",
-    positioning: "Full institutional operations platform.",
-    idealFor: "Schools that need deeper department workflows, advisory reporting, workload visibility, and broadsheets.",
+    positioning: "Run full-school operations and academic consolidation.",
+    idealFor:
+      "Schools that need academic, administrative, communication, finance, workload, and appraisal evidence from one platform.",
     availability: "Advanced operations",
     features: [
-      "Broadsheet/class noticeboard",
-      "Advisory meetings and reporting",
-      "Loans workflow",
+      "Everything in Standard",
+      "Procurement and loans",
+      "Advisory workflows",
+      "Lesson plans and diary",
+      "Broadsheets",
       "Appraisal and workload visualisation",
-      "Department workspaces",
-      "Advanced notifications and audit"
+      "Advanced reporting"
     ]
   },
   {
     name: "Enterprise",
-    positioning: "Custom operating model for complex institutions.",
-    idealFor: "Institutions requiring custom rollout, governance controls, integrations, migration support, and advanced testing.",
+    positioning: "Coordinate complex or multi-school operating models.",
+    idealFor:
+      "School groups, dioceses, networks, and government deployments requiring central reporting, policy evidence, and institutional integrations.",
     availability: "Custom deployment",
     features: [
-      "AI system analytics",
-      "WAEC/JAMB Standard CBT",
-      "WAEC/WASSCE essay grading engine",
-      "Custom workflows",
-      "Custom domain and integrations",
-      "Implementation support"
+      "Multi-school reporting",
+      "Central dashboards",
+      "Custom integrations",
+      "Policy reporting",
+      "Data migration",
+      "Advanced analytics",
+      "Dedicated support"
     ]
   },
   {
@@ -668,18 +786,183 @@ export const operavaultPlans: OperavaultPlan[] = [
       "Selected institutions participating in structured pilot adoption, feedback, and refinement.",
     availability: "Approval-only",
     features: [
-      "Structured pilot adoption",
-      "Roadmap feedback sessions",
-      "Selected active-development modules",
-      "Institutional testing support",
-      "Defined rollout scope",
+      "Founder-partner pricing",
+      "Closer onboarding",
+      "Feedback loop",
+      "Early product influence",
+      "Roadmap participation",
+      "Structured rollout support",
       "Not free, not unlimited, and not permanent"
     ]
   }
 ];
 
+export const operavaultTourSections: OperavaultTourSection[] = [
+  {
+    title: "Report Card Generation",
+    moduleSlug: "report-card-generation",
+    summary:
+      "Compile teacher scores, TIC context, principal comments, and locked report-card records into one controlled reporting workflow.",
+    proofPoints: [
+      "Snapshot-ready reporting",
+      "TIC handoff discipline",
+      "Parent publication readiness"
+    ]
+  },
+  {
+    title: "Gradebook",
+    moduleSlug: "gradebook",
+    summary:
+      "Let score-entry records become the gradebook read model so teachers are not asked to re-enter the same data twice.",
+    proofPoints: [
+      "CA and exam source-of-truth",
+      "Teacher-scoped class subjects",
+      "Status-aware score visibility"
+    ]
+  },
+  {
+    title: "Student Attendance",
+    moduleSlug: "student-attendance",
+    summary:
+      "Track student presence across daily, weekly, and term views with evidence leaders can actually use.",
+    proofPoints: ["Daily registers", "Student-level history", "Term summaries"]
+  },
+  {
+    title: "Staff Attendance",
+    moduleSlug: "staff-attendance",
+    summary:
+      "Connect staff attendance records to HR visibility, leave signals, and operational accountability.",
+    proofPoints: ["Import support", "Late/absent visibility", "HR dashboard signals"]
+  },
+  {
+    title: "Discipline Booking",
+    moduleSlug: "discipline-booking",
+    summary:
+      "Record behaviour and discipline cases with review context, resolution history, and controlled parent visibility.",
+    proofPoints: ["Case records", "Resolution workflow", "Parent context controls"]
+  },
+  {
+    title: "Notifications",
+    moduleSlug: "notifications",
+    summary:
+      "Route operational alerts to the right staff, managers, and parents without turning every update into broadcast noise.",
+    proofPoints: ["Role-aware delivery", "Action links", "Read tracking"]
+  },
+  {
+    title: "Advisory Meetings and Reporting",
+    moduleSlug: "advisory-meetings-reporting",
+    summary:
+      "Capture fortnightly advisory meetings, parent meeting evidence, and report submission status from real records.",
+    proofPoints: [
+      "Cycle-based reports",
+      "Advisee/father/mother evidence",
+      "Advisory scoring basis"
+    ]
+  },
+  {
+    title: "Lesson Plan Submission",
+    moduleSlug: "lesson-plan-submission",
+    summary:
+      "Connect teacher assignments to weekly lesson-plan evidence and HOD review queues.",
+    proofPoints: ["Weekly submissions", "Department review", "Appraisal evidence"]
+  },
+  {
+    title: "Diary Filling",
+    moduleSlug: "diary-filling",
+    summary:
+      "Record taught topics, carried-over work, homework/activity evidence, and HOD verification.",
+    proofPoints: ["Topic-by-topic diary", "HOD check trail", "Workload signals"]
+  },
+  {
+    title: "Loans",
+    moduleSlug: "staff-loans",
+    summary:
+      "Manage staff loan requests, reviews, disbursement, repayment tracking, and payslip linkage.",
+    proofPoints: [
+      "Application workflow",
+      "Disbursement records",
+      "Repayment traceability"
+    ]
+  },
+  {
+    title: "Procurement",
+    moduleSlug: "procurement",
+    summary:
+      "Move requisitions through approval, funding, fulfilment, and reporting without confusing need approval with payment execution.",
+    proofPoints: [
+      "Request approvals",
+      "Funding controls",
+      "Department spending summaries"
+    ]
+  },
+  {
+    title: "Broadsheet and Class Noticeboard",
+    moduleSlug: "broadsheet-publishing",
+    summary:
+      "Prepare IT broadsheets for review and class noticeboard publication with dignity-preserving masked views.",
+    proofPoints: [
+      "CA1/CA2/exam columns",
+      "Correction flags",
+      "Noticeboard-safe output"
+    ]
+  },
+  {
+    title: "Fees and Parent Notification",
+    moduleSlug: "school-fees-sync-records",
+    summary:
+      "Keep school-fee records, ledger summaries, imports, and parent notification readiness connected.",
+    proofPoints: [
+      "Fee ledger",
+      "Payment imports",
+      "Outstanding balance visibility"
+    ]
+  },
+  {
+    title: "Appraisal and Workload Visualisation",
+    moduleSlug: "workload-visualisation",
+    summary:
+      "Make workload and appraisal evidence visible from real duties, submissions, review actions, and attendance signals.",
+    proofPoints: [
+      "Duty-source breakdown",
+      "Completion metrics",
+      "Five-point appraisal readiness"
+    ]
+  },
+  {
+    title: "AI System Analytics",
+    moduleSlug: "ai-system-analytics",
+    summary:
+      "AI-assisted operational analytics are currently being developed to help leaders detect patterns across school operations.",
+    proofPoints: [
+      "Trend detection",
+      "Management summaries",
+      "Institutional signal extraction"
+    ]
+  },
+  {
+    title: "WAEC/JAMB Standard CBT",
+    moduleSlug: "cbt-waec-jamb-testing",
+    summary:
+      "CBT workflows are being prepared for structured institutional testing around timed exams and performance insight.",
+    proofPoints: [
+      "Question-bank direction",
+      "Timed testing",
+      "CBT analytics readiness"
+    ]
+  },
+  {
+    title: "WAEC/WASSCE Essay Grading Engine",
+    moduleSlug: "waec-wassce-essay-grading-engine",
+    summary:
+      "Essay grading support is being prepared for rubric-aligned review and teacher-assistance workflows.",
+    proofPoints: ["Rubric-aligned review", "Teacher support", "Assessment analytics"]
+  }
+];
+
 export function getOperavaultModuleBySlug(slug: string) {
-  return operavaultModules.find((module) => module.slug === slug);
+  return operavaultModules.find(
+    (module) => module.slug === slug || module.aliases?.includes(slug)
+  );
 }
 
 export function getOperavaultModulesByGroup(group: OperavaultModuleGroup) {
@@ -688,7 +971,7 @@ export function getOperavaultModulesByGroup(group: OperavaultModuleGroup) {
 
 export function getOperavaultStatusLabel(status: OperavaultModuleStatus) {
   if (status === "available") {
-    return "Available in product tour";
+    return "Operational foundation available";
   }
 
   if (status === "active_development") {
@@ -697,4 +980,3 @@ export function getOperavaultStatusLabel(status: OperavaultModuleStatus) {
 
   return "Being prepared for structured institutional testing";
 }
-

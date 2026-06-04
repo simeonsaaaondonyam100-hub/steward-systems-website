@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, CheckCircle2, MonitorCheck } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 import { CtaBand } from "@/components/marketing/cta-band";
 import {
@@ -17,9 +17,10 @@ type FeaturePageProps = {
 };
 
 export function generateStaticParams() {
-  return operavaultModules.map((module) => ({
-    featureSlug: module.slug
-  }));
+  return operavaultModules.flatMap((module) => [
+    { featureSlug: module.slug },
+    ...(module.aliases ?? []).map((featureSlug) => ({ featureSlug }))
+  ]);
 }
 
 export async function generateMetadata({
@@ -76,7 +77,7 @@ export default async function FeaturePage({ params }: FeaturePageProps) {
         </div>
       </section>
 
-      <section className="page-section two-column">
+      <section className="page-section feature-detail-grid product-section-tight">
         <div>
           <p className="eyebrow">Problem solved</p>
           <h2>{moduleData.problem}</h2>
@@ -86,17 +87,29 @@ export default async function FeaturePage({ params }: FeaturePageProps) {
             steps without chasing disconnected files.
           </p>
         </div>
-        <div className="capability-list">
-          {moduleData.users.map((user) => (
-            <div key={user} className="capability-item">
-              <CheckCircle2 aria-hidden="true" size={18} />
-              <span>{user}</span>
-            </div>
-          ))}
+        <div className="product-mock-panel large" aria-hidden="true">
+          <div className="mock-toolbar">
+            <span />
+            <span />
+            <span />
+          </div>
+          <p>{moduleData.name}</p>
+          <div className="mock-kpi-row">
+            <b />
+            <b />
+            <b />
+          </div>
+          <div className="mock-table-lines">
+            <i />
+            <i />
+            <i />
+            <i />
+            <i />
+          </div>
         </div>
       </section>
 
-      <section className="page-section muted-section">
+      <section className="page-section product-section-tight">
         <div className="section-heading">
           <p className="eyebrow">Key workflows</p>
           <h2>What the module helps teams do.</h2>
@@ -115,33 +128,27 @@ export default async function FeaturePage({ params }: FeaturePageProps) {
         </div>
       </section>
 
-      <section className="page-section">
+      <section className="page-section feature-detail-grid product-section-tight">
         <div className="section-heading">
-          <p className="eyebrow">Screenshots and mockups</p>
-          <h2>Synthetic module cards for the public tour.</h2>
+          <p className="eyebrow">Who uses it</p>
+          <h2>Designed around accountable school roles.</h2>
           <p>
-            These cards communicate interface shape and operating intent without
-            using private student, staff, parent, finance, or school records.
+            The public page explains the module at a product level. A live demo
+            can walk through the relevant roles and permission boundaries for
+            your institution.
           </p>
         </div>
-        <div className="module-mockup-shell">
-          <div className="module-mockup-toolbar">
-            <MonitorCheck aria-hidden="true" size={20} />
-            <span>{moduleData.name}</span>
-          </div>
-          <div className="tour-mockup-row">
-            {moduleData.mockupCards.map((card) => (
-              <div key={card.label}>
-                <span>{card.label}</span>
-                <strong>{card.value}</strong>
-                <p>{card.detail}</p>
-              </div>
-            ))}
-          </div>
+        <div className="capability-list">
+          {moduleData.users.map((user) => (
+            <div key={user} className="capability-item">
+              <CheckCircle2 aria-hidden="true" size={18} />
+              <span>{user}</span>
+            </div>
+          ))}
         </div>
       </section>
 
-      <section className="page-section two-column muted-section">
+      <section className="page-section two-column product-section-tight">
         <div>
           <p className="eyebrow">Plan availability</p>
           <h2>{moduleData.planAvailability}</h2>

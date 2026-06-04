@@ -12,12 +12,15 @@ export default function CompanyPage() {
   return (
     <main>
       <section className="page-hero compact-hero">
-        <p className="eyebrow">Steward Systems</p>
-        <h1>The company behind Operavault.</h1>
+        <p className="eyebrow">Company</p>
+        <h1>Operavault is a product of Steward Systems.</h1>
         <p>
           Operavault is a product of Steward Systems, a full-stack software
           development company building practical institutional systems for real
-          operational problems.
+          operational problems. We are shaping Operavault as a secure school
+          operations SaaS for leadership teams, administrators, teachers,
+          advisors, parents, and operational departments who need one dependable
+          source of truth.
         </p>
         <div className="hero-actions">
           <Link className="button button-primary" href="/request-demo">
@@ -31,30 +34,32 @@ export default function CompanyPage() {
         </div>
       </section>
 
-      <section className="page-section split-section">
-        <div>
-          <p className="eyebrow">Operating belief</p>
-          <h2>Schools need systems that respect the depth of administration.</h2>
+      <section className="page-section company-grid product-section-tight">
+        <article>
+          <Building2 aria-hidden="true" size={24} />
+          <h2>Institutional seriousness</h2>
           <p>
-            Steward Systems builds with the realities of school leadership,
-            academic coordination, HR, finance, compliance evidence, parent
-            communication, and management reporting in view.
+            The product identity is restrained, secure, and built around
+            governance, records, data protection, and operational accountability.
           </p>
-        </div>
-        <div className="principle-list">
-          <div>
-            <Building2 aria-hidden="true" size={22} />
-            <span>Built for real institutional operations.</span>
-          </div>
-          <div>
-            <Workflow aria-hidden="true" size={22} />
-            <span>Product workflows are designed around accountable handoffs.</span>
-          </div>
-          <div>
-            <ShieldCheck aria-hidden="true" size={22} />
-            <span>Public pages use synthetic data and clear privacy boundaries.</span>
-          </div>
-        </div>
+        </article>
+        <article>
+          <Workflow aria-hidden="true" size={24} />
+          <h2>Tenant-aware architecture</h2>
+          <p>
+            Each school owns its operational scope while RBAC controls what
+            individual users can access and do inside that institution.
+          </p>
+        </article>
+        <article>
+          <ShieldCheck aria-hidden="true" size={24} />
+          <h2>Usability and continuity</h2>
+          <p>
+            Steward Systems designs around real user workflows so institutions
+            can preserve knowledge, reduce re-entry, and continue operations
+            with clearer evidence.
+          </p>
+        </article>
       </section>
 
       <section className="page-section muted-section two-column">

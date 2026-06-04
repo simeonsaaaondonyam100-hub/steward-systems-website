@@ -47,6 +47,10 @@ Steward Systems Core may own:
 
 Steward Systems Core must not own operational product data from Operavault, Cantoria, or Steward Ledger.
 
+## Product Source Of Truth
+
+Public product tour, demo, pricing, and roadmap language should be governed through `docs/product-source-of-truth/` before website copy is changed. That folder records approved public claims, module status, pricing notes, evidence level, and product-boundary cautions for Operavault, Cantoria, and Steward Ledger.
+
 ## Deployment Direction
 
 - Vercel is the intended hosting platform for the public website and app frontend.

@@ -1,26 +1,24 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-import { siteConfig } from "@/lib/site";
-
 export function SiteHeader() {
   return (
     <header className="site-header">
-      <Link className="brand-mark" href="/" aria-label="Steward Systems home">
-        <span className="brand-symbol">SS</span>
-        <span>{siteConfig.name}</span>
+      <Link className="brand-mark" href="/" aria-label="Operavault homepage">
+        <span className="brand-symbol">O</span>
+        <span className="brand-copy">
+          <strong>Operavault</strong>
+          <small>School Operations SaaS</small>
+        </span>
       </Link>
       <nav className="site-nav" aria-label="Primary navigation">
-        {siteConfig.navItems
-          .filter((item) => item.href !== "/request-demo")
-          .map((item) => (
-            <Link key={item.href} href={item.href}>
-              {item.label}
-            </Link>
-          ))}
+        <Link href="/features">Features</Link>
+        <Link href="/pricing">Pricing</Link>
+        <Link href="/company">Company</Link>
+        <Link href="/request-demo">Book demo</Link>
       </nav>
       <Link className="nav-cta" href="/request-demo">
-        <span>Request demo</span>
+        <span>Request a demo</span>
         <ArrowRight aria-hidden="true" size={16} />
       </Link>
     </header>

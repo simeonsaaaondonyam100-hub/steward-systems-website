@@ -24,6 +24,8 @@ Steward Systems Core may store that a visitor is interested in Operavault or req
 
 The Steward Systems public website owns Operavault product positioning, the public-safe demo, pricing overview, request-demo funnel, and company-level business pipeline. The Operavault portal later owns tenant subscription plan, enabled modules, feature limits, billing/subscription status, module access enforcement, and internal plan configuration.
 
+Public Operavault module, pricing, and roadmap claims should be checked against `docs/product-source-of-truth/operavault.md` before website copy is changed.
+
 ## Cantoria
 
 Cantoria is a music notation, choir, and composition workflow product.
@@ -46,6 +48,8 @@ Cantoria owns music projects, scores, solfa notation, SATB arrangements, audio, 
 
 Steward Systems Core may store that a visitor is interested in Cantoria or requested early access. Core must not store Cantoria project, score, audio, composition, or export data.
 
+Public Cantoria claims should be checked against `docs/product-source-of-truth/cantoria.md` before website copy is changed.
+
 ## Steward Ledger
 
 Steward Ledger is an investment club and cooperative governance and treasury portal.
@@ -67,3 +71,5 @@ Request a Steward Ledger walkthrough.
 Steward Ledger owns investment club and cooperative operational data, including members, meetings, resolutions, treasury entries, investment records, approvals, and related governance records.
 
 Steward Systems Core may store that a visitor is interested in Steward Ledger or requested a walkthrough. Core must not store Steward Ledger treasury, meeting, resolution, member, investment, or approval records.
+
+Public Steward Ledger claims should be checked against `docs/product-source-of-truth/steward-ledger.md` before website copy is changed.

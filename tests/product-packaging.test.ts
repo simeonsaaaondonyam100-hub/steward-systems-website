@@ -4,9 +4,11 @@ import { join } from "node:path";
 import test from "node:test";
 
 import {
+  getOperavaultModuleBySlug,
   operavaultModuleGroups,
   operavaultModules,
-  operavaultPlans
+  operavaultPlans,
+  operavaultTourSections
 } from "../modules/product/operavault-product";
 import { products } from "../modules/products/product-registry";
 
@@ -26,37 +28,65 @@ test("Operavault product packaging exposes the full public module universe", () 
     "Intelligence and Analytics"
   ]);
   assert.deepEqual(
-    operavaultModules.map((module) => module.slug),
+    operavaultModules.map((moduleData) => moduleData.slug),
     [
-      "student-records",
-      "staff-records",
-      "report-card-generation",
+      "students-management",
+      "staff-management",
+      "parents-guardians-management",
+      "employee-onboarding",
+      "role-permission-management",
       "gradebook",
+      "report-card-generation",
+      "broadsheet-publishing",
+      "cbt-waec-jamb-testing",
       "lesson-plan-submission",
       "diary-filling",
-      "broadsheet-class-noticeboard",
+      "timetable",
+      "subject-class-attendance",
+      "schemes-of-work",
+      "advisory-records",
       "student-attendance",
       "staff-attendance",
       "discipline-booking",
-      "loans",
-      "procurement",
-      "fees-parent-notification",
-      "notifications",
       "advisory-meetings-reporting",
-      "appraisal-workload-visualisation",
+      "behavioural-records",
+      "notifications-escalations",
+      "school-fees-sync-records",
+      "parent-notifications",
+      "procurement",
+      "staff-loans",
+      "workflow-approvals",
+      "audit-trail",
+      "parent-portal",
+      "notifications",
+      "acknowledgements",
+      "class-noticeboard",
+      "masked-broadsheet-publishing",
+      "absence-notices",
+      "appointments",
       "ai-system-analytics",
-      "waec-jamb-standard-cbt",
-      "waec-wassce-essay-grading-engine"
+      "workload-visualisation",
+      "appraisal",
+      "waec-wassce-essay-grading-engine",
+      "cbt-performance-analytics",
+      "attendance-discipline-trends",
+      "management-dashboards"
     ]
   );
   assert.ok(
     operavaultModules.every(
-      (module) =>
-        module.problem.length > 40 &&
-        module.users.length >= 3 &&
-        module.workflows.length >= 3 &&
-        module.mockupCards.length >= 2
+      (moduleData) =>
+        moduleData.problem.length > 40 &&
+        moduleData.users.length >= 3 &&
+        moduleData.workflows.length >= 3 &&
+        moduleData.mockupCards.length >= 2
     )
+  );
+  assert.equal(getOperavaultModuleBySlug("student-records")?.slug, "students-management");
+  assert.equal(getOperavaultModuleBySlug("loans")?.slug, "staff-loans");
+  assert.equal(
+    getOperavaultModuleBySlug("waec-jamb-standard-cbt")?.slug,
+    "cbt-waec-jamb-testing"
   );
 });
 
@@ -82,7 +112,7 @@ test("product-tour pages mention core module examples", () => {
   const homepage = readProjectFile("app/page.tsx");
   const featureDetail = readProjectFile("app/features/[featureSlug]/page.tsx");
 
-  for (const text of [
+  for (const slug of [
     "report-card-generation",
     "gradebook",
     "student-attendance",
@@ -92,18 +122,25 @@ test("product-tour pages mention core module examples", () => {
     "advisory-meetings-reporting",
     "lesson-plan-submission",
     "diary-filling",
-    "loans",
+    "staff-loans",
     "procurement",
-    "broadsheet-class-noticeboard",
-    "fees-parent-notification",
-    "appraisal-workload-visualisation",
+    "broadsheet-publishing",
+    "school-fees-sync-records",
+    "workload-visualisation",
     "ai-system-analytics",
-    "waec-jamb-standard-cbt",
+    "cbt-waec-jamb-testing",
     "waec-wassce-essay-grading-engine"
   ]) {
-    assert.match(homepage, new RegExp(text));
+    assert.equal(
+      operavaultTourSections.some((section) => section.moduleSlug === slug),
+      true,
+      `${slug} should be present in the guided product tour data`
+    );
   }
 
+  assert.match(homepage, /operavaultHeroLede/);
+  assert.match(homepage, /feature-universe-grid/);
+  assert.match(homepage, /operavaultTourSections/);
   assert.match(featureDetail, /problem/i);
   assert.match(featureDetail, /Plan availability/);
 });

@@ -7,12 +7,16 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div>
         <Link className="brand-mark footer-brand" href="/">
-          <span className="brand-symbol">SS</span>
-          <span>Steward Systems</span>
+          <span className="brand-symbol">O</span>
+          <span className="brand-copy">
+            <strong>Operavault</strong>
+            <small>By Steward Systems</small>
+          </span>
         </Link>
         <p>
-          Steward Systems builds Operavault for serious school administration,
-          academic operations, staff workflows, and management visibility.
+          Institutional school operations software by Steward Systems for
+          records, academic workflows, parent engagement, finance visibility,
+          and management evidence.
         </p>
       </div>
       <div className="footer-links">

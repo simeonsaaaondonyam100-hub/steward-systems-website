@@ -50,6 +50,14 @@ Operavault public demo and pricing overview belong on the Steward Systems websit
 
 Public demo content must use synthetic sample data only. It must not connect to Operavault operational data or expose private school, student, parent, staff, result, HR, advisory, attendance, or finance records.
 
+## Product Source-Of-Truth Workflow
+
+Public product pages should be updated through `docs/product-source-of-truth/` before website implementation data is changed. That folder tracks approved product positioning, public module status, plan availability, evidence level, source notes, and restricted claims for each Steward Systems product line.
+
+The source-of-truth workflow is a public-claims governance layer, not a product operational backend. It may reference product repositories, release notes, screenshots, or owner-confirmed notes, but it must not copy private operational records into Steward Systems Core.
+
+When product evidence is unavailable, public website language should stay conservative and use statuses such as `active_development`, `structured_testing`, or `needs_product_review` rather than implying production availability.
+
 ## Proposed Data Model
 
 These tables are proposed for a later backend phase. They should not be created until explicitly requested.

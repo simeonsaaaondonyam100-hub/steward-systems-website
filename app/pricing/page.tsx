@@ -15,12 +15,11 @@ export default function PricingPage() {
   return (
     <main>
       <section className="page-hero compact-hero">
-        <p className="eyebrow">Operavault pricing</p>
-        <h1>Plan options for serious school operations.</h1>
+        <p className="eyebrow">Plan-Aware Packaging</p>
+        <h1>Commercial plans for different levels of school operational maturity.</h1>
         <p>
-          Operavault pricing is confirmed after discovery around school size,
-          module scope, rollout needs, implementation support, and governance
-          requirements.
+          Plans decide what a school owns. Role permissions decide what each
+          user can do inside that school.
         </p>
         <div className="hero-actions">
           <Link className="button button-primary" href="/request-demo">
@@ -103,4 +102,3 @@ export default function PricingPage() {
     </main>
   );
 }
-

@@ -1,0 +1,15 @@
+# Product Source-Of-Truth Updates
+
+This log records meaningful changes to public product claims, plan language, status labels, and product-tour evidence.
+
+## 2026-06-04
+
+- Created the product source-of-truth workflow for Steward Systems public product pages.
+- Added initial source-of-truth files for Operavault, Cantoria, and Steward Ledger.
+- Marked the initial Operavault module register from the current website implementation source, `modules/product/operavault-product.ts`.
+- Marked Cantoria and Steward Ledger as needing product-source review before stronger public tour claims are made.
+- Reviewed local product workspaces provided by the owner for Operavault, Cantoria, and Steward Ledger.
+- Upgraded Operavault evidence from website-only to product-repo-verified for matched modules, with alignment notes where the current public site is ahead of or behind the product source.
+- Upgraded Cantoria evidence from needs-review to product-repo-verified for current music-engine foundations, while keeping AI, durable export, upload, transcription, and offline features in planned/roadmap language.
+- Upgraded Steward Ledger evidence from planned/needs-review to active-development with verified finance/governance foundations, while restricting Triple Twenty-Five-specific records and rules from public claims.
+- Completed authenticated portal spot-checks for Operavault, Steward Ledger / Triple Twenty-Five, and Cantoria using owner-provided access. Only navigation labels, workspace headings, and safe action labels were recorded; no operational records, private project content, screenshots, credentials, or tenant/member/customer data were copied into Steward Systems Core.

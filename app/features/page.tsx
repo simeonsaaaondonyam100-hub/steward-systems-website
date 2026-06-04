@@ -1,13 +1,30 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import { CtaBand } from "@/components/marketing/cta-band";
 import {
   getOperavaultModulesByGroup,
   getOperavaultStatusLabel,
-  operavaultModuleGroups
+  getOperavaultModuleBySlug,
+  operavaultModuleGroups,
+  operavaultModules,
+  operavaultTourSections
 } from "@/modules/product/operavault-product";
+
+const groupSummaries = {
+  "People Records": "Tenant-aware records for the people who make the school work.",
+  "Academic Operations":
+    "Score entry, reports, broadsheets, lesson evidence, timetable, and academic accountability.",
+  "Attendance and Discipline":
+    "Daily records, behaviour evidence, escalation, and operational accountability.",
+  "Finance and Administration":
+    "Fees, procurement, loans, approvals, audit trail, and controlled finance execution.",
+  "Communication and Parent Engagement":
+    "Parent portal, notices, acknowledgement, class noticeboards, and safe publication.",
+  "Intelligence and Analytics":
+    "Management visibility, workload evidence, appraisal readiness, and performance intelligence."
+} satisfies Record<(typeof operavaultModuleGroups)[number], string>;
 
 export const metadata: Metadata = {
   title: "Operavault Modules",
@@ -20,10 +37,10 @@ export default function FeaturesPage() {
     <main>
       <section className="page-hero compact-hero">
         <p className="eyebrow">Operavault modules</p>
-        <h1>Tour the school operations system module by module.</h1>
+        <h1>A connected feature universe for serious school operations.</h1>
         <p>
-          Each module is packaged around a real administrative workflow so a
-          school administrator can understand the platform in minutes.
+          Explore the modules available today and the modules currently being
+          developed as part of the Operavault roadmap.
         </p>
         <div className="hero-actions">
           <Link className="button button-primary" href="/request-demo">
@@ -37,47 +54,107 @@ export default function FeaturesPage() {
         </div>
       </section>
 
-      <section className="page-section">
-        <div className="module-universe">
+      <section className="page-section product-section-tight">
+        <div className="feature-universe-grid">
+          {operavaultModules.map((moduleData) => (
+            <Link
+              key={moduleData.slug}
+              className="feature-universe-card"
+              href={`/features/${moduleData.slug}`}
+            >
+              <span>{moduleData.group}</span>
+              <strong>{moduleData.name}</strong>
+              <p>{moduleData.summary}</p>
+              <em className={`module-status module-status-${moduleData.status}`}>
+                {getOperavaultStatusLabel(moduleData.status)}
+              </em>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="page-section product-section-tight">
+        <div className="marketing-category-stack">
           {operavaultModuleGroups.map((group) => (
-            <section key={group} className="module-group">
-              <div className="module-group-heading">
-                <div>
-                  <p className="eyebrow">{group}</p>
-                  <h2>{group}</h2>
-                </div>
-                <span>{getOperavaultModulesByGroup(group).length} modules</span>
+            <section key={group} className="marketing-category-block">
+              <div>
+                <p className="eyebrow">Workflow Category</p>
+                <h2>{group}</h2>
+                <p>{groupSummaries[group]}</p>
               </div>
-              <div className="feature-grid">
-                {getOperavaultModulesByGroup(group).map((module) => (
-                  <article key={module.slug} className="feature-card">
-                    <p className="eyebrow">{getOperavaultStatusLabel(module.status)}</p>
-                    <h3>{module.name}</h3>
-                    <p>{module.summary}</p>
-                    <div className="feature-outcomes">
-                      {module.workflows.slice(0, 2).map((workflow) => (
-                        <div key={workflow}>
-                          <CheckCircle2 aria-hidden="true" size={18} />
-                          <span>{workflow}</span>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="plan-strip">{module.planAvailability}</div>
-                    <div className="product-card-actions">
-                      <Link className="text-link" href={`/features/${module.slug}`}>
-                        <span>View module</span>
-                        <ArrowRight aria-hidden="true" size={16} />
-                      </Link>
-                      <Link className="text-link" href="/request-demo">
-                        <span>Book demo</span>
-                        <ArrowRight aria-hidden="true" size={16} />
-                      </Link>
-                    </div>
-                  </article>
+              <div className="marketing-category-modules">
+                {getOperavaultModulesByGroup(group).map((moduleData) => (
+                  <Link key={moduleData.slug} href={`/features/${moduleData.slug}`}>
+                    <strong>{moduleData.name}</strong>
+                    <small>{getOperavaultStatusLabel(moduleData.status)}</small>
+                  </Link>
                 ))}
               </div>
             </section>
           ))}
+        </div>
+      </section>
+
+      <section className="page-section product-section-tight">
+        <div className="section-heading">
+          <p className="eyebrow">Guided Product Tour</p>
+          <h2>The workflows school leaders usually ask to see first.</h2>
+          <p>
+            Academic reporting, attendance, discipline, staff workflows, finance
+            operations, parent engagement, and intelligence are shown as one
+            connected institutional system.
+          </p>
+        </div>
+        <div className="product-tour-grid">
+          {operavaultTourSections.map((section) => {
+            const moduleData = getOperavaultModuleBySlug(section.moduleSlug);
+
+            if (!moduleData) {
+              return null;
+            }
+
+            return (
+              <article key={section.title} className="product-tour-card">
+                <div className="product-tour-card-copy">
+                  <div className="demo-slide-top">
+                    <span>{moduleData.group}</span>
+                    <em className={`module-status module-status-${moduleData.status}`}>
+                      {getOperavaultStatusLabel(moduleData.status)}
+                    </em>
+                  </div>
+                  <h3>{section.title}</h3>
+                  <p>{section.summary}</p>
+                  <ul>
+                    {section.proofPoints.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
+                  <Link href={`/features/${moduleData.slug}`}>
+                    Explore {moduleData.name}
+                  </Link>
+                </div>
+                <div className="product-tour-mock" aria-hidden="true">
+                  <div className="mock-toolbar">
+                    <span />
+                    <span />
+                    <span />
+                  </div>
+                  <div className="product-tour-mock-title">{moduleData.group}</div>
+                  <div className="mock-kpi-row">
+                    <b />
+                    <b />
+                    <b />
+                  </div>
+                  <div className="mock-table-lines">
+                    <i />
+                    <i />
+                    <i />
+                    <i />
+                  </div>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </section>
 
@@ -88,4 +165,3 @@ export default function FeaturesPage() {
     </main>
   );
 }
-

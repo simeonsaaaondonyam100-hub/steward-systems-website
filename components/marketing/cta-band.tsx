@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Mail } from "lucide-react";
+import { ArrowRight, PanelsTopLeft } from "lucide-react";
 
 type CtaBandProps = {
   title: string;
@@ -19,9 +19,9 @@ export function CtaBand({ title, description }: CtaBandProps) {
           <span>Request demo</span>
           <ArrowRight aria-hidden="true" size={18} />
         </Link>
-        <Link className="button button-secondary" href="/contact">
-          <span>Contact</span>
-          <Mail aria-hidden="true" size={18} />
+        <Link className="button button-secondary" href="/pricing">
+          <span>Compare plans</span>
+          <PanelsTopLeft aria-hidden="true" size={18} />
         </Link>
       </div>
     </section>

@@ -1,51 +1,40 @@
 import Link from "next/link";
-import { ArrowRight, BarChart3, Building2, CheckCircle2, Layers3 } from "lucide-react";
+import { ArrowRight, CheckCircle2, Layers3 } from "lucide-react";
 
 import { CtaBand } from "@/components/marketing/cta-band";
 import {
   getOperavaultModulesByGroup,
   getOperavaultStatusLabel,
+  getOperavaultModuleBySlug,
+  operavaultHeroLede,
   operavaultHeroStatement,
   operavaultModuleGroups,
-  operavaultModules
+  operavaultModules,
+  operavaultTourSections
 } from "@/modules/product/operavault-product";
 
-const tourModules = [
-  "report-card-generation",
-  "gradebook",
-  "student-attendance",
-  "staff-attendance",
-  "discipline-booking",
-  "notifications",
-  "advisory-meetings-reporting",
-  "lesson-plan-submission",
-  "diary-filling",
-  "loans",
-  "procurement",
-  "broadsheet-class-noticeboard",
-  "fees-parent-notification",
-  "appraisal-workload-visualisation",
-  "ai-system-analytics",
-  "waec-jamb-standard-cbt",
-  "waec-wassce-essay-grading-engine"
-];
+const groupSummaries = {
+  "People Records": "Tenant-aware records for the people who make the school work.",
+  "Academic Operations":
+    "Score entry, reports, broadsheets, lesson evidence, timetable, and academic accountability.",
+  "Attendance and Discipline":
+    "Daily records, behaviour evidence, escalation, and operational accountability.",
+  "Finance and Administration":
+    "Fees, procurement, loans, approvals, audit trail, and controlled finance execution.",
+  "Communication and Parent Engagement":
+    "Parent portal, notices, acknowledgement, class noticeboards, and safe publication.",
+  "Intelligence and Analytics":
+    "Management visibility, workload evidence, appraisal readiness, and performance intelligence."
+} satisfies Record<(typeof operavaultModuleGroups)[number], string>;
 
 export default function HomePage() {
-  const tourItems = tourModules
-    .map((slug) => operavaultModules.find((module) => module.slug === slug))
-    .filter((module) => module !== undefined);
-
   return (
     <main>
       <section className="product-tour-hero">
         <div className="product-tour-hero-copy">
-          <p className="eyebrow">Operavault by Steward Systems</p>
+          <p className="eyebrow">Unified School Operations Platform</p>
           <h1>{operavaultHeroStatement}</h1>
-          <p>
-            Operavault gives school leaders one secure public-safe view of the
-            operating layer: records, academics, attendance, finance,
-            communication, staff workflows, and management intelligence.
-          </p>
+          <p>{operavaultHeroLede}</p>
           <div className="hero-actions">
             <Link className="button button-primary" href="/request-demo">
               <span>Request a demo</span>
@@ -57,56 +46,161 @@ export default function HomePage() {
             </Link>
           </div>
         </div>
-        <div className="hero-console" aria-label="Operavault product tour mockup">
+        <div className="hero-console" aria-label="Operavault product overview mockup">
           <div className="hero-console-top">
-            <span>OPERAVAULT</span>
-            <strong>School Operations Command</strong>
+            <span>Command Center</span>
+            <strong>Institutional visibility</strong>
           </div>
           <div className="hero-console-grid">
             <div>
-              <BarChart3 aria-hidden="true" size={20} />
-              <strong>96%</strong>
-              <span>Attendance readiness</span>
+              <span>Academic readiness</span>
+              <strong>86%</strong>
             </div>
             <div>
-              <Building2 aria-hidden="true" size={20} />
-              <strong>18</strong>
-              <span>Admin workflows</span>
+              <span>Attendance signals</span>
+              <strong>Live</strong>
+            </div>
+            <div>
+              <span>Finance exceptions</span>
+              <strong>12</strong>
+            </div>
+            <div>
+              <span>Audit evidence</span>
+              <strong>Tracked</strong>
             </div>
             <div className="wide">
-              <strong>Academic review</strong>
-              <span>Gradebook, report cards, broadsheet, diary, and lesson plan evidence in one institutional layer.</span>
+              <strong>Profile to Workflow to Review to Report</strong>
+              <span>Public-safe product tour mockup. No tenant records are connected.</span>
             </div>
           </div>
         </div>
       </section>
 
       <section className="page-section">
-        <div className="section-heading">
-          <p className="eyebrow">Feature universe</p>
-          <h2>Every major school operation grouped into a clear module system.</h2>
+        <div className="steward-positioning-card">
+          <p className="eyebrow">By Steward Systems</p>
+          <h2>Built by a software company focused on practical institutional systems.</h2>
           <p>
-            The public tour is synthetic and product-level. It does not expose
-            any tenant, student, parent, staff, finance, or school-specific data.
+            Operavault is a product of Steward Systems, a full-stack software
+            development company building practical institutional systems for
+            real operational problems. The platform is designed around records,
+            permissions, audit evidence, usability, and continuity rather than
+            isolated school-office screens.
+          </p>
+          <Link className="button button-secondary" href="/company">
+            Learn about Steward Systems
+          </Link>
+        </div>
+      </section>
+
+      <section className="page-section product-section-tight">
+        <div className="section-heading">
+          <p className="eyebrow">Feature Universe</p>
+          <h2>Built around the operational truth of school work.</h2>
+          <p>
+            Plans decide what a school owns. Permissions decide what each user
+            can do. That separation keeps growth commercial and governance safe.
           </p>
         </div>
-        <div className="module-universe">
+        <div className="feature-universe-grid">
+          {operavaultModules.slice(0, 18).map((moduleData) => (
+            <Link
+              key={moduleData.slug}
+              className="feature-universe-card"
+              href={`/features/${moduleData.slug}`}
+            >
+              <span>{moduleData.group}</span>
+              <strong>{moduleData.name}</strong>
+              <p>{moduleData.summary}</p>
+              <em className={`module-status module-status-${moduleData.status}`}>
+                {getOperavaultStatusLabel(moduleData.status)}
+              </em>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="page-section product-section-tight">
+        <div className="section-heading">
+          <p className="eyebrow">Product Tour</p>
+          <h2>See how the major school workflows connect.</h2>
+          <p>
+            Each module is presented with honest status language: operational
+            foundations are named clearly, and active roadmap areas are
+            described as active development or structured institutional testing.
+          </p>
+        </div>
+        <div className="product-tour-grid">
+          {operavaultTourSections.map((section) => {
+            const moduleData = getOperavaultModuleBySlug(section.moduleSlug);
+
+            if (!moduleData) {
+              return null;
+            }
+
+            return (
+              <article key={section.title} className="product-tour-card">
+                <div className="product-tour-card-copy">
+                  <div className="demo-slide-top">
+                    <span>{moduleData.group}</span>
+                    <em className={`module-status module-status-${moduleData.status}`}>
+                      {getOperavaultStatusLabel(moduleData.status)}
+                    </em>
+                  </div>
+                  <h3>{section.title}</h3>
+                  <p>{section.summary}</p>
+                  <ul>
+                    {section.proofPoints.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
+                  <Link href={`/features/${moduleData.slug}`}>
+                    Explore {moduleData.name}
+                  </Link>
+                </div>
+                <div className="product-tour-mock" aria-hidden="true">
+                  <div className="mock-toolbar">
+                    <span />
+                    <span />
+                    <span />
+                  </div>
+                  <div className="product-tour-mock-title">{moduleData.group}</div>
+                  <div className="mock-kpi-row">
+                    <b />
+                    <b />
+                    <b />
+                  </div>
+                  <div className="mock-table-lines">
+                    <i />
+                    <i />
+                    <i />
+                    <i />
+                  </div>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      <section className="page-section product-section-tight">
+        <div className="section-heading">
+          <p className="eyebrow">Workflow Categories</p>
+          <h2>From daily records to board-level evidence.</h2>
+        </div>
+        <div className="marketing-category-stack">
           {operavaultModuleGroups.map((group) => (
-            <section key={group} className="module-group">
-              <div className="module-group-heading">
-                <p className="eyebrow">{group}</p>
-                <span>{getOperavaultModulesByGroup(group).length} modules</span>
+            <section key={group} className="marketing-category-block">
+              <div>
+                <p className="eyebrow">Workflow Category</p>
+                <h2>{group}</h2>
+                <p>{groupSummaries[group]}</p>
               </div>
-              <div className="module-card-grid">
-                {getOperavaultModulesByGroup(group).map((module) => (
-                  <Link
-                    key={module.slug}
-                    className="module-card"
-                    href={`/features/${module.slug}`}
-                  >
-                    <strong>{module.name}</strong>
-                    <span>{module.summary}</span>
-                    <em>{getOperavaultStatusLabel(module.status)}</em>
+              <div className="marketing-category-modules">
+                {getOperavaultModulesByGroup(group).map((moduleData) => (
+                  <Link key={moduleData.slug} href={`/features/${moduleData.slug}`}>
+                    <strong>{moduleData.name}</strong>
+                    <small>{getOperavaultStatusLabel(moduleData.status)}</small>
                   </Link>
                 ))}
               </div>
@@ -115,46 +209,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="page-section muted-section">
-        <div className="section-heading">
-          <p className="eyebrow">Product tour</p>
-          <h2>See how the operating system comes together.</h2>
-          <p>
-            Each module has a serious workflow purpose. Active-development
-            modules are described as such, with institutional testing boundaries
-            made explicit.
-          </p>
-        </div>
-        <div className="tour-section-grid">
-          {tourItems.map((module) => (
-            <article key={module.slug} className="tour-panel">
-              <div>
-                <p className="eyebrow">{module.group}</p>
-                <h3>{module.name}</h3>
-                <p>{module.summary}</p>
-              </div>
-              <div className="tour-mockup-row">
-                {module.mockupCards.map((card) => (
-                  <div key={card.label}>
-                    <span>{card.label}</span>
-                    <strong>{card.value}</strong>
-                    <p>{card.detail}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="tour-panel-footer">
-                <span>{module.planAvailability}</span>
-                <Link className="text-link" href={`/features/${module.slug}`}>
-                  View module
-                  <ArrowRight aria-hidden="true" size={16} />
-                </Link>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="page-section two-column">
+      <section className="page-section two-column product-section-tight">
         <div>
           <p className="eyebrow">Institutional posture</p>
           <h2>Built for administrators who need evidence, controls, and visibility.</h2>
@@ -187,4 +242,3 @@ export default function HomePage() {
     </main>
   );
 }
-

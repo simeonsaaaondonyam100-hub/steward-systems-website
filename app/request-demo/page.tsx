@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { CheckCircle2, ShieldCheck } from "lucide-react";
 
 import { DemoRequestForm } from "@/components/forms/demo-request-form";
-import { operavaultHeroStatement } from "@/modules/product/operavault-product";
 import type { ProductInterest } from "@/modules/enquiries/types";
 
 export const metadata: Metadata = {
@@ -43,14 +42,18 @@ export default async function RequestDemoPage({
     <main>
       <section className="request-demo-page">
         <div className="request-demo-copy">
-          <p className="eyebrow">Request an Operavault demo</p>
-          <h1>See how Operavault fits your school operations.</h1>
-          <p>{operavaultHeroStatement}</p>
+          <p className="eyebrow">Request Demo</p>
+          <h1>Book a focused Operavault product tour for your institution.</h1>
+          <p>
+            Share your school context, preferred plan, and priority workflows.
+            Steward Systems will review the request and follow up with a demo
+            conversation shaped around your operational reality.
+          </p>
           <div className="request-demo-points">
             {[
-              "Choose the modules your administrators need to inspect first.",
-              "Review plan fit, implementation scope, and active-development modules.",
-              "Demo requests are captured in Steward Systems Core for follow-up."
+              "No public plan is treated as unlimited.",
+              "Founder Institutional Partner requests are subject to approval.",
+              "Demo discussion can focus on available modules and active roadmap areas."
             ].map((point) => (
               <div key={point}>
                 <CheckCircle2 aria-hidden="true" size={18} />
