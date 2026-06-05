@@ -12,9 +12,14 @@ import {
 
 import { CtaBand } from "@/components/marketing/cta-band";
 import { ProductCard } from "@/components/marketing/product-card";
-import { products } from "@/modules/products/product-registry";
+import {
+  getFeaturedProductActions,
+  products
+} from "@/modules/products/product-registry";
 
-const operavault = products.find((product) => product.slug === "operavault");
+const featuredProduct =
+  products.find((product) => product.featuredProduct) ??
+  products.find((product) => product.slug === "operavault");
 
 const studioCapabilities = [
   "Institutional operating systems",
@@ -55,33 +60,29 @@ const focusAreas = [
 const productUpdates = [
   {
     product: "Operavault",
-    status: "Rollout preparation",
+    status: "Available for demonstration",
     detail:
       "The school-operations product tour, module catalogue, pricing overview, and demo-request flow are now public-facing."
   },
   {
     product: "Cantoria",
-    status: "Early-access foundations",
+    status: "Early Access / In Development",
     detail:
       "Score projects, SATB notation, playback, part extraction, print, and selected-part export foundations are being shaped for public positioning."
   },
   {
     product: "Steward Ledger",
-    status: "Governance product review",
+    status: "Private Platform / In Development",
     detail:
-      "Member, treasury, meetings, resolutions, reports, permissions, and audit workflows are being prepared for a later public product tour."
+      "Member, treasury, meetings, resolutions, reports, permissions, and audit workflows remain visible as portfolio-level governance product direction."
   }
 ];
 
-function getPublicStatusLabel(productSlug: string, status: string) {
-  if (productSlug === "steward-ledger" && status === "planned") {
-    return "active development";
-  }
-
-  return status.replace("_", " ");
-}
-
 export default function HomePage() {
+  const featuredActions = featuredProduct
+    ? getFeaturedProductActions(featuredProduct)
+    : [];
+
   return (
     <main>
       <section className="company-landing-hero">
@@ -111,10 +112,12 @@ export default function HomePage() {
               <span>Explore products</span>
               <ArrowRight aria-hidden="true" size={18} />
             </Link>
-            <Link className="button button-secondary" href="/request-demo">
-              <span>Request a demo</span>
-              <ArrowRight aria-hidden="true" size={18} />
-            </Link>
+            {featuredProduct?.demoAvailable && featuredProduct.demoUrl ? (
+              <Link className="button button-secondary" href={featuredProduct.demoUrl}>
+                <span>Request {featuredProduct.name} demo</span>
+                <ArrowRight aria-hidden="true" size={18} />
+              </Link>
+            ) : null}
           </div>
           <div className="studio-capability-row" aria-label="Steward Systems capabilities">
             {studioCapabilities.map((capability) => (
@@ -149,7 +152,7 @@ export default function HomePage() {
                 />
                 <span>{product.eyebrow}</span>
                 <strong>{product.name}</strong>
-                <small>{getPublicStatusLabel(product.slug, product.status)}</small>
+                <small>{product.publicStatusLabel}</small>
               </Link>
             ))}
           </div>
@@ -173,34 +176,39 @@ export default function HomePage() {
         </div>
       </section>
 
-      {operavault ? (
+      {featuredProduct ? (
         <section className="page-section company-featured-product company-section">
           <div>
             <p className="eyebrow">Featured Rollout Product</p>
-            <h2>Operavault is the product currently being prepared for wider institutional rollout.</h2>
+            <h2>{featuredProduct.name} is the product currently being prepared for wider institutional rollout.</h2>
             <p>
-              Operavault brings the serious work of running a school into one
-              secure, tenant-aware platform: people records, academics,
+              {featuredProduct.name} brings the serious work of running a school
+              into one secure, tenant-aware platform: people records, academics,
               attendance, discipline, finance workflows, parent communication,
               audit trails, staff duties, and decision intelligence.
             </p>
             <div className="hero-actions">
-              <Link className="button button-primary" href="/products/operavault">
-                <span>View Operavault</span>
-                <ArrowRight aria-hidden="true" size={18} />
-              </Link>
-              <Link className="button button-secondary" href="/pricing">
-                <span>View pricing</span>
-                <ArrowRight aria-hidden="true" size={18} />
-              </Link>
+              {featuredActions.map((action) => (
+                <Link
+                  key={action.href}
+                  className={`button button-${action.variant ?? "primary"}`}
+                  href={action.href}
+                >
+                  <span>{action.label}</span>
+                  <ArrowRight aria-hidden="true" size={18} />
+                </Link>
+              ))}
             </div>
           </div>
           <div className="company-featured-card">
-            <p className="eyebrow">{operavault.eyebrow}</p>
-            <h3>{operavault.brandLine}</h3>
-            <p>{operavault.summary}</p>
+            <p className="eyebrow">{featuredProduct.eyebrow}</p>
+            <h3>{featuredProduct.brandLine}</h3>
+            <span className="product-readiness-label">
+              {featuredProduct.publicStatusLabel}
+            </span>
+            <p>{featuredProduct.summary}</p>
             <div className="capability-list">
-              {operavault.capabilities.map((capability) => (
+              {featuredProduct.capabilities.map((capability) => (
                 <div key={capability} className="capability-item">
                   <CheckCircle2 aria-hidden="true" size={18} />
                   <span>{capability}</span>

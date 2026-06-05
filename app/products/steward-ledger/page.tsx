@@ -15,7 +15,7 @@ export default function StewardLedgerPage() {
     <ProductDetail
       product={product}
       proofPoints={[
-        "Core can record Steward Ledger demo interest and proposal status.",
+        "Core can record Steward Ledger governance use-case interest and partnership follow-up status.",
         "Steward Ledger remains the owner of member, meeting, resolution, treasury, investment, and approval records.",
         "No investment club or cooperative operational ledger data belongs in Core."
       ]}

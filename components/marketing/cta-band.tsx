@@ -16,11 +16,11 @@ export function CtaBand({ title, description }: CtaBandProps) {
       </div>
       <div className="cta-actions">
         <Link className="button button-primary" href="/request-demo">
-          <span>Request demo</span>
+          <span>Request Operavault demo</span>
           <ArrowRight aria-hidden="true" size={18} />
         </Link>
         <Link className="button button-secondary" href="/pricing">
-          <span>Compare plans</span>
+          <span>Compare Operavault plans</span>
           <PanelsTopLeft aria-hidden="true" size={18} />
         </Link>
       </div>

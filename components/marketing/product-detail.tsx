@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, ShieldCheck, Sparkles } from "lucide-react";
 
+import { getProductEngagementActions } from "@/modules/products/product-registry";
 import type { Product, ProductAction } from "@/modules/products/types";
 
 type ProductDetailProps = {
@@ -15,13 +16,12 @@ export function ProductDetail({
   proofPoints,
   actions
 }: ProductDetailProps) {
-  const productActions = actions ?? product.featuredActions ?? [
-    {
-      label: product.cta.label,
-      href: product.cta.href,
-      variant: "primary" as const
-    }
-  ];
+  const productActions = actions ?? getProductEngagementActions(product);
+  const nextStepAction = productActions[0] ?? {
+    label: product.cta.label,
+    href: product.cta.href,
+    variant: "primary" as const
+  };
 
   return (
     <main>
@@ -41,6 +41,9 @@ export function ProductDetail({
             </div>
           </div>
           <p className="product-title-kicker">{product.brandLine}</p>
+          <span className="product-readiness-label product-readiness-label-hero">
+            {product.publicStatusLabel}
+          </span>
           <p>{product.valueProposition}</p>
           <div className="hero-actions">
             {productActions.map((action) => (
@@ -130,13 +133,13 @@ export function ProductDetail({
           <p className="eyebrow">Next Step</p>
           <h2>Start with the right product conversation.</h2>
           <p>
-            Steward Systems can route demo requests, walkthroughs, and
-            early-access interest without merging product operations into the
-            public website.
+            Steward Systems can route demo requests, early-access interest, and
+            governance use-case conversations without merging product
+            operations into the public website.
           </p>
         </div>
-        <Link className="button button-primary" href={product.cta.href}>
-          <span>{product.cta.label}</span>
+        <Link className="button button-primary" href={nextStepAction.href}>
+          <span>{nextStepAction.label}</span>
           <ArrowRight aria-hidden="true" size={18} />
         </Link>
       </section>

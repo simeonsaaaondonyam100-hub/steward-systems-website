@@ -3605,3 +3605,60 @@ h3,
     justify-self: stretch;
   }
 }
+
+/* Readiness-aware product visibility polish. */
+.product-readiness-label {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  max-width: 100%;
+  min-height: 28px;
+  padding: 5px 9px;
+  color: var(--deep-green);
+  background: rgba(15, 107, 79, 0.08);
+  border: 1px solid rgba(15, 107, 79, 0.16);
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 850;
+  line-height: 1.2;
+}
+
+.product-card-head .product-readiness-label {
+  margin-top: 8px;
+}
+
+.product-readiness-label-hero,
+.company-featured-card .product-readiness-label {
+  margin: 0;
+}
+
+.company-product-stack small {
+  max-width: 13rem;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.2;
+}
+
+@media (max-width: 520px) {
+  .product-tour-hero {
+    overflow-x: hidden;
+  }
+
+  .product-tour-brand-lockup {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .product-tour-brand-lockup > img {
+    width: 84px;
+  }
+
+  .product-tour-brand-lockup > div {
+    width: 100%;
+  }
+
+  .product-tour-hero h1 {
+    font-size: clamp(2.65rem, 16vw, 3.45rem);
+    overflow-wrap: anywhere;
+  }
+}

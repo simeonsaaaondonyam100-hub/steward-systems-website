@@ -8,6 +8,7 @@ import {
   type LucideIcon
 } from "lucide-react";
 
+import { getProductEngagementActions } from "@/modules/products/product-registry";
 import type { Product } from "@/modules/products/types";
 
 const productIcons: Record<Product["slug"], LucideIcon> = {
@@ -27,7 +28,7 @@ export function ProductCard({
 }: ProductCardProps) {
   const Icon = productIcons[product.slug];
   const featuredActions = showFeaturedActions
-    ? (product.featuredActions ?? [])
+    ? getProductEngagementActions(product)
     : [];
 
   return (
@@ -49,6 +50,9 @@ export function ProductCard({
         <div>
           <p className="eyebrow">{product.eyebrow}</p>
           <h3>{product.name}</h3>
+          <span className="product-readiness-label">
+            {product.publicStatusLabel}
+          </span>
         </div>
       </div>
       <p className="product-brand-line">{product.brandLine}</p>

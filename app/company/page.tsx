@@ -45,7 +45,7 @@ export default function CompanyPage() {
         </p>
         <div className="hero-actions">
           <Link className="button button-primary" href="/request-demo">
-            <span>Request a demo</span>
+            <span>Request Operavault demo</span>
             <ArrowRight aria-hidden="true" size={18} />
           </Link>
           <Link className="button button-ghost" href="/products">

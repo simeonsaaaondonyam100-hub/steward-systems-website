@@ -10,7 +10,10 @@ import {
   operavaultPlans,
   operavaultTourSections
 } from "../modules/product/operavault-product";
-import { products } from "../modules/products/product-registry";
+import {
+  getProductEngagementActions,
+  products
+} from "../modules/products/product-registry";
 
 const root = process.cwd();
 
@@ -143,7 +146,7 @@ test("product-tour pages mention core module examples", () => {
 
   assert.match(homepage, /Full-stack software for real-world operations/);
   assert.match(homepage, /Explore products/);
-  assert.match(homepage, /View Operavault/);
+  assert.match(homepage, /featuredProduct/);
   assert.match(operavaultTour, /operavaultHeroLede/);
   assert.match(operavaultTour, /operavault-category-grid/);
   assert.match(operavaultTour, /operavaultTourSections/);
@@ -164,6 +167,15 @@ test("public demo CTAs link to the request-demo route", () => {
   ];
 
   for (const file of files) {
+    if (file === "app/page.tsx") {
+      assert.match(
+        readProjectFile(file),
+        /featuredProduct\.demoUrl/,
+        `${file} should use the featured product demo URL for its request demo CTA`
+      );
+      continue;
+    }
+
     assert.match(
       readProjectFile(file),
       /href=["{]\/request-demo/,
@@ -172,19 +184,59 @@ test("public demo CTAs link to the request-demo route", () => {
   }
 });
 
-test("product registry exposes request-demo as the lead-management CTA", () => {
+test("product registry exposes readiness-aware public CTAs", () => {
   const operavault = products.find((product) => product.slug === "operavault");
+  const cantoria = products.find((product) => product.slug === "cantoria");
   const stewardLedger = products.find(
     (product) => product.slug === "steward-ledger"
   );
+  const operavaultActions = operavault
+    ? getProductEngagementActions(operavault)
+    : [];
+  const stewardLedgerActions = stewardLedger
+    ? getProductEngagementActions(stewardLedger)
+    : [];
 
+  assert.equal(operavault?.readiness, "demonstration_ready");
+  assert.equal(operavault?.publicPromotion, "featured");
+  assert.equal(operavault?.demoAvailable, true);
+  assert.equal(operavault?.pricingAvailable, true);
   assert.equal(operavault?.cta.href, "/request-demo");
   assert.equal(
-    operavault?.featuredActions?.some(
-      (action) =>
-        action.label === "Request Live Demo" && action.href === "/request-demo"
+    operavaultActions.some(
+      (action) => action.label === "Request Demo" && action.href === "/request-demo"
     ),
     true
   );
-  assert.equal(stewardLedger?.cta.href, "/request-demo");
+  assert.equal(
+    operavaultActions.some(
+      (action) =>
+        action.label === "View Pricing" &&
+        action.href === "/products/operavault/pricing"
+    ),
+    true
+  );
+
+  assert.equal(cantoria?.readiness, "early_access");
+  assert.equal(cantoria?.demoAvailable, false);
+  assert.equal(cantoria?.pricingAvailable, false);
+  assert.equal(cantoria?.publicStatusLabel, "Early Access / In Development");
+
+  assert.equal(stewardLedger?.readiness, "private_internal");
+  assert.equal(stewardLedger?.publicPromotion, "portfolio_only");
+  assert.equal(stewardLedger?.demoAvailable, false);
+  assert.equal(stewardLedger?.pricingAvailable, false);
+  assert.equal(
+    stewardLedger?.publicStatusLabel,
+    "Private Platform / In Development"
+  );
+  assert.notEqual(stewardLedger?.cta.href, "/request-demo");
+  assert.equal(
+    stewardLedgerActions.some(
+      (action) =>
+        action.label === "Discuss Governance Use Case" &&
+        action.href === "/contact?interest=steward_ledger&type=partnership"
+    ),
+    true
+  );
 });

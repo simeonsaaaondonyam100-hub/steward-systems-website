@@ -5,7 +5,7 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { operavaultPlans } from "@/modules/product/operavault-product";
 
 export const metadata: Metadata = {
-  title: "Operavault Pricing Overview | Steward Systems",
+  title: "Operavault Pricing Overview",
   description:
     "Review indicative Operavault plan tiers and request a Steward Systems conversation about school size, modules, deployment scope, and support needs."
 };

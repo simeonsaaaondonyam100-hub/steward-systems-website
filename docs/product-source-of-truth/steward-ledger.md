@@ -18,6 +18,17 @@ Current website data source:
 
 - `modules/products/product-registry.ts`
 
+Current public readiness:
+
+- Readiness: `private_internal`
+- Public promotion: `portfolio_only`
+- Public label: "Private Platform / In Development"
+- Demo CTA: disabled unless the owner approves a broader public walkthrough
+- Pricing CTA: disabled until public pricing is approved
+- Deck CTA: disabled until an approved downloadable deck exists
+- Trailer CTA: disabled until an approved public trailer exists
+- Primary CTA: "Discuss Governance Use Case" through Steward Systems Core
+
 Reviewed product evidence source:
 
 - Local Triple Twenty-Five / Steward Ledger portal workspace provided by the owner.
@@ -50,7 +61,7 @@ Current public route:
 
 ## Website Alignment Notes
 
-The current Steward Systems product registry marks Steward Ledger as `planned`. Based on the reviewed local product evidence, the public website should be updated in a later copy pass to describe Steward Ledger as active development with available finance/governance foundations.
+The Steward Systems product registry now treats Steward Ledger as an active portfolio product with private/internal readiness rather than a broadly demo-ready public product.
 
 Recommended public-safe claims:
 
@@ -76,7 +87,7 @@ Observed on 2026-06-04 through the local Triple Twenty-Five portal with owner-pr
 ## Allowed Public Claims
 
 - Steward Ledger is a Steward Systems product line for investment club and cooperative governance and treasury.
-- Visitors may request a walkthrough or register interest through Steward Systems Core.
+- Visitors may discuss a governance use case or register interest through Steward Systems Core.
 - Public website copy may describe active finance/governance foundations at a general product level.
 
 ## Restricted Claims

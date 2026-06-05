@@ -1,4 +1,4 @@
-import type { Product, ProductSlug } from "./types";
+import type { Product, ProductAction, ProductSlug } from "./types";
 
 export const products: Product[] = [
   {
@@ -19,27 +19,30 @@ export const products: Product[] = [
       "Accounts, admissions, procurement, and reporting workflows"
     ],
     status: "active",
+    readiness: "demonstration_ready",
+    publicPromotion: "featured",
+    publicStatusLabel: "Available for Demonstration",
+    demoAvailable: true,
+    pricingAvailable: true,
+    deckAvailable: false,
+    trailerAvailable: false,
+    featuredProduct: true,
     publicUrl: "/products/operavault",
     demoUrl: "/request-demo",
     cta: {
-      label: "Request demo",
+      label: "Request Demo",
       href: "/request-demo"
     },
     featuredActions: [
       {
-        label: "View Public Demo",
-        href: "/products/operavault/demo",
+        label: "Request Demo",
+        href: "/request-demo",
         variant: "primary"
       },
       {
-        label: "Request Live Demo",
-        href: "/request-demo",
-        variant: "secondary"
-      },
-      {
-        label: "View Pricing Overview",
+        label: "View Pricing",
         href: "/products/operavault/pricing",
-        variant: "ghost"
+        variant: "secondary"
       }
     ],
     logo: {
@@ -66,12 +69,26 @@ export const products: Product[] = [
       "Playback, composition support, and exports"
     ],
     status: "early_access",
+    readiness: "early_access",
+    publicPromotion: "early_access",
+    publicStatusLabel: "Early Access / In Development",
+    demoAvailable: false,
+    pricingAvailable: false,
+    deckAvailable: false,
+    trailerAvailable: false,
+    featuredProduct: false,
     publicUrl: "/products/cantoria",
-    demoUrl: "/contact?interest=cantoria&type=early_access",
     cta: {
-      label: "Join early access",
+      label: "Register Interest",
       href: "/contact?interest=cantoria&type=early_access"
     },
+    featuredActions: [
+      {
+        label: "Register Interest",
+        href: "/contact?interest=cantoria&type=early_access",
+        variant: "primary"
+      }
+    ],
     logo: {
       src: "/cantoria-logo.png",
       alt: "Cantoria logo"
@@ -95,13 +112,27 @@ export const products: Product[] = [
       "Treasury, investment, and approval workflows",
       "Audit-ready operating records for group accountability"
     ],
-    status: "planned",
+    status: "active",
+    readiness: "private_internal",
+    publicPromotion: "portfolio_only",
+    publicStatusLabel: "Private Platform / In Development",
+    demoAvailable: false,
+    pricingAvailable: false,
+    deckAvailable: false,
+    trailerAvailable: false,
+    featuredProduct: false,
     publicUrl: "/products/steward-ledger",
-    demoUrl: "/request-demo",
     cta: {
-      label: "Request walkthrough",
-      href: "/request-demo"
+      label: "Discuss Governance Use Case",
+      href: "/contact?interest=steward_ledger&type=partnership"
     },
+    featuredActions: [
+      {
+        label: "Discuss Governance Use Case",
+        href: "/contact?interest=steward_ledger&type=partnership",
+        variant: "primary"
+      }
+    ],
     logo: {
       src: "/triple-twenty-five-logo.jpeg",
       alt: "Triple Twenty-Five logo for the Steward Ledger product line"
@@ -118,6 +149,61 @@ export function getProductBySlug(slug: ProductSlug): Product {
   }
 
   return product;
+}
+
+export function getProductEngagementActions(product: Product): ProductAction[] {
+  const actions: ProductAction[] = [];
+
+  if (product.demoAvailable && product.demoUrl) {
+    actions.push({
+      label: "Request Demo",
+      href: product.demoUrl,
+      variant: "primary"
+    });
+  }
+
+  if (product.readiness === "early_access") {
+    actions.push({
+      label: "Register Interest",
+      href: product.cta.href,
+      variant: "primary"
+    });
+  }
+
+  if (product.readiness === "private_internal") {
+    actions.push({
+      label: "Discuss Governance Use Case",
+      href: product.cta.href,
+      variant: "primary"
+    });
+  }
+
+  if (product.pricingAvailable) {
+    actions.push({
+      label: "View Pricing",
+      href:
+        product.slug === "operavault"
+          ? "/products/operavault/pricing"
+          : "/pricing",
+      variant: actions.length ? "secondary" : "primary"
+    });
+  }
+
+  return actions;
+}
+
+export function getFeaturedProductActions(product: Product): ProductAction[] {
+  return [
+    {
+      label: "Explore Product",
+      href: product.publicUrl,
+      variant: "primary"
+    },
+    ...getProductEngagementActions(product).map((action) => ({
+      ...action,
+      variant: action.variant === "primary" ? "secondary" : action.variant
+    }))
+  ];
 }
 
 export function getProductSeedRows() {

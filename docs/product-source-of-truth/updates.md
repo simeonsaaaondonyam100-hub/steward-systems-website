@@ -2,6 +2,14 @@
 
 This log records meaningful changes to public product claims, plan language, status labels, and product-tour evidence.
 
+## 2026-06-05
+
+- Added readiness-based public visibility rules for Steward Systems products.
+- Set Operavault as the current featured and demonstration-ready product with demo and pricing CTAs enabled.
+- Set Cantoria as Early Access / In Development with Register Interest CTAs and no demo, pricing, deck, or trailer CTA.
+- Set Steward Ledger as Private Platform / In Development with governance use-case discussion CTAs and no demo, pricing, deck, or trailer CTA.
+- Confirmed public product CTAs now depend on readiness flags instead of assuming every product is demo-ready.
+
 ## 2026-06-04
 
 - Created the product source-of-truth workflow for Steward Systems public product pages.

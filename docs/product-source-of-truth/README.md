@@ -53,6 +53,25 @@ Use these statuses when updating public product claims:
 
 Do not describe an actively developed capability as merely a "future feature" when development work is already underway.
 
+## Product Readiness And Public Promotion
+
+Public product visibility is governed by readiness and promotion fields in `modules/products/product-registry.ts`.
+
+| Product | Readiness | Public Promotion | Public Label | Demo | Pricing | Deck | Trailer |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Operavault | `demonstration_ready` | `featured` | Available for Demonstration | Yes | Yes | No | No |
+| Cantoria | `early_access` | `early_access` | Early Access / In Development | No | No | No | No |
+| Steward Ledger | `private_internal` | `portfolio_only` | Private Platform / In Development | No | No | No | No |
+
+CTA rules:
+
+- Show `Request Demo` only when `demoAvailable` is true.
+- Show pricing links only when `pricingAvailable` is true.
+- Show deck or trailer links only when an approved public file exists and the matching availability flag is true.
+- Use `Register Interest` / `Join Early Access` for early-access products.
+- Use `Discuss Use Case` / `Learn More` for private/internal or portfolio-only products.
+- Operavault is currently the only featured, demo-ready product on the public website.
+
 ## Evidence Levels
 
 Each public claim should have at least one evidence note:

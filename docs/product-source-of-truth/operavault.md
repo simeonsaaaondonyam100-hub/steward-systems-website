@@ -19,6 +19,17 @@ Use this positioning across the public website unless Steward Systems updates th
 Current website data source:
 
 - `modules/product/operavault-product.ts`
+- `modules/products/product-registry.ts`
+
+Current public readiness:
+
+- Readiness: `demonstration_ready`
+- Public promotion: `featured`
+- Public label: "Available for Demonstration"
+- Demo CTA: enabled
+- Pricing CTA: enabled
+- Deck CTA: disabled until an approved downloadable deck exists
+- Trailer CTA: disabled until an approved public trailer exists
 
 Reviewed product evidence source:
 

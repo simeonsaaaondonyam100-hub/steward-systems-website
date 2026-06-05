@@ -7,10 +7,8 @@ import {
   demoRequestInterestAreas,
   demoRequestPlans
 } from "@/modules/demo-requests/types";
-import {
-  productInterests,
-  type ProductInterest
-} from "@/modules/enquiries/types";
+import { type ProductInterest } from "@/modules/enquiries/types";
+import { products } from "@/modules/products/product-registry";
 import {
   createDemoRequestAction,
   type CreateDemoRequestActionState
@@ -28,6 +26,10 @@ const initialState: CreateDemoRequestActionState = {
   message: ""
 };
 
+const demoProductInterests = products
+  .filter((product) => product.demoAvailable)
+  .map((product) => product.coreSlug);
+
 type DemoRequestFormProps = {
   defaultProductInterest?: ProductInterest;
   sourcePage: string;
@@ -41,6 +43,11 @@ export function DemoRequestForm({
     createDemoRequestAction,
     initialState
   );
+  const selectedProductInterest = demoProductInterests.includes(
+    defaultProductInterest
+  )
+    ? defaultProductInterest
+    : (demoProductInterests[0] ?? "operavault");
 
   return (
     <form className="enquiry-form demo-request-form" action={formAction}>
@@ -77,8 +84,8 @@ export function DemoRequestForm({
         </label>
         <label>
           <span>Product interest</span>
-          <select name="productSlug" defaultValue={defaultProductInterest}>
-            {productInterests.map((interest) => (
+          <select name="productSlug" defaultValue={selectedProductInterest}>
+            {demoProductInterests.map((interest) => (
               <option key={interest} value={interest}>
                 {productLabels[interest]}
               </option>
@@ -164,4 +171,3 @@ export function DemoRequestForm({
     </form>
   );
 }
-

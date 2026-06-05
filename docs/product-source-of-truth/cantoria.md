@@ -18,6 +18,17 @@ Current website data source:
 
 - `modules/products/product-registry.ts`
 
+Current public readiness:
+
+- Readiness: `early_access`
+- Public promotion: `early_access`
+- Public label: "Early Access / In Development"
+- Demo CTA: disabled until an owner-approved public demo exists
+- Pricing CTA: disabled until public pricing is approved
+- Deck CTA: disabled until an approved downloadable deck exists
+- Trailer CTA: disabled until an approved public trailer exists
+- Primary CTA: "Register Interest" through Steward Systems Core
+
 Reviewed product evidence source:
 
 - Local Cantoria product workspace provided by the owner.
