@@ -4,6 +4,7 @@ import { join } from "node:path";
 import test from "node:test";
 
 import {
+  getOperavaultStatusLabel,
   getOperavaultModuleBySlug,
   operavaultModuleGroups,
   operavaultModules,
@@ -95,6 +96,24 @@ test("Operavault product packaging exposes the full public module universe", () 
   assert.equal(
     getOperavaultModuleBySlug("waec-jamb-standard-cbt")?.slug,
     "cbt-waec-jamb-testing"
+  );
+  assert.equal(getOperavaultStatusLabel("available"), "Ready for use");
+  assert.equal(getOperavaultStatusLabel("active_development"), "In active development");
+  assert.deepEqual(
+    [
+      "report-card-generation",
+      "broadsheet-publishing",
+      "lesson-plan-submission",
+      "diary-filling",
+      "subject-class-attendance",
+      "schemes-of-work",
+      "advisory-records",
+      "advisory-meetings-reporting",
+      "class-noticeboard",
+      "masked-broadsheet-publishing",
+      "appraisal"
+    ].map((slug) => getOperavaultModuleBySlug(slug)?.status),
+    Array(11).fill("available")
   );
 });
 

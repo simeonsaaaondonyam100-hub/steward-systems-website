@@ -3666,8 +3666,8 @@ h3,
 /* Operavault focused public landing page. */
 .ova-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.02fr) minmax(360px, 0.78fr);
-  gap: clamp(28px, 4vw, 58px);
+  grid-template-columns: minmax(0, 0.98fr) minmax(380px, 0.72fr);
+  gap: clamp(32px, 4.6vw, 70px);
   align-items: center;
   min-height: calc(100svh - 92px);
   padding: clamp(54px, 7vw, 88px) max(20px, calc((100vw - var(--max-width)) / 2));
@@ -3679,6 +3679,7 @@ h3,
   display: grid;
   gap: 22px;
   min-width: 0;
+  max-width: 780px;
 }
 
 .ova-brand-lockup {
@@ -3690,6 +3691,7 @@ h3,
 
 .ova-brand-lockup > div {
   min-width: 0;
+  max-width: 100%;
 }
 
 .ova-brand-lockup img {
@@ -3708,8 +3710,9 @@ h3,
   margin: 0;
   color: var(--navy);
   font-family: var(--font-display);
-  font-size: clamp(4rem, 10vw, 8.6rem);
-  line-height: 0.88;
+  font-size: clamp(3.85rem, 7.6vw, 6.95rem);
+  line-height: 0.92;
+  overflow-wrap: anywhere;
 }
 
 .ova-brand-lockup span {
@@ -3740,7 +3743,9 @@ h3,
 .ova-command-shell {
   display: grid;
   gap: 18px;
+  justify-self: end;
   min-width: 0;
+  width: min(100%, 560px);
   padding: clamp(20px, 2.8vw, 30px);
   color: #fff8df;
   background:

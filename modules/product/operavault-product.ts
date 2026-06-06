@@ -176,9 +176,9 @@ const moduleSeeds: OperavaultModuleSeed[] = [
     slug: "report-card-generation",
     name: "Report Card Generation",
     group: "Academic Operations",
-    status: "active_development",
+    status: "available",
     summary:
-      "Report cards are being refined around locked snapshots, TIC handoff, and parent publication.",
+      "Report cards compile locked snapshots, TIC handoff, and parent publication into one controlled workflow.",
     problem:
       "Schools often compile results from scattered teacher score sheets, comments, behaviour records, and approval notes. This module creates a controlled path toward report-card integrity.",
     users: ["IT / school section", "academic administrators", "TICs"],
@@ -194,7 +194,7 @@ const moduleSeeds: OperavaultModuleSeed[] = [
     aliases: ["broadsheet-class-noticeboard"],
     name: "Broadsheet Publishing",
     group: "Academic Operations",
-    status: "active_development",
+    status: "available",
     summary:
       "IT broadsheets support class and year-group review before final report-card locking.",
     workflows: [
@@ -223,7 +223,7 @@ const moduleSeeds: OperavaultModuleSeed[] = [
     slug: "lesson-plan-submission",
     name: "Lesson Plan Submission",
     group: "Academic Operations",
-    status: "active_development",
+    status: "available",
     summary:
       "Lesson plans connect teacher assignments to weekly submission and HOD review evidence.",
     workflows: [
@@ -237,7 +237,7 @@ const moduleSeeds: OperavaultModuleSeed[] = [
     slug: "diary-filling",
     name: "Diary Filling",
     group: "Academic Operations",
-    status: "active_development",
+    status: "available",
     summary:
       "Class diary records connect scheme topics, taught status, homework evidence, and HOD checks.",
     workflows: [
@@ -265,9 +265,9 @@ const moduleSeeds: OperavaultModuleSeed[] = [
     slug: "subject-class-attendance",
     name: "Subject/Class Attendance",
     group: "Academic Operations",
-    status: "active_development",
+    status: "available",
     summary:
-      "Subject and class attendance is being aligned with timetable and academic records.",
+      "Subject and class attendance links timetable context, class records, and academic reporting signals.",
     workflows: [
       "Link attendance to class context",
       "Add subject attendance context",
@@ -279,7 +279,7 @@ const moduleSeeds: OperavaultModuleSeed[] = [
     slug: "schemes-of-work",
     name: "Schemes of Work",
     group: "Academic Operations",
-    status: "active_development",
+    status: "available",
     summary:
       "Schemes of Work support file evidence and structured topic rows for diary automation.",
     workflows: [
@@ -293,7 +293,7 @@ const moduleSeeds: OperavaultModuleSeed[] = [
     slug: "advisory-records",
     name: "Advisory Records",
     group: "Academic Operations",
-    status: "active_development",
+    status: "available",
     summary:
       "Advisory records capture fortnight cycles, advisee meetings, parent meetings, and report evidence.",
     workflows: [
@@ -351,9 +351,9 @@ const moduleSeeds: OperavaultModuleSeed[] = [
     slug: "advisory-meetings-reporting",
     name: "Advisory Meetings and Reporting",
     group: "Attendance and Discipline",
-    status: "active_development",
+    status: "available",
     summary:
-      "Fortnightly advisory reports are in active development with separate advisee, father, and mother evidence.",
+      "Fortnightly advisory reports capture separate advisee, father, and mother evidence with submission visibility.",
     users: ["Advisers", "formation leadership", "parents where permitted"],
     workflows: [
       "Capture cycle-based reports",
@@ -525,9 +525,9 @@ const moduleSeeds: OperavaultModuleSeed[] = [
     slug: "class-noticeboard",
     name: "Class Noticeboard",
     group: "Communication and Parent Engagement",
-    status: "active_development",
+    status: "available",
     summary:
-      "Class noticeboard publishing is being refined for class and arm visibility and masked student outputs.",
+      "Class noticeboard publishing targets class and arm visibility with masked student-output controls.",
     workflows: [
       "Target notices by class",
       "Prepare masked broadsheet publishing",
@@ -539,7 +539,7 @@ const moduleSeeds: OperavaultModuleSeed[] = [
     slug: "masked-broadsheet-publishing",
     name: "Masked Broadsheet Publishing",
     group: "Communication and Parent Engagement",
-    status: "active_development",
+    status: "available",
     summary:
       "Masked broadsheet publication protects student dignity by using admission numbers for noticeboard views.",
     workflows: [
@@ -610,9 +610,9 @@ const moduleSeeds: OperavaultModuleSeed[] = [
     slug: "appraisal",
     name: "Appraisal",
     group: "Intelligence and Analytics",
-    status: "active_development",
+    status: "available",
     summary:
-      "Appraisal is being built from real workload, attendance, lesson/diary, advisory, and review evidence.",
+      "Appraisal draws from real workload, attendance, lesson/diary, advisory, and review evidence.",
     workflows: [
       "Build evidence-based scoring",
       "Support supervisor accountability",
@@ -971,7 +971,7 @@ export function getOperavaultModulesByGroup(group: OperavaultModuleGroup) {
 
 export function getOperavaultStatusLabel(status: OperavaultModuleStatus) {
   if (status === "available") {
-    return "Operational foundation available";
+    return "Ready for use";
   }
 
   if (status === "active_development") {
