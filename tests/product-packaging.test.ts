@@ -180,6 +180,9 @@ test("public demo CTAs link to the request-demo route", () => {
 });
 
 test("public product visibility keeps Operavault as the only public showcase product", () => {
+  const cantoriaPage = readProjectFile("app/products/cantoria/page.tsx");
+  const stewardLedgerPage = readProjectFile("app/products/steward-ledger/page.tsx");
+
   assert.equal(publicProductVisibilityConfig.featuredProductSlug, "operavault");
   assert.deepEqual(publicProductVisibilityConfig.publicNavigationProductSlugs, [
     "operavault"
@@ -192,6 +195,8 @@ test("public product visibility keeps Operavault as the only public showcase pro
     getHiddenPortfolioProducts().map((product) => product.slug),
     ["cantoria", "steward-ledger"]
   );
+  assert.match(cantoriaPage, /isProductPubliclyVisible/);
+  assert.match(stewardLedgerPage, /isProductPubliclyVisible/);
 });
 
 test("product registry exposes readiness-aware public CTAs", () => {

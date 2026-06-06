@@ -42,3 +42,7 @@ export function getPublicShowcaseProducts(): Product[] {
 
   return products.filter((product) => navigationSlugs.has(product.slug));
 }
+
+export function isProductPubliclyVisible(slug: ProductSlug): boolean {
+  return publicProductVisibilityConfig.publicNavigationProductSlugs.includes(slug);
+}

@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 import { ProductDetail } from "@/components/marketing/product-detail";
 import { getProductBySlug } from "@/modules/products/product-registry";
+import { isProductPubliclyVisible } from "@/modules/products/public-visibility";
 
 const product = getProductBySlug("cantoria");
 
@@ -11,6 +13,10 @@ export const metadata: Metadata = {
 };
 
 export default function CantoriaPage() {
+  if (!isProductPubliclyVisible(product.slug)) {
+    notFound();
+  }
+
   return (
     <ProductDetail
       product={product}
