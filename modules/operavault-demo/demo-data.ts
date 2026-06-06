@@ -385,15 +385,15 @@ export const operavaultPlanOverview = [
   },
   {
     name: "Standard",
-    positioning: "Academic and administrative workflow foundation.",
+    positioning: "Academic and administrative workflow layer.",
     features: [
       "Academics",
       "Gradebook",
       "Report cards",
       "Staff attendance",
-      "HR workspace foundation",
+      "HR workspace",
       "Procurement workflow",
-      "Parent communication foundation"
+      "Parent communication"
     ]
   },
   {

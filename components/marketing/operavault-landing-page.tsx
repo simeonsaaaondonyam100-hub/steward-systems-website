@@ -112,7 +112,7 @@ const conversionDeliverables: Array<{
 ];
 
 const groupSummaries: Record<OperavaultModuleGroup, string> = {
-  "People Records": "Student, staff, parent, onboarding, and permission foundations.",
+  "People Records": "Student, staff, parent, onboarding, and permission records.",
   "Academic Operations":
     "Gradebook, reports, broadsheets, lesson evidence, timetable, schemes, and advisory records.",
   "Attendance and Discipline":
@@ -338,7 +338,7 @@ export function OperavaultLandingPage() {
                 <h3>{groupSummaries[group]}</h3>
                 <div className="ova-workstream-metrics">
                   <span>{counts.total} modules</span>
-                  <span>{counts.available} available foundations</span>
+                  <span>{counts.available} ready for use</span>
                   <span>{counts.active} in active development</span>
                 </div>
                 <div className="ova-workstream-links">

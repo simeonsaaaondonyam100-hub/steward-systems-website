@@ -721,7 +721,7 @@ export const operavaultPlans: OperavaultPlan[] = [
     positioning: "Start with core records and day-to-day visibility.",
     idealFor:
       "Small schools starting digital operations without overwhelming the school team.",
-    availability: "Core foundation",
+    availability: "Core operations",
     features: [
       "Students, staff, and parents/guardians",
       "Basic attendance",
