@@ -28,6 +28,7 @@ Current public readiness:
 - Deck CTA: disabled until an approved downloadable deck exists
 - Trailer CTA: disabled until an approved public trailer exists
 - Primary CTA: "Register Interest" through Steward Systems Core
+- Public showcase: hidden from the current public landing page and primary navigation while Operavault remains the rollout focus
 
 Reviewed product evidence source:
 

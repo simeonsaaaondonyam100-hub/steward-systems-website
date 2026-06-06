@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { OperavaultProductTour } from "@/components/marketing/operavault-product-tour";
+import { OperavaultLandingPage } from "@/components/marketing/operavault-landing-page";
 import { getProductBySlug } from "@/modules/products/product-registry";
 
 const product = getProductBySlug("operavault");
@@ -11,5 +11,5 @@ export const metadata: Metadata = {
 };
 
 export default function OperavaultPage() {
-  return <OperavaultProductTour />;
+  return <OperavaultLandingPage />;
 }

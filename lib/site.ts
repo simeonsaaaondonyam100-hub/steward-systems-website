@@ -1,13 +1,12 @@
 export const siteConfig = {
-  name: "Steward Systems",
+  name: "Operavault",
   description:
-    "Steward Systems is a full-stack software company building operating systems, applications, Progressive Web Applications, websites, portals, and product lines that solve real-world operational problems.",
+    "Operavault is Steward Systems' current public product focus: one secure operating system for school administration, academic records, parent engagement, compliance evidence, staff workflows, and management visibility.",
   url: "https://stewardsystems.com",
   navItems: [
-    { label: "Products", href: "/products" },
-    { label: "Operavault", href: "/products/operavault" },
+    { label: "Modules", href: "/features" },
     { label: "Pricing", href: "/pricing" },
-    { label: "Company", href: "/company" },
+    { label: "Public demo", href: "/products/operavault/demo" },
     { label: "Contact", href: "/contact" },
     { label: "Request demo", href: "/request-demo" }
   ]

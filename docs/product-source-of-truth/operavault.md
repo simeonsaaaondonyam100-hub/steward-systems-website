@@ -25,6 +25,7 @@ Current public readiness:
 
 - Readiness: `demonstration_ready`
 - Public promotion: `featured`
+- Public showcase: current homepage and primary public product focus
 - Public label: "Available for Demonstration"
 - Demo CTA: enabled
 - Pricing CTA: enabled

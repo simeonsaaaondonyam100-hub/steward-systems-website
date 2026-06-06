@@ -14,6 +14,11 @@ import {
   getProductEngagementActions,
   products
 } from "../modules/products/product-registry";
+import {
+  getHiddenPortfolioProducts,
+  getPublicShowcaseProducts,
+  publicProductVisibilityConfig
+} from "../modules/products/public-visibility";
 
 const root = process.cwd();
 
@@ -144,9 +149,8 @@ test("product-tour pages mention core module examples", () => {
     );
   }
 
-  assert.match(homepage, /Full-stack software for real-world operations/);
-  assert.match(homepage, /Explore products/);
-  assert.match(homepage, /featuredProduct/);
+  assert.match(homepage, /OperavaultLandingPage/);
+  assert.doesNotMatch(homepage, /Product Portfolio/);
   assert.match(operavaultTour, /operavaultHeroLede/);
   assert.match(operavaultTour, /operavault-category-grid/);
   assert.match(operavaultTour, /operavaultTourSections/);
@@ -156,7 +160,7 @@ test("product-tour pages mention core module examples", () => {
 
 test("public demo CTAs link to the request-demo route", () => {
   const files = [
-    "app/page.tsx",
+    "components/marketing/operavault-landing-page.tsx",
     "app/features/page.tsx",
     "app/features/[featureSlug]/page.tsx",
     "app/pricing/page.tsx",
@@ -167,21 +171,27 @@ test("public demo CTAs link to the request-demo route", () => {
   ];
 
   for (const file of files) {
-    if (file === "app/page.tsx") {
-      assert.match(
-        readProjectFile(file),
-        /featuredProduct\.demoUrl/,
-        `${file} should use the featured product demo URL for its request demo CTA`
-      );
-      continue;
-    }
-
     assert.match(
       readProjectFile(file),
       /href=["{]\/request-demo/,
       `${file} should include a visible request demo CTA`
     );
   }
+});
+
+test("public product visibility keeps Operavault as the only public showcase product", () => {
+  assert.equal(publicProductVisibilityConfig.featuredProductSlug, "operavault");
+  assert.deepEqual(publicProductVisibilityConfig.publicNavigationProductSlugs, [
+    "operavault"
+  ]);
+  assert.deepEqual(
+    getPublicShowcaseProducts().map((product) => product.slug),
+    ["operavault"]
+  );
+  assert.deepEqual(
+    getHiddenPortfolioProducts().map((product) => product.slug),
+    ["cantoria", "steward-ledger"]
+  );
 });
 
 test("product registry exposes readiness-aware public CTAs", () => {

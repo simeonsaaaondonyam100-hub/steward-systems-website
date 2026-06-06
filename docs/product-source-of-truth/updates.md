@@ -2,6 +2,15 @@
 
 This log records meaningful changes to public product claims, plan language, status labels, and product-tour evidence.
 
+## 2026-06-06
+
+- Moved the public website entry experience from Steward Systems portfolio-first to Operavault-first.
+- Added a centralized public visibility configuration so the current showcase product and hidden portfolio products are controlled from one source.
+- Kept Operavault as the only product in visible public product navigation and showcase surfaces.
+- Moved Cantoria and Steward Ledger out of public portfolio display while preserving their registry records and hidden admin visibility.
+- Added a protected product visibility admin page using the existing governance.manage_settings access boundary.
+- Rebuilt the public Operavault landing page around operational deliverables, workstreams, plan fit, trust boundaries, and demo conversion.
+
 ## 2026-06-05
 
 - Added readiness-based public visibility rules for Steward Systems products.

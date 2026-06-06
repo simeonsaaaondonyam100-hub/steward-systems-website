@@ -1,53 +1,46 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { products } from "@/modules/products/product-registry";
+import { getCurrentPublicProduct } from "@/modules/products/public-visibility";
 
 export function SiteFooter() {
+  const product = getCurrentPublicProduct();
+
   return (
     <footer className="site-footer">
       <div>
         <Link className="brand-mark footer-brand" href="/">
           <span className="brand-symbol brand-symbol-image" aria-hidden="true">
             <Image
-              src="/steward-systems-logo.png"
+              src={product.logo.src}
               alt=""
               width={58}
               height={58}
             />
           </span>
           <span className="brand-copy">
-            <strong>Steward Systems</strong>
-            <small>Full-stack software company</small>
+            <strong>{product.name}</strong>
+            <small>by Steward Systems</small>
           </span>
         </Link>
         <p>
-          Steward Systems designs, builds, and operates practical software
-          products for institutions and teams that need dependable workflows,
-          strong records, and management visibility.
+          Operavault is the current public product focus from Steward Systems:
+          a secure school operations platform for records, workflows,
+          communication, finance visibility, and management evidence.
         </p>
       </div>
       <div className="footer-links">
         <div>
-          <h2>Company</h2>
-          <Link href="/products">Products</Link>
-          <Link href="/company">About</Link>
-          <Link href="/contact">Contact</Link>
-        </div>
-        <div>
           <h2>Operavault</h2>
-          <Link href="/products/operavault">Product tour</Link>
           <Link href="/features">Modules</Link>
           <Link href="/pricing">Pricing</Link>
+          <Link href="/products/operavault/demo">Public demo</Link>
           <Link href="/request-demo">Request demo</Link>
         </div>
         <div>
-          <h2>Products</h2>
-          {products.map((product) => (
-            <Link key={product.slug} href={`/products/${product.slug}`}>
-              {product.name}
-            </Link>
-          ))}
+          <h2>Steward Systems</h2>
+          <Link href="/company">Company</Link>
+          <Link href="/contact">Contact</Link>
         </div>
       </div>
     </footer>

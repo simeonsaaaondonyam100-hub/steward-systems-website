@@ -6,6 +6,10 @@ import {
   getProductSeedRows,
   products
 } from "@/modules/products/product-registry";
+import {
+  getHiddenPortfolioProducts,
+  getPublicNavigationProducts
+} from "@/modules/products/public-visibility";
 
 describe("product registry seed shape", () => {
   it("contains the three Steward Systems Core products", () => {
@@ -89,6 +93,16 @@ describe("product registry seed shape", () => {
         href: "/products/operavault/pricing",
         variant: "secondary"
       })
+    ]);
+  });
+
+  it("keeps only Operavault in the current public navigation product set", () => {
+    expect(getPublicNavigationProducts().map((product) => product.slug)).toEqual([
+      "operavault"
+    ]);
+    expect(getHiddenPortfolioProducts().map((product) => product.slug)).toEqual([
+      "cantoria",
+      "steward-ledger"
     ]);
   });
 });

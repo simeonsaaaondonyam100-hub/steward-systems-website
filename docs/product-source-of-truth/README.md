@@ -56,6 +56,7 @@ Do not describe an actively developed capability as merely a "future feature" wh
 ## Product Readiness And Public Promotion
 
 Public product visibility is governed by readiness and promotion fields in `modules/products/product-registry.ts`.
+The active public showcase is governed by `modules/products/public-visibility.ts`.
 
 | Product | Readiness | Public Promotion | Public Label | Demo | Pricing | Deck | Trailer |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -71,6 +72,14 @@ CTA rules:
 - Use `Register Interest` / `Join Early Access` for early-access products.
 - Use `Discuss Use Case` / `Learn More` for private/internal or portfolio-only products.
 - Operavault is currently the only featured, demo-ready product on the public website.
+
+Public showcase rules:
+
+- `/` should present the current public focus product, not the full Steward Systems portfolio.
+- Steward Systems should appear as the product maker while Operavault is under public rollout focus.
+- The visible public product navigation currently includes only Operavault.
+- Cantoria and Steward Ledger remain registry-backed hidden portfolio products until the owner changes public visibility.
+- Hidden products should not appear in the main nav, public landing page product cards, or public footer product list.
 
 ## Evidence Levels
 
