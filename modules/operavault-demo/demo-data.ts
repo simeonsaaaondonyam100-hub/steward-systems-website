@@ -29,7 +29,7 @@ export type DemoSection = {
 };
 
 export const privacyAssurance =
-  "This demo uses synthetic sample data only. No private school, student, parent, staff, result, HR, advisory, attendance, or finance data is shown.";
+  "This tour uses illustrative sample records. It does not display private school, student, parent, staff, result, HR, advisory, attendance, or finance records.";
 
 export const operavaultDemoSections: DemoSection[] = [
   {
@@ -37,12 +37,12 @@ export const operavaultDemoSections: DemoSection[] = [
     eyebrow: "Command Center",
     title: "Institution-wide operating snapshot",
     description:
-      "A leadership view for monitoring daily academic, administrative, finance, and HR movement without exposing private tenant records.",
+      "A leadership view for monitoring daily academic, administrative, finance, and HR movement while protecting private institution records.",
     metrics: [
       {
         label: "Active workspaces",
         value: "12",
-        context: "Synthetic departments in this public demo"
+        context: "Illustrative departments for the guided tour"
       },
       {
         label: "Open approvals",
@@ -52,7 +52,7 @@ export const operavaultDemoSections: DemoSection[] = [
       {
         label: "Today alerts",
         value: "42",
-        context: "Public-safe notification examples"
+        context: "Illustrative notification examples"
       }
     ],
     workflow: [
@@ -69,7 +69,7 @@ export const operavaultDemoSections: DemoSection[] = [
       {
         title: "Leadership digest",
         status: "Queued",
-        detail: "Synthetic operating summary prepared for school leadership."
+        detail: "Illustrative operating summary prepared for school leadership."
       }
     ]
   },
@@ -78,7 +78,7 @@ export const operavaultDemoSections: DemoSection[] = [
     eyebrow: "Academic Results Workflow",
     title: "From grade entry to report readiness",
     description:
-      "A public-safe view of the academic results pipeline: subject entry, review, broadsheet readiness, and report publishing status.",
+      "A guided view of the academic results pipeline: subject entry, review, broadsheet readiness, and report publishing status.",
     columns: [
       { key: "stage", label: "Stage" },
       { key: "owner", label: "Owner" },
@@ -96,7 +96,7 @@ export const operavaultDemoSections: DemoSection[] = [
         stage: "Department moderation",
         owner: "Academic lead",
         status: "In review",
-        nextStep: "Approve synthetic broadsheet"
+        nextStep: "Approve sample broadsheet"
       },
       {
         stage: "Report publishing",
@@ -109,9 +109,9 @@ export const operavaultDemoSections: DemoSection[] = [
   {
     id: "attendance",
     eyebrow: "Student Attendance",
-    title: "Daily attendance patterns without private records",
+    title: "Daily attendance patterns with privacy by design",
     description:
-      "Attendance views can help teams see cohort-level movement while protecting individual learner identity in this public demo.",
+      "Attendance views can help teams see cohort-level movement while protecting individual learner identity during evaluation.",
     columns: [
       { key: "group", label: "Group" },
       { key: "present", label: "Present" },
@@ -144,7 +144,7 @@ export const operavaultDemoSections: DemoSection[] = [
     eyebrow: "HR Department",
     title: "Staff lifecycle and department readiness",
     description:
-      "Synthetic HR examples show onboarding, leave, workload, appraisal, and documentation workflows without staff codes or private HR data.",
+      "Illustrative HR examples show onboarding, leave, workload, appraisal, and documentation workflows without staff codes or private HR data.",
     columns: [
       { key: "workflow", label: "Workflow" },
       { key: "count", label: "Items" },
@@ -182,7 +182,7 @@ export const operavaultDemoSections: DemoSection[] = [
       {
         label: "Open finance tasks",
         value: "27",
-        context: "Synthetic accounts workflow"
+        context: "Illustrative accounts workflow"
       },
       {
         label: "Budget reviews",
@@ -192,14 +192,14 @@ export const operavaultDemoSections: DemoSection[] = [
       {
         label: "Reconciliation queues",
         value: "3",
-        context: "Public-safe finance queues"
+        context: "Illustrative finance queues"
       }
     ],
     workflow: [
       {
         title: "Department budget request",
         status: "Submitted",
-        detail: "Synthetic request awaiting accounts review."
+        detail: "Sample request awaiting accounts review."
       },
       {
         title: "Payment reconciliation",
@@ -322,12 +322,12 @@ export const operavaultDemoSections: DemoSection[] = [
       {
         label: "Workspace templates",
         value: "9",
-        context: "Public demo configuration"
+        context: "Guided tour configuration"
       },
       {
         label: "Role-based queues",
         value: "16",
-        context: "Synthetic task routing"
+        context: "Illustrative task routing"
       },
       {
         label: "Shared reports",

@@ -78,9 +78,8 @@ export default function CompanyPage() {
           <ShieldCheck aria-hidden="true" size={24} />
           <h2>Operational boundaries</h2>
           <p>
-            Product lines remain independently governable. Public pages can
-            explain products and collect interest without exposing private
-            operational data.
+            Product lines remain independently governable. Buyers can explore
+            the products clearly without exposing private operational data.
           </p>
         </article>
       </section>
@@ -138,13 +137,13 @@ export default function CompanyPage() {
 
       <section className="page-section muted-section two-column">
         <div>
-          <p className="eyebrow">Product boundary</p>
-          <h2>Steward Systems Core captures interest. Product systems own operations.</h2>
+          <p className="eyebrow">Product discipline</p>
+          <h2>Steward Systems builds focused products without blurring operational boundaries.</h2>
           <p>
-            The website explains products, captures demo requests, and routes
-            leads into Steward Systems Core. Operational school data, music
-            projects, financial governance records, module enforcement, and
-            authenticated workflows remain inside their product systems.
+            Each product is designed around the records, permissions, workflows,
+            and governance needs of its own market. That discipline keeps
+            product discovery clear while protecting the operational work each
+            customer entrusts to the software.
           </p>
         </div>
         <div className="capability-list">
@@ -154,7 +153,7 @@ export default function CompanyPage() {
           </div>
           <div className="capability-item">
             <ShieldCheck aria-hidden="true" size={18} />
-            <span>No institution-specific content belongs in reusable public pages.</span>
+            <span>Customer records and institution-specific content remain private by design.</span>
           </div>
         </div>
       </section>

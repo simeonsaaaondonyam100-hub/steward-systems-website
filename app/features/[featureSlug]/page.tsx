@@ -71,8 +71,8 @@ export default async function FeaturePage({ params }: FeaturePageProps) {
           <span>{getOperavaultStatusLabel(moduleData.status)}</span>
           <strong>{moduleData.planAvailability}</strong>
           <p>
-            Public product-tour mockups use synthetic records only. No
-            institution-specific or private school data is exposed.
+            Product-tour examples are illustrative, so your school can evaluate
+            the workflow without sharing private records.
           </p>
         </div>
       </section>
@@ -112,7 +112,7 @@ export default async function FeaturePage({ params }: FeaturePageProps) {
       <section className="page-section product-section-tight">
         <div className="section-heading">
           <p className="eyebrow">Key workflows</p>
-          <h2>What the module helps teams do.</h2>
+          <h2>What this module helps your school control.</h2>
         </div>
         <div className="workflow-grid">
           {moduleData.workflows.map((workflow, index) => (
@@ -120,8 +120,8 @@ export default async function FeaturePage({ params }: FeaturePageProps) {
               <span>{String(index + 1).padStart(2, "0")}</span>
               <h3>{workflow}</h3>
               <p>
-                The workflow is represented in the public tour with synthetic
-                examples and can be discussed in a live demo.
+                Review how this workflow can support clearer ownership,
+                evidence, and next steps during a live demo.
               </p>
             </article>
           ))}
@@ -133,9 +133,8 @@ export default async function FeaturePage({ params }: FeaturePageProps) {
           <p className="eyebrow">Who uses it</p>
           <h2>Designed around accountable school roles.</h2>
           <p>
-            The public page explains the module at a product level. A live demo
-            can walk through the relevant roles and permission boundaries for
-            your institution.
+            A live demo can walk through the relevant roles, review points, and
+            permission boundaries for your institution.
           </p>
         </div>
         <div className="capability-list">

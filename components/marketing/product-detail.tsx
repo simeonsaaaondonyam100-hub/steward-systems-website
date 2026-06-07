@@ -107,8 +107,9 @@ export function ProductDetail({
               <CheckCircle2 aria-hidden="true" size={18} />
               <h3>{capability}</h3>
               <p>
-                Public pages explain this capability at product level while the
-                operating system keeps real records inside the product boundary.
+                Steward Systems frames this capability around practical
+                adoption, governed access, and records that remain protected
+                inside the product experience.
               </p>
             </article>
           ))}
@@ -116,8 +117,8 @@ export function ProductDetail({
       </section>
 
       <section className="page-section muted-section product-boundary-section">
-        <p className="eyebrow">Backend boundary</p>
-        <h2>Product operations stay inside the product.</h2>
+        <p className="eyebrow">Product integrity</p>
+        <h2>Each product is built to protect the work it manages.</h2>
         <div className="proof-grid">
           {proofPoints.map((point) => (
             <article key={point} className="proof-item">
@@ -133,9 +134,9 @@ export function ProductDetail({
           <p className="eyebrow">Next Step</p>
           <h2>Start with the right product conversation.</h2>
           <p>
-            Steward Systems can route demo requests, early-access interest, and
-            governance use-case conversations without merging product
-            operations into the public website.
+            Steward Systems can help you choose the right walkthrough, demo, or
+            early-access conversation according to the product and the work your
+            organisation needs to control.
           </p>
         </div>
         <Link className="button button-primary" href={nextStepAction.href}>

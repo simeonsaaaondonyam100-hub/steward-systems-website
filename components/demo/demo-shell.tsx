@@ -15,8 +15,9 @@ export function DemoShell() {
           <p className="eyebrow">Operavault by Steward Systems</p>
           <h1>See Operavault in action</h1>
           <p>
-            A guided public demo of Steward Systems&apos; institutional
-            operations platform for schools and organisations.
+            A guided product tour for school leaders who want to see how
+            records, workflows, approvals, communication, and visibility work
+            together.
           </p>
           <div className="hero-actions">
             <Link
@@ -48,7 +49,7 @@ export function DemoShell() {
 
       <section className="page-section demo-index">
         <p className="eyebrow">Guided tour</p>
-        <h2>Public-safe views of the institutional operating layer.</h2>
+        <h2>Illustrative views of the institutional operating layer.</h2>
         <div className="demo-index-grid">
           {operavaultDemoSections.map((section) => (
             <a key={section.id} href={`#${section.id}`}>

@@ -29,7 +29,7 @@ export default function OperavaultPricingPage() {
             <ArrowRight aria-hidden="true" size={18} />
           </Link>
           <Link className="button button-ghost" href="/products/operavault/demo">
-            <span>View Public Demo</span>
+            <span>View demo tour</span>
             <ArrowRight aria-hidden="true" size={18} />
           </Link>
         </div>
@@ -61,27 +61,27 @@ export default function OperavaultPricingPage() {
 
       <section className="page-section muted-section two-column">
         <div>
-          <p className="eyebrow">Business model boundary</p>
-          <h2>Public pricing overview lives here. Tenant enforcement does not.</h2>
+          <p className="eyebrow">Plan fit</p>
+          <h2>Confirm the plan that matches your modules, users, and rollout depth.</h2>
           <p>
-            The Steward Systems website owns product positioning, public demo,
-            pricing overview, request-demo funnel, and Core business pipeline.
+            The pricing conversation should clarify operating scope before
+            implementation: module mix, user groups, support requirements,
+            rollout sequence, and institutional priorities.
           </p>
         </div>
         <div className="capability-list">
           <div className="capability-item">
             <CheckCircle2 aria-hidden="true" size={18} />
             <span>
-              The Operavault portal later owns tenant subscription plan,
-              enabled modules, feature limits, billing/subscription status, and
-              module access enforcement.
+              Operavault can be configured around enabled modules, plan scope,
+              roles, permissions, and access limits during rollout.
             </span>
           </div>
           <div className="capability-item">
             <CheckCircle2 aria-hidden="true" size={18} />
             <span>
-              This website does not implement internal plan configuration or
-              portal module enforcement.
+              Founder Institutional Partner adoption remains approval-only and
+              structured around feedback, refinement, and paid rollout scope.
             </span>
           </div>
         </div>

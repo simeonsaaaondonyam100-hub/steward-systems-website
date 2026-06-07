@@ -75,12 +75,12 @@ export default function PricingPage() {
 
       <section className="page-section two-column muted-section">
         <div>
-          <p className="eyebrow">Plan boundary</p>
-          <h2>Public pricing explains packaging. Portal enforcement belongs inside Operavault.</h2>
+          <p className="eyebrow">Plan fit</p>
+          <h2>Pricing is matched to the operating scope your school is ready to adopt.</h2>
           <p>
-            The Steward Systems website explains plan options and captures demo
-            interest. Tenant subscription enforcement, enabled modules, billing
-            state, and feature limits belong inside the Operavault portal.
+            The best plan depends on the modules you need, the number of users,
+            rollout depth, support expectations, and whether the institution is
+            adopting one workflow or a full operating layer.
           </p>
         </div>
         <div className="capability-list">
@@ -90,7 +90,7 @@ export default function PricingPage() {
           </div>
           <div className="capability-item">
             <CheckCircle2 aria-hidden="true" size={18} />
-            <span>Active-development modules require structured review.</span>
+            <span>Active-development modules are reviewed clearly before rollout.</span>
           </div>
         </div>
       </section>

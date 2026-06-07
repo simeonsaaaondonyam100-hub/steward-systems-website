@@ -34,7 +34,7 @@ export function SiteFooter() {
           <h2>Operavault</h2>
           <Link href="/features">Modules</Link>
           <Link href="/pricing">Pricing</Link>
-          <Link href="/products/operavault/demo">Public demo</Link>
+          <Link href="/products/operavault/demo">Demo tour</Link>
           <Link href="/request-demo">Request demo</Link>
         </div>
         <div>

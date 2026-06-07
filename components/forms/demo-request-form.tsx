@@ -136,7 +136,7 @@ export function DemoRequestForm({
       </label>
 
       <p id="preferred-demo-time-note" className="form-help">
-        The team will confirm the final date and meeting channel before the demo.
+        Steward Systems will confirm the final date and meeting channel before the demo.
       </p>
 
       <label className="checkbox-label">

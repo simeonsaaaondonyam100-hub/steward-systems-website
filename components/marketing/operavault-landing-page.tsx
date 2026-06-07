@@ -127,19 +127,19 @@ const groupSummaries: Record<OperavaultModuleGroup, string> = {
 
 const rolloutSteps = [
   {
-    title: "Map the operating reality",
+    title: "Confirm your operating priorities",
     description:
-      "Use the demo to review current records, users, departments, plan fit, and the first workflows that must be controlled."
+      "Use the demo to review school size, departments, priority workflows, reporting pressure, and the first records that need control."
   },
   {
-    title: "Select the module path",
+    title: "Match modules to a plan",
     description:
-      "Choose Basic, Standard, Premium, Enterprise, or Founder Institutional Partner according to school size, readiness, and adoption scope."
+      "Compare Basic, Standard, Premium, Enterprise, or Founder Institutional Partner against the modules your institution is ready to adopt."
   },
   {
-    title: "Move from tour to rollout",
+    title: "Plan a controlled rollout",
     description:
-      "Steward Systems keeps the public request in Core while Operavault later owns tenant setup, module availability, and operational access."
+      "Leave the product conversation with a clear view of implementation scope, user groups, data boundaries, and adoption sequence."
   }
 ];
 
@@ -202,7 +202,7 @@ export function OperavaultLandingPage() {
             </Link>
           </div>
         </div>
-        <div className="ova-command-shell" aria-label="Operavault product mockup">
+        <div className="ova-command-shell" aria-label="Operavault product preview">
           <div className="ova-command-top">
             <span>Command center</span>
             <strong>Leadership visibility</strong>
@@ -218,7 +218,7 @@ export function OperavaultLandingPage() {
           </div>
           <div className="ova-workflow-strip">
             <strong>Profile to Workflow to Review to Report</strong>
-            <span>Public-safe product tour mockup. No tenant records are connected.</span>
+            <span>Illustrative product view for evaluating the operating model.</span>
           </div>
         </div>
       </section>
@@ -228,7 +228,7 @@ export function OperavaultLandingPage() {
           ["41", "public module entries"],
           ["6", "school workstreams"],
           ["5", "plan paths"],
-          ["0", "tenant records exposed"]
+          ["0", "private records used"]
         ].map(([value, label]) => (
           <div key={label}>
             <strong>{value}</strong>
@@ -359,8 +359,9 @@ export function OperavaultLandingPage() {
           <p className="eyebrow">Guided Product Tour</p>
           <h2>The first workflows most school leaders ask to inspect.</h2>
           <p>
-            These sections use public-safe mockups and module evidence. Active
-            development areas are labelled as such.
+            These sections show the product areas most schools want to examine
+            first. Ready modules and active-development areas are labelled
+            clearly before a live walkthrough.
           </p>
         </div>
         <div className="ova-tour-list">
@@ -398,9 +399,9 @@ export function OperavaultLandingPage() {
           <p className="eyebrow">Plan-Aware Packaging</p>
           <h2>Start with the right operating scope.</h2>
           <p>
-            Public pricing is a plan overview. Operavault later handles tenant
-            subscription, enabled modules, role permissions, and feature
-            enforcement inside the product portal.
+            Pricing starts with module fit, institution size, rollout scope,
+            and support needs. During implementation, Operavault is configured
+            around enabled modules, roles, and feature access.
           </p>
         </div>
         <div className="ova-plan-grid">
@@ -418,14 +419,14 @@ export function OperavaultLandingPage() {
       <section className="page-section ova-section ova-trust-section">
         <div>
           <p className="eyebrow">Institutional Trust</p>
-          <h2>Public pages sell the product. Private records stay inside Operavault.</h2>
+          <h2>Serious school software should protect records by design.</h2>
         </div>
         <div className="ova-trust-grid">
           {[
             {
-              title: "Tenant-safe boundary",
+              title: "Private-record protection",
               detail:
-                "The Steward Systems website does not connect to live school operations, Whitesands data, or tenant records.",
+                "Demo examples are illustrative and never require your school to expose private student, staff, parent, or finance records.",
               icon: LockKeyhole
             },
             {
@@ -484,8 +485,8 @@ export function OperavaultLandingPage() {
           <h2>Request an Operavault demo built around the workflows your administrators need to control first.</h2>
           <p>
             Share your preferred plan, demo time, and priority areas. Steward
-            Systems will review the request and follow up with a structured
-            product conversation.
+            Systems will follow up with a structured product conversation built
+            around your institution.
           </p>
         </div>
         <div className="hero-actions">
@@ -494,7 +495,7 @@ export function OperavaultLandingPage() {
             <ArrowRight aria-hidden="true" size={18} />
           </Link>
           <Link className="button button-secondary" href="/products/operavault/demo">
-            <span>Open public demo</span>
+            <span>Open demo tour</span>
             <BookOpenCheck aria-hidden="true" size={18} />
           </Link>
         </div>

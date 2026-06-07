@@ -13,7 +13,7 @@ import {
 } from "@/modules/product/operavault-product";
 
 const groupSummaries = {
-  "People Records": "Tenant-aware records for the people who make the school work.",
+  "People Records": "Institution-owned records for the people who make the school work.",
   "Academic Operations":
     "Score entry, reports, broadsheets, lesson evidence, timetable, and academic accountability.",
   "Attendance and Discipline":
@@ -29,7 +29,7 @@ const groupSummaries = {
 export const metadata: Metadata = {
   title: "Operavault Modules",
   description:
-    "Explore the Operavault public product tour for school administration, academic operations, attendance, finance, parent engagement, and analytics."
+    "Explore Operavault modules for school administration, academic operations, attendance, finance, parent engagement, and analytics."
 };
 
 export default function FeaturesPage() {
@@ -39,8 +39,8 @@ export default function FeaturesPage() {
         <p className="eyebrow">Operavault modules</p>
         <h1>A connected feature universe for serious school operations.</h1>
         <p>
-          Explore the modules available today and the modules currently being
-          developed as part of the Operavault roadmap.
+          Explore ready modules and active-development areas with clear
+          readiness labels before you request a guided walkthrough.
         </p>
         <div className="hero-actions">
           <Link className="button button-primary" href="/request-demo">

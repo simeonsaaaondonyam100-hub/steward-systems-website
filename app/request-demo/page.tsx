@@ -64,8 +64,9 @@ export default async function RequestDemoPage({
           <div className="security-note">
             <ShieldCheck aria-hidden="true" size={20} />
             <span>
-              Public demo materials use synthetic data only. No private school,
-              student, parent, staff, finance, or tenant data is connected here.
+              Demo examples are illustrative. Your school can evaluate
+              Operavault without sharing private student, staff, parent, or
+              finance records through the website.
             </span>
           </div>
         </div>

@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import { DemoShell } from "@/components/demo/demo-shell";
 
 export const metadata: Metadata = {
-  title: "Operavault Public Demo",
+  title: "Operavault Demo Tour",
   description:
-    "Explore a guided public demo of Operavault, Steward Systems' institutional operations platform for schools and organisations."
+    "Explore a guided Operavault demo tour for school operations, academic records, parent engagement, compliance evidence, staff workflows, and management visibility."
 };
 
 export default function OperavaultDemoPage() {

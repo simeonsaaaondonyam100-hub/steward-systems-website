@@ -62,7 +62,7 @@ export const operavaultHeroStatement =
   "One operating system for school administration, academic records, parent engagement, compliance evidence, staff workflows, and management visibility.";
 
 export const operavaultHeroLede =
-  "Operavault brings the serious work of running a school into one secure, tenant-aware platform: people records, academics, attendance, discipline, finance workflows, parent communication, audit trails, staff duties, and decision intelligence.";
+  "Operavault gives school leaders one secure operating layer for people records, academics, attendance, discipline, finance workflows, parent communication, audit trails, staff duties, and decision intelligence.";
 
 export const operavaultModuleGroups: OperavaultModuleGroup[] = [
   "People Records",
@@ -137,7 +137,7 @@ const moduleSeeds: OperavaultModuleSeed[] = [
     workflows: [
       "Issue onboarding invites",
       "Connect staff accounts to employee profiles",
-      "Track tenant-safe onboarding progress"
+      "Track secure onboarding progress"
     ],
     planAvailability: "Basic and above"
   },
@@ -686,7 +686,7 @@ function makeProblem(module: OperavaultModuleSeed) {
 
   return `${module.name} helps schools keep ${module.summary
     .replace(/\.$/, "")
-    .toLowerCase()} connected to tenant-aware records, permissions, audit context, and the wider school operating model.`;
+    .toLowerCase()} connected to institution-owned records, permissions, audit context, and the wider school operating model.`;
 }
 
 function makeMockupCards(module: OperavaultModuleSeed) {

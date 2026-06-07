@@ -3683,26 +3683,31 @@ h3,
 }
 
 .ova-brand-lockup {
-  display: flex;
-  gap: clamp(16px, 2vw, 24px);
+  display: grid;
+  grid-template-columns: clamp(116px, 9.2vw, 164px) minmax(0, 1fr);
+  gap: clamp(14px, 1.8vw, 22px);
   align-items: center;
+  justify-items: start;
   min-width: 0;
+  max-width: 700px;
 }
 
 .ova-brand-lockup > div {
+  display: grid;
+  gap: 6px;
+  justify-items: start;
   min-width: 0;
   max-width: 100%;
 }
 
 .ova-brand-lockup img {
-  flex: 0 0 auto;
-  width: clamp(92px, 10vw, 140px);
-  height: auto;
+  width: clamp(116px, 9.2vw, 164px);
+  height: clamp(116px, 9.2vw, 164px);
   object-fit: contain;
-  padding: 7px;
+  padding: 10px;
   background: #fffdf7;
   border: 1px solid rgba(185, 135, 47, 0.22);
-  border-radius: 22px;
+  border-radius: 24px;
   box-shadow: 0 18px 44px rgba(6, 26, 47, 0.12);
 }
 
@@ -3710,15 +3715,15 @@ h3,
   margin: 0;
   color: var(--navy);
   font-family: var(--font-display);
-  font-size: clamp(3.35rem, 5.8vw, 5.8rem);
-  line-height: 0.96;
+  font-size: clamp(3.05rem, 4.65vw, 4.95rem);
+  line-height: 0.98;
   overflow-wrap: normal;
   white-space: nowrap;
 }
 
 .ova-brand-lockup span {
   display: block;
-  margin-top: 8px;
+  margin-top: 0;
   color: #56664e;
   font-weight: 820;
 }
@@ -4225,12 +4230,14 @@ h3,
   }
 
   .ova-brand-lockup {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     align-items: flex-start;
+    gap: 14px;
+    max-width: 100%;
   }
 
   .ova-brand-lockup h1 {
-    font-size: clamp(2.65rem, 12.5vw, 3.35rem);
+    font-size: clamp(2.65rem, 12vw, 3.2rem);
     overflow-wrap: normal;
     white-space: nowrap;
   }
@@ -4241,7 +4248,8 @@ h3,
   }
 
   .ova-brand-lockup img {
-    width: 78px;
+    width: 104px;
+    height: 104px;
     border-radius: 17px;
   }
 

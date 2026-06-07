@@ -27,7 +27,7 @@ export function SiteHeader() {
       <nav className="site-nav" aria-label="Primary navigation">
         <Link href="/features">Modules</Link>
         <Link href="/pricing">Pricing</Link>
-        <Link href="/products/operavault/demo">Public demo</Link>
+        <Link href="/products/operavault/demo">Demo tour</Link>
         <Link href="/contact">Contact</Link>
       </nav>
       <Link className="nav-cta" href="/request-demo">

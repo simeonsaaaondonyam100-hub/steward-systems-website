@@ -14,7 +14,7 @@ import {
 } from "@/modules/product/operavault-product";
 
 const groupSummaries = {
-  "People Records": "Tenant-aware records for the people who make the school work.",
+  "People Records": "Institution-owned records for the people who make the school work.",
   "Academic Operations":
     "Score entry, reports, broadsheets, lesson evidence, timetable, and academic accountability.",
   "Attendance and Discipline":
@@ -58,7 +58,7 @@ export function OperavaultProductTour() {
             </Link>
           </div>
         </div>
-        <div className="hero-console" aria-label="Operavault product overview mockup">
+        <div className="hero-console" aria-label="Operavault product overview preview">
           <div className="hero-console-top">
             <span>Command Center</span>
             <strong>Institutional visibility</strong>
@@ -82,7 +82,7 @@ export function OperavaultProductTour() {
             </div>
             <div className="wide">
               <strong>Profile to Workflow to Review to Report</strong>
-              <span>Public-safe product tour mockup. No tenant records are connected.</span>
+              <span>Illustrative product view for evaluating the operating model.</span>
             </div>
           </div>
         </div>
@@ -110,8 +110,8 @@ export function OperavaultProductTour() {
           <p className="eyebrow">Operating Model</p>
           <h2>Six connected workstreams, one school operating layer.</h2>
           <p>
-            Plans decide what a school owns. Permissions decide what each user
-            can do. That separation keeps growth commercial and governance safe.
+            Plans shape the module scope. Permissions shape what each user can
+            see, review, approve, and report inside the institution.
           </p>
         </div>
         <div className="operavault-category-grid">
@@ -218,16 +218,16 @@ export function OperavaultProductTour() {
           <p>
             Operavault is positioned for school leadership teams that need a
             mature administrative layer, not a lightweight classroom app. The
-            public website explains capabilities while Core only captures demo
-            interest and follow-up.
+            tour is designed to help decision-makers evaluate fit, readiness,
+            governance, and rollout sequence quickly.
           </p>
         </div>
         <div className="capability-list">
           {[
-            "Synthetic public demo content only.",
-            "No tenant data is connected to the public website.",
-            "Active-development modules are labelled with testing boundaries.",
-            "Demo requests flow into the Steward Systems Core pipeline."
+            "Illustrative demo examples only.",
+            "Private school records remain inside each institution's controlled environment.",
+            "Active-development modules are clearly labelled before demo conversations.",
+            "Demo requests are reviewed by Steward Systems for fit and next steps."
           ].map((item) => (
             <div key={item} className="capability-item">
               <CheckCircle2 aria-hidden="true" size={18} />
@@ -238,7 +238,7 @@ export function OperavaultProductTour() {
       </section>
 
       <CtaBand
-        title="Review Operavault with the team."
+        title="See Operavault with your school context."
         description="Request a demo and choose the modules your administrators need to inspect first."
       />
     </main>
