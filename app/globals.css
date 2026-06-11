@@ -3666,13 +3666,21 @@ h3,
 /* Operavault focused public landing page. */
 .ova-hero {
   display: grid;
-  grid-template-columns: minmax(0, 0.92fr) minmax(500px, 0.78fr);
-  gap: clamp(30px, 3.8vw, 56px);
-  align-items: center;
+  grid-template-columns: 1fr;
+  gap: clamp(22px, 3vw, 34px);
+  align-items: start;
   min-height: calc(100svh - 92px);
   padding: clamp(48px, 6vw, 76px) max(20px, calc((100vw - var(--max-width)) / 2));
   background:
     linear-gradient(120deg, rgba(251, 247, 237, 0.96), rgba(255, 255, 255, 0.98) 48%, rgba(228, 235, 224, 0.92));
+}
+
+.ova-hero-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 0.72fr) minmax(360px, 0.55fr);
+  gap: clamp(28px, 4vw, 60px);
+  align-items: end;
+  min-width: 0;
 }
 
 .ova-hero-copy {
@@ -3748,10 +3756,12 @@ h3,
 
 .ova-command-shell {
   display: grid;
+  grid-template-columns: minmax(170px, 0.34fr) minmax(0, 1fr) minmax(260px, 0.5fr);
   gap: 14px;
-  justify-self: end;
+  justify-self: stretch;
+  align-items: stretch;
   min-width: 0;
-  width: min(100%, 620px);
+  width: 100%;
   padding: clamp(18px, 2vw, 24px);
   color: #fff8df;
   background:
@@ -3762,15 +3772,27 @@ h3,
 }
 
 .ova-command-top {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  align-content: space-between;
   gap: 14px;
   color: #fff8df;
+  min-height: 100%;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
 }
 
 .ova-command-top span {
   color: var(--gold-2);
   font-weight: 900;
+}
+
+.ova-command-top strong {
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: clamp(1.55rem, 2.1vw, 2.1rem);
+  line-height: 1;
 }
 
 .ova-signal-grid {
@@ -3783,7 +3805,7 @@ h3,
 .ova-workflow-strip {
   display: grid;
   gap: 7px;
-  min-height: 118px;
+  min-height: 112px;
   padding: 14px;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.14);
@@ -3808,6 +3830,7 @@ h3,
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 8px;
+  grid-column: 2;
 }
 
 .ova-command-route span {
@@ -3822,7 +3845,10 @@ h3,
 }
 
 .ova-workflow-strip {
-  min-height: 112px;
+  grid-column: 3;
+  grid-row: 1 / span 2;
+  min-height: 100%;
+  align-content: end;
   background: rgba(232, 196, 111, 0.16);
 }
 
@@ -3830,8 +3856,12 @@ h3,
   max-width: 100%;
   color: #ffffff;
   font-family: var(--font-display);
-  font-size: clamp(1.35rem, 2vw, 1.95rem);
+  font-size: clamp(1.65rem, 2.4vw, 2.55rem);
   line-height: 1.05;
+}
+
+.ova-hero-actions {
+  margin-top: 0;
 }
 
 .ova-proof-bar {
@@ -3910,6 +3940,14 @@ h3,
   border: 1px solid rgba(6, 26, 47, 0.12);
   border-radius: 22px;
   box-shadow: 0 18px 46px rgba(6, 26, 47, 0.1);
+}
+
+.ova-cinema-card-report {
+  width: clamp(520px, 44vw, 660px);
+}
+
+.ova-cinema-card-chart {
+  width: clamp(360px, 34vw, 470px);
 }
 
 .ova-cinema-card-head {
@@ -4003,6 +4041,258 @@ h3,
   color: var(--navy);
   font-size: 0.88rem;
   line-height: 1.25;
+}
+
+.ova-report-preview {
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+  background: #fffdf7;
+  border: 1px solid rgba(6, 26, 47, 0.12);
+  border-radius: 16px;
+}
+
+.ova-report-preview-header {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(6, 26, 47, 0.1);
+}
+
+.ova-report-preview-header > div:first-child {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  color: var(--gold-2);
+  background: linear-gradient(135deg, #061a2f, #0f5d47);
+  border-radius: 12px;
+  font-family: var(--font-display);
+  font-weight: 900;
+}
+
+.ova-report-preview-header strong,
+.ova-report-info-grid strong,
+.ova-report-summary-grid strong {
+  color: var(--navy);
+}
+
+.ova-report-preview-header span,
+.ova-report-preview-header small,
+.ova-report-info-grid span,
+.ova-report-summary-grid span {
+  color: #65716f;
+}
+
+.ova-report-preview-header span,
+.ova-report-preview-header small {
+  display: block;
+  font-size: 0.75rem;
+}
+
+.ova-report-info-grid,
+.ova-report-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.ova-report-info-grid div,
+.ova-report-summary-grid div {
+  display: grid;
+  gap: 2px;
+  padding: 7px;
+  background: rgba(6, 26, 47, 0.045);
+  border-radius: 9px;
+}
+
+.ova-report-info-grid span,
+.ova-report-summary-grid span {
+  font-size: 0.62rem;
+  font-weight: 840;
+  text-transform: uppercase;
+}
+
+.ova-report-info-grid strong,
+.ova-report-summary-grid strong {
+  font-size: 0.74rem;
+}
+
+.ova-report-comments {
+  display: grid;
+  gap: 6px;
+  padding: 9px;
+  background: rgba(255, 204, 63, 0.12);
+  border: 1px solid rgba(185, 135, 47, 0.18);
+  border-radius: 10px;
+}
+
+.ova-report-comments p {
+  color: #32424f;
+  font-size: 0.72rem;
+  line-height: 1.35;
+}
+
+.ova-report-table-wrap {
+  overflow: hidden;
+  border: 1px solid rgba(6, 26, 47, 0.12);
+  border-radius: 10px;
+}
+
+.ova-report-table-wrap table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.7rem;
+}
+
+.ova-report-table-wrap th,
+.ova-report-table-wrap td {
+  padding: 6px 7px;
+  border-bottom: 1px solid rgba(6, 26, 47, 0.08);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.ova-report-table-wrap th:first-child,
+.ova-report-table-wrap td:first-child {
+  text-align: left;
+}
+
+.ova-report-table-wrap th {
+  color: #ffffff;
+  background: linear-gradient(135deg, #061a2f, #0f5d47);
+}
+
+.ova-report-table-wrap tbody tr:nth-child(even) {
+  background: rgba(251, 247, 237, 0.9);
+}
+
+.ova-chart-preview {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+  padding: 14px;
+  background: #fffdf7;
+  border: 1px solid rgba(6, 26, 47, 0.12);
+  border-radius: 16px;
+}
+
+.ova-chart-donut {
+  display: grid;
+  width: 128px;
+  height: 128px;
+  place-items: center;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px rgba(6, 26, 47, 0.12);
+}
+
+.ova-chart-donut span {
+  display: grid;
+  width: 76px;
+  height: 76px;
+  place-items: center;
+  padding: 8px;
+  text-align: center;
+  background: #ffffff;
+  border-radius: 999px;
+}
+
+.ova-chart-donut strong {
+  color: var(--navy);
+  font-size: 1.38rem;
+  line-height: 1;
+}
+
+.ova-chart-donut small {
+  color: #56664e;
+  font-size: 0.66rem;
+  font-weight: 820;
+  line-height: 1.1;
+}
+
+.ova-chart-legend {
+  display: grid;
+  gap: 8px;
+}
+
+.ova-chart-legend div {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+}
+
+.ova-chart-legend span,
+.ova-chart-bars span {
+  color: var(--navy);
+  font-size: 0.82rem;
+  font-weight: 860;
+}
+
+.ova-chart-legend strong,
+.ova-chart-bars em {
+  color: #526172;
+  font-style: normal;
+  font-weight: 820;
+}
+
+.ova-chart-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  box-shadow: 0 0 0 4px rgba(6, 26, 47, 0.08);
+}
+
+.ova-chart-dot-green {
+  background: #0f5d47;
+}
+
+.ova-chart-dot-gold {
+  background: #c47413;
+}
+
+.ova-chart-dot-red {
+  background: #c9282d;
+}
+
+.ova-chart-dot-navy {
+  background: #061a2f;
+}
+
+.ova-chart-bars {
+  display: grid;
+  grid-column: 1 / -1;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.ova-chart-bars div {
+  display: grid;
+  gap: 4px;
+}
+
+.ova-chart-bars span {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.ova-chart-bars i {
+  display: block;
+  height: 9px;
+  overflow: hidden;
+  background: rgba(6, 26, 47, 0.08);
+  border-radius: 999px;
+}
+
+.ova-chart-bars b {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #0f5d47, #ffcc3f);
+  border-radius: inherit;
 }
 
 @keyframes ova-cinema-left {
@@ -4454,6 +4744,7 @@ h3,
 
 @media (max-width: 1100px) {
   .ova-hero,
+  .ova-hero-intro,
   .ova-operating-spine,
   .ova-plan-section,
   .ova-demo-path,
@@ -4464,6 +4755,21 @@ h3,
   .ova-command-shell,
   .ova-final-cta .hero-actions {
     justify-self: stretch;
+  }
+
+  .ova-command-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .ova-command-top,
+  .ova-command-route,
+  .ova-workflow-strip {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .ova-command-top {
+    min-height: 0;
   }
 
   .ova-signal-grid {
@@ -4543,6 +4849,12 @@ h3,
   .ova-signal-grid,
   .ova-command-route {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ova-report-info-grid,
+  .ova-report-summary-grid,
+  .ova-chart-preview {
+    grid-template-columns: 1fr;
   }
 
   .ova-split-heading {

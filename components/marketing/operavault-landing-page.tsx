@@ -62,21 +62,126 @@ const groupSummaries: Record<OperavaultModuleGroup, string> = {
     "Dashboards, workload, appraisal, CBT analytics, attendance trends, and AI-assisted insight."
 };
 
-const productScenes = [
+type ProductScene = {
+  eyebrow: string;
+  title: string;
+  status: string;
+  metric: string;
+  metricLabel: string;
+  summary: string;
+  rows: string[][];
+  report?: {
+    school: string;
+    term: string;
+    student: string;
+    admission: string;
+    className: string;
+    attendance: string;
+    subjects: Array<{
+      subject: string;
+      ca: string;
+      exam: string;
+      final: string;
+      grade: string;
+      position: string;
+    }>;
+    summary: string[][];
+    comments: string[];
+  };
+  chart?: {
+    center: string;
+    centerLabel: string;
+    gradient: string;
+    legend: Array<{
+      label: string;
+      value: string;
+      tone: "green" | "gold" | "red" | "navy";
+    }>;
+    bars?: Array<{
+      label: string;
+      value: string;
+      width: string;
+    }>;
+  };
+};
+
+const productScenes: ProductScene[] = [
   {
     eyebrow: "Report Card Generation",
-    title: "Full-term report snapshot",
+    title: "Full-term progress report",
     status: "Ready for use",
-    metric: "91.4%",
-    metricLabel: "class academic average",
+    metric: "88.4%",
+    metricLabel: "fictional student average",
     summary:
-      "A report-card workspace can combine scores, behaviour, skills, advisory scores, TIC notes, and principal comments before publication.",
+      "A public-safe report card sample shows how Operavault can present subject scores, class context, attendance, comments, and summary data.",
     rows: [
       ["Student", "Maya Okonkwo"],
-      ["Class", "SS2 Science"],
+      ["Class", "JSS 2 Gold"],
       ["Term", "Second Term"],
       ["Snapshot", "Locked for TIC review"]
-    ]
+    ],
+    report: {
+      school: "Greenfield Academy",
+      term: "2026/2027 | 2nd Term",
+      student: "Maya Okonkwo",
+      admission: "ADM-G-2027-2041",
+      className: "JSS 2 Gold",
+      attendance: "118 / 124",
+      subjects: [
+        { subject: "English Language", ca: "34", exam: "53", final: "87", grade: "A1", position: "2nd" },
+        { subject: "Mathematics", ca: "36", exam: "55", final: "91", grade: "A1", position: "1st" },
+        { subject: "Basic Science", ca: "33", exam: "51", final: "84", grade: "A1", position: "3rd" },
+        { subject: "History", ca: "31", exam: "49", final: "80", grade: "A1", position: "4th" },
+        { subject: "Civic Education", ca: "35", exam: "50", final: "85", grade: "A1", position: "2nd" },
+        { subject: "Visual Arts", ca: "37", exam: "56", final: "93", grade: "A1", position: "1st" },
+        { subject: "French", ca: "32", exam: "46", final: "78", grade: "B2", position: "5th" },
+        { subject: "ICT", ca: "38", exam: "55", final: "93", grade: "A1", position: "1st" },
+        { subject: "Business Studies", ca: "35", exam: "52", final: "87", grade: "A1", position: "2nd" },
+        { subject: "Physical Education", ca: "39", exam: "54", final: "93", grade: "A1", position: "1st" }
+      ],
+      summary: [
+        ["Student average", "88.4%"],
+        ["Class average", "76.8%"],
+        ["Year group average", "74.9%"],
+        ["Overall position", "2nd"]
+      ],
+      comments: [
+        "Class Teacher: Maya shows disciplined progress, strong participation, and consistent homework completion.",
+        "Principal: Excellent term. Keep strengthening written explanations and leadership confidence."
+      ]
+    }
+  },
+  {
+    eyebrow: "Operational Analytics",
+    title: "Attention and pressure mix",
+    status: "Ready for use",
+    metric: "17",
+    metricLabel: "visible action signals",
+    summary:
+      "Leadership dashboards can combine open action pressure, overdue duties, recent completions, and unread notifications by role scope.",
+    rows: [
+      ["Action required", "7"],
+      ["High priority", "3"],
+      ["My open items", "5"],
+      ["Unread notifications", "2"]
+    ],
+    chart: {
+      center: "7",
+      centerLabel: "actions",
+      gradient:
+        "conic-gradient(#c47413 0 42%, #c9282d 42% 60%, #6f9274 60% 88%, #ffcc3f 88% 100%)",
+      legend: [
+        { label: "Action required", value: "7", tone: "gold" },
+        { label: "High priority", value: "3", tone: "red" },
+        { label: "My open items", value: "5", tone: "green" },
+        { label: "Unread notifications", value: "2", tone: "navy" }
+      ],
+      bars: [
+        { label: "Pending", value: "9", width: "55%" },
+        { label: "Overdue", value: "3", width: "22%" },
+        { label: "Recently completed", value: "22", width: "92%" }
+      ]
+    }
   },
   {
     eyebrow: "Broadsheet Publishing",
@@ -94,6 +199,33 @@ const productScenes = [
     ]
   },
   {
+    eyebrow: "Broadsheet Analytics",
+    title: "Readiness mix",
+    status: "Ready for use",
+    metric: "28",
+    metricLabel: "score rows",
+    summary:
+      "Academic teams can see approved, locked, awaiting-review, and missing score rows before compilation decisions are made.",
+    rows: [
+      ["Approved", "16 score rows"],
+      ["Locked", "8 score rows"],
+      ["Awaiting review", "3 score rows"],
+      ["Missing", "1 score row"]
+    ],
+    chart: {
+      center: "28",
+      centerLabel: "score rows",
+      gradient:
+        "conic-gradient(#0f5d47 0 57%, #061a2f 57% 86%, #6f9274 86% 96%, #c47413 96% 100%)",
+      legend: [
+        { label: "Approved", value: "16", tone: "green" },
+        { label: "Locked", value: "8", tone: "navy" },
+        { label: "Awaiting review", value: "3", tone: "green" },
+        { label: "Missing", value: "1", tone: "gold" }
+      ]
+    }
+  },
+  {
     eyebrow: "Lesson Plan / Diary",
     title: "Planning delivery queue",
     status: "Ready for use",
@@ -109,6 +241,31 @@ const productScenes = [
     ]
   },
   {
+    eyebrow: "Student Attendance Analytics",
+    title: "Class coverage",
+    status: "Ready for use",
+    metric: "12/12",
+    metricLabel: "classes marked today",
+    summary:
+      "Attendance dashboards can show class coverage, pending registers, verification gaps, and calendar exceptions.",
+    rows: [
+      ["Classes marked", "12"],
+      ["Classes pending", "0"],
+      ["Verified registers", "11"],
+      ["Exceptions", "1 calendar note"]
+    ],
+    chart: {
+      center: "12/12",
+      centerLabel: "classes",
+      gradient: "conic-gradient(#0f5d47 0 92%, #ffcc3f 92% 100%)",
+      legend: [
+        { label: "Classes marked", value: "12", tone: "green" },
+        { label: "Classes pending", value: "0", tone: "gold" },
+        { label: "Calendar exceptions", value: "1", tone: "navy" }
+      ]
+    }
+  },
+  {
     eyebrow: "Attendance and Discipline",
     title: "Daily presence and conduct",
     status: "Ready for use",
@@ -122,6 +279,38 @@ const productScenes = [
       ["Discipline", "2 cases under review"],
       ["Escalations", "Parent notice prepared"]
     ]
+  },
+  {
+    eyebrow: "Discipline Analytics",
+    title: "Case status and patterns",
+    status: "Ready for use",
+    metric: "18",
+    metricLabel: "visible cases",
+    summary:
+      "Discipline analytics can summarise submitted, under-review, notified, resolved, and escalated cases with offence patterns.",
+    rows: [
+      ["Submitted", "6 cases"],
+      ["Under review", "4 cases"],
+      ["Resolved", "7 cases"],
+      ["Escalated", "1 case"]
+    ],
+    chart: {
+      center: "18",
+      centerLabel: "cases",
+      gradient:
+        "conic-gradient(#6f9274 0 33%, #c47413 33% 55%, #0f5d47 55% 94%, #c9282d 94% 100%)",
+      legend: [
+        { label: "Submitted", value: "6", tone: "green" },
+        { label: "Under review", value: "4", tone: "gold" },
+        { label: "Resolved", value: "7", tone: "green" },
+        { label: "Escalated", value: "1", tone: "red" }
+      ],
+      bars: [
+        { label: "Homework default", value: "7", width: "88%" },
+        { label: "Incomplete notes", value: "5", width: "64%" },
+        { label: "Late return", value: "3", width: "42%" }
+      ]
+    }
   },
   {
     eyebrow: "Class Noticeboard",
@@ -230,29 +419,137 @@ function ProductSceneCard({
   scene,
   duplicateIndex
 }: {
-  scene: (typeof productScenes)[number];
+  scene: ProductScene;
   duplicateIndex: number;
 }) {
   return (
-    <article className="ova-cinema-card" aria-hidden={duplicateIndex > 0}>
+    <article
+      className={`ova-cinema-card${scene.report ? " ova-cinema-card-report" : ""}${scene.chart ? " ova-cinema-card-chart" : ""}`}
+      aria-hidden={duplicateIndex > 0}
+    >
       <div className="ova-cinema-card-head">
         <span>{scene.eyebrow}</span>
         <em>{scene.status}</em>
       </div>
       <h3>{scene.title}</h3>
       <p>{scene.summary}</p>
-      <div className="ova-cinema-metric">
-        <strong>{scene.metric}</strong>
-        <span>{scene.metricLabel}</span>
-      </div>
-      <div className="ova-cinema-rows">
-        {scene.rows.map(([label, value]) => (
-          <div key={`${scene.title}-${label}`}>
-            <span>{label}</span>
-            <strong>{value}</strong>
+      {scene.report ? (
+        <div className="ova-report-preview">
+          <div className="ova-report-preview-header">
+            <div aria-hidden="true">GA</div>
+            <div>
+              <strong>{scene.report.school}</strong>
+              <span>Full Term Progress Report</span>
+              <small>{scene.report.term}</small>
+            </div>
           </div>
-        ))}
-      </div>
+          <div className="ova-report-info-grid">
+            {[
+              ["Student", scene.report.student],
+              ["Admission No.", scene.report.admission],
+              ["Class", scene.report.className],
+              ["Attendance", scene.report.attendance]
+            ].map(([label, value]) => (
+              <div key={label}>
+                <span>{label}</span>
+                <strong>{value}</strong>
+              </div>
+            ))}
+          </div>
+          <div className="ova-report-table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Subject</th>
+                  <th>CA</th>
+                  <th>Exam</th>
+                  <th>Final</th>
+                  <th>Grade</th>
+                  <th>Pos.</th>
+                </tr>
+              </thead>
+              <tbody>
+                {scene.report.subjects.map((subject) => (
+                  <tr key={subject.subject}>
+                    <td>{subject.subject}</td>
+                    <td>{subject.ca}</td>
+                    <td>{subject.exam}</td>
+                    <td>{subject.final}</td>
+                    <td>{subject.grade}</td>
+                    <td>{subject.position}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="ova-report-summary-grid">
+            {scene.report.summary.map(([label, value]) => (
+              <div key={label}>
+                <span>{label}</span>
+                <strong>{value}</strong>
+              </div>
+            ))}
+          </div>
+          <div className="ova-report-comments">
+            {scene.report.comments.map((comment) => (
+              <p key={comment}>{comment}</p>
+            ))}
+          </div>
+        </div>
+      ) : null}
+      {scene.chart ? (
+        <div className="ova-chart-preview">
+          <div
+            className="ova-chart-donut"
+            style={{ background: scene.chart.gradient }}
+          >
+            <span>
+              <strong>{scene.chart.center}</strong>
+              <small>{scene.chart.centerLabel}</small>
+            </span>
+          </div>
+          <div className="ova-chart-legend">
+            {scene.chart.legend.map((item) => (
+              <div key={item.label}>
+                <i className={`ova-chart-dot ova-chart-dot-${item.tone}`} />
+                <span>{item.label}</span>
+                <strong>{item.value}</strong>
+              </div>
+            ))}
+          </div>
+          {scene.chart.bars ? (
+            <div className="ova-chart-bars">
+              {scene.chart.bars.map((bar) => (
+                <div key={bar.label}>
+                  <span>
+                    <strong>{bar.label}</strong>
+                    <em>{bar.value}</em>
+                  </span>
+                  <i>
+                    <b style={{ width: bar.width }} />
+                  </i>
+                </div>
+              ))}
+            </div>
+          ) : null}
+        </div>
+      ) : null}
+      {!scene.report && !scene.chart ? (
+        <>
+          <div className="ova-cinema-metric">
+            <strong>{scene.metric}</strong>
+            <span>{scene.metricLabel}</span>
+          </div>
+          <div className="ova-cinema-rows">
+            {scene.rows.map(([label, value]) => (
+              <div key={`${scene.title}-${label}`}>
+                <span>{label}</span>
+                <strong>{value}</strong>
+              </div>
+            ))}
+          </div>
+        </>
+      ) : null}
     </article>
   );
 }
@@ -261,13 +558,13 @@ export function OperavaultLandingPage() {
   const highlightedPlans = operavaultPlans.filter((plan) =>
     ["Basic", "Standard", "Premium", "Enterprise"].includes(plan.name)
   );
-  const firstSceneRow = productScenes.slice(0, 4);
-  const secondSceneRow = productScenes.slice(4);
+  const firstSceneRow = productScenes.slice(0, 5);
+  const secondSceneRow = productScenes.slice(5);
 
   return (
     <main>
       <section className="ova-hero">
-        <div className="ova-hero-copy">
+        <div className="ova-hero-intro">
           <div className="ova-brand-lockup">
             <Image
               src="/operavault-logo.png"
@@ -282,17 +579,9 @@ export function OperavaultLandingPage() {
               <span>by Steward Systems</span>
             </div>
           </div>
-          <p className="ova-hero-statement">{operavaultHeroStatement}</p>
-          <p className="ova-hero-lede">{operavaultHeroLede}</p>
-          <div className="hero-actions">
-            <Link className="button button-primary" href="/request-demo">
-              <span>Book a guided demo</span>
-              <ArrowRight aria-hidden="true" size={18} />
-            </Link>
-            <Link className="button button-secondary" href="/features">
-              <span>Explore modules</span>
-              <Layers3 aria-hidden="true" size={18} />
-            </Link>
+          <div className="ova-hero-notes">
+            <p className="ova-hero-statement">{operavaultHeroStatement}</p>
+            <p className="ova-hero-lede">{operavaultHeroLede}</p>
           </div>
         </div>
 
@@ -319,6 +608,16 @@ export function OperavaultLandingPage() {
             <strong>Profile to workflow to review to report</strong>
             <span>Synthetic product preview for a public website tour.</span>
           </div>
+        </div>
+        <div className="hero-actions ova-hero-actions">
+          <Link className="button button-primary" href="/request-demo">
+            <span>Book a guided demo</span>
+            <ArrowRight aria-hidden="true" size={18} />
+          </Link>
+          <Link className="button button-secondary" href="/features">
+            <span>Explore modules</span>
+            <Layers3 aria-hidden="true" size={18} />
+          </Link>
         </div>
       </section>
 
