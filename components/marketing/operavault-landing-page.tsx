@@ -2,113 +2,50 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
-  BarChart3,
-  BellRing,
   BookOpenCheck,
-  CalendarCheck2,
-  ClipboardCheck,
-  FileCheck2,
-  Gauge,
-  GraduationCap,
   Layers3,
   LockKeyhole,
   ShieldCheck,
-  Users,
-  WalletCards,
-  Workflow,
-  type LucideIcon
+  Workflow
 } from "lucide-react";
 
 import {
-  getOperavaultModuleBySlug,
   getOperavaultModulesByGroup,
-  getOperavaultStatusLabel,
   operavaultHeroLede,
   operavaultHeroStatement,
   operavaultModuleGroups,
   operavaultPlans,
-  operavaultTourSections,
   type OperavaultModuleGroup
 } from "@/modules/product/operavault-product";
 
 const leadershipSignals = [
   {
-    label: "Academic readiness",
+    label: "Academics",
     value: "86%",
-    detail: "Score, report, and review signals"
+    detail: "Ready classes"
   },
   {
-    label: "Attendance signals",
+    label: "Attendance",
     value: "Live",
-    detail: "Student and staff presence context"
+    detail: "Live registers"
   },
   {
-    label: "Finance exceptions",
+    label: "Finance",
     value: "12",
-    detail: "Follow-up items for accounts review"
+    detail: "Exceptions"
   },
   {
-    label: "Audit evidence",
+    label: "Audit",
     value: "Tracked",
-    detail: "Role-aware action history"
+    detail: "Evidence trail"
   }
 ];
 
-const painPoints = [
-  "Student, staff, parent, academic, finance, and HR records spread across files and portals.",
-  "Report cards, broadsheets, diary, lesson-plan, and advisory evidence handled as separate end-of-term stress.",
-  "Attendance, discipline, parent communication, procurement, and loan workflows lacking one review trail.",
-  "Management teams depending on manual summaries instead of live operational signals."
-];
-
-const conversionDeliverables: Array<{
-  title: string;
-  description: string;
-  icon: LucideIcon;
-  modules: string[];
-}> = [
-  {
-    title: "Records that become workflows",
-    description:
-      "Student, staff, and parent records sit at the base of attendance, academics, finance, communication, HR, and review activity.",
-    icon: Users,
-    modules: ["students-management", "staff-management", "parents-guardians-management"]
-  },
-  {
-    title: "Academic evidence without re-entry",
-    description:
-      "Gradebook, report-card preparation, broadsheets, lesson plans, diary, schemes, timetable, and advisory records stay connected.",
-    icon: GraduationCap,
-    modules: ["gradebook", "report-card-generation", "lesson-plan-submission"]
-  },
-  {
-    title: "Attendance and discipline accountability",
-    description:
-      "Daily presence, staff attendance, discipline booking, behaviour history, notifications, and escalation signals become reviewable evidence.",
-    icon: CalendarCheck2,
-    modules: ["student-attendance", "staff-attendance", "discipline-booking"]
-  },
-  {
-    title: "Finance and administration control",
-    description:
-      "Fees, parent notification, procurement, staff loans, workflow approvals, audit trail, and finance exceptions move through controlled paths.",
-    icon: WalletCards,
-    modules: ["school-fees-sync-records", "procurement", "staff-loans"]
-  },
-  {
-    title: "Parent communication with boundaries",
-    description:
-      "Parent portal, notices, acknowledgements, absence notices, appointments, and safe publication workflows are role-aware and auditable.",
-    icon: BellRing,
-    modules: ["parent-portal", "notifications", "acknowledgements"]
-  },
-  {
-    title: "Management visibility from real work",
-    description:
-      "Dashboards, workload visualisation, appraisal readiness, attendance trends, discipline patterns, and AI-assisted analytics support leadership review.",
-    icon: BarChart3,
-    modules: ["management-dashboards", "workload-visualisation", "ai-system-analytics"]
-  }
+const commandRoute = [
+  "Profile",
+  "Workflow",
+  "Review",
+  "Report"
 ];
 
 const groupSummaries: Record<OperavaultModuleGroup, string> = {
@@ -125,21 +62,154 @@ const groupSummaries: Record<OperavaultModuleGroup, string> = {
     "Dashboards, workload, appraisal, CBT analytics, attendance trends, and AI-assisted insight."
 };
 
-const rolloutSteps = [
+const productScenes = [
   {
-    title: "Confirm your operating priorities",
-    description:
-      "Use the demo to review school size, departments, priority workflows, reporting pressure, and the first records that need control."
+    eyebrow: "Report Card Generation",
+    title: "Full-term report snapshot",
+    status: "Ready for use",
+    metric: "91.4%",
+    metricLabel: "class academic average",
+    summary:
+      "A report-card workspace can combine scores, behaviour, skills, advisory scores, TIC notes, and principal comments before publication.",
+    rows: [
+      ["Student", "Maya Okonkwo"],
+      ["Class", "SS2 Science"],
+      ["Term", "Second Term"],
+      ["Snapshot", "Locked for TIC review"]
+    ]
   },
   {
-    title: "Match modules to a plan",
-    description:
-      "Compare Basic, Standard, Premium, Enterprise, or Founder Institutional Partner against the modules your institution is ready to adopt."
+    eyebrow: "Broadsheet Publishing",
+    title: "Class score matrix",
+    status: "Ready for use",
+    metric: "8/8",
+    metricLabel: "subjects approved",
+    summary:
+      "IT and academic reviewers can inspect CA, exam, total, grade, status, and correction flags before report cards are locked.",
+    rows: [
+      ["English", "18 + 16 + 54 = 88 A"],
+      ["Mathematics", "17 + 18 + 56 = 91 A"],
+      ["Chemistry", "16 + 15 + 50 = 81 A"],
+      ["Biology", "15 + 17 + 52 = 84 A"]
+    ]
   },
   {
-    title: "Plan a controlled rollout",
-    description:
-      "Leave the product conversation with a clear view of implementation scope, user groups, data boundaries, and adoption sequence."
+    eyebrow: "Lesson Plan / Diary",
+    title: "Planning delivery queue",
+    status: "Ready for use",
+    metric: "94%",
+    metricLabel: "lesson submission",
+    summary:
+      "Scheme rows, weekly lesson plans, class diary entries, HOD checks, and materials stay connected to each teaching context.",
+    rows: [
+      ["Week 7", "Comprehension: main idea"],
+      ["Lesson plan", "Submitted"],
+      ["Diary", "Taught with homework evidence"],
+      ["HOD check", "Reviewed"]
+    ]
+  },
+  {
+    eyebrow: "Attendance and Discipline",
+    title: "Daily presence and conduct",
+    status: "Ready for use",
+    metric: "97%",
+    metricLabel: "daily attendance",
+    summary:
+      "Registers, late/absent signals, discipline bookings, behaviour history, and escalation evidence can be reviewed from one place.",
+    rows: [
+      ["JSS 3A", "38 present, 1 late, 1 absent"],
+      ["Staff", "76 present, 4 pending"],
+      ["Discipline", "2 cases under review"],
+      ["Escalations", "Parent notice prepared"]
+    ]
+  },
+  {
+    eyebrow: "Class Noticeboard",
+    title: "Masked student output",
+    status: "Ready for use",
+    metric: "Safe",
+    metricLabel: "name-protected publication",
+    summary:
+      "Noticeboard views can publish score-checking outputs without exposing names unnecessarily.",
+    rows: [
+      ["ADM-2041", "ENG 88, MAT 91, BIO 84"],
+      ["ADM-2077", "ENG 79, MAT 86, BIO 81"],
+      ["ADM-2135", "ENG 92, MAT 88, BIO 90"],
+      ["Display", "Admission-number mode"]
+    ]
+  },
+  {
+    eyebrow: "Appraisal and Workload",
+    title: "Staff evidence profile",
+    status: "Ready for use",
+    metric: "4.6/5",
+    metricLabel: "sample appraisal score",
+    summary:
+      "Attendance, duties, lesson evidence, diary checks, advisory work, and completed tasks can support appraisal-ready review.",
+    rows: [
+      ["Teaching duty", "34 points"],
+      ["Review tasks", "11 completed"],
+      ["Diary checks", "18 verified"],
+      ["Readiness", "Supervisor review"]
+    ]
+  },
+  {
+    eyebrow: "Finance and Administration",
+    title: "Procurement and fee signals",
+    status: "Ready for use",
+    metric: "N2.4m",
+    metricLabel: "sample cleared value",
+    summary:
+      "Fees, parent notices, procurement requests, loans, approvals, and audit history can sit beside operational review queues.",
+    rows: [
+      ["Procurement", "6 requests funded"],
+      ["Fees", "42 parent notices queued"],
+      ["Loans", "3 repayment schedules"],
+      ["Approvals", "Role-aware review"]
+    ]
+  },
+  {
+    eyebrow: "Advisory Meetings",
+    title: "Formation report evidence",
+    status: "Ready for use",
+    metric: "28",
+    metricLabel: "cycle reports submitted",
+    summary:
+      "Advisory reports can separate advisee, father, mother, and submission evidence while keeping leadership visibility intact.",
+    rows: [
+      ["Cycle", "Fortnight 4"],
+      ["Advisee evidence", "Captured"],
+      ["Parent meeting", "Logged"],
+      ["Submission", "Ready for review"]
+    ]
+  }
+];
+
+const operatingSteps = [
+  ["Profile", "People, classes, departments, roles, and records"],
+  ["Workflow", "Attendance, academics, finance, HR, and requests"],
+  ["Review", "HODs, TICs, advisers, accounts, HR, and management"],
+  ["Report", "Dashboards, audit trail, parent visibility, and summaries"]
+];
+
+const trustItems = [
+  {
+    title: "No private records in the public tour",
+    detail:
+      "The website uses synthetic examples only. School tenant data stays inside each institution's Operavault deployment.",
+    icon: LockKeyhole
+  },
+  {
+    title: "Plan-aware adoption",
+    detail:
+      "Module access is controlled by plan, role, permission, and implementation scope inside the actual portal.",
+    icon: ShieldCheck
+  },
+  {
+    title: "Evidence-led operations",
+    detail:
+      "Every visible workflow is framed around records, actors, review states, and accountability trails.",
+    icon: Workflow
   }
 ];
 
@@ -156,16 +226,43 @@ function statusCounts(group: OperavaultModuleGroup) {
   };
 }
 
-function moduleNames(slugs: string[]) {
-  return slugs
-    .map((slug) => getOperavaultModuleBySlug(slug)?.name)
-    .filter((name): name is string => Boolean(name));
+function ProductSceneCard({
+  scene,
+  duplicateIndex
+}: {
+  scene: (typeof productScenes)[number];
+  duplicateIndex: number;
+}) {
+  return (
+    <article className="ova-cinema-card" aria-hidden={duplicateIndex > 0}>
+      <div className="ova-cinema-card-head">
+        <span>{scene.eyebrow}</span>
+        <em>{scene.status}</em>
+      </div>
+      <h3>{scene.title}</h3>
+      <p>{scene.summary}</p>
+      <div className="ova-cinema-metric">
+        <strong>{scene.metric}</strong>
+        <span>{scene.metricLabel}</span>
+      </div>
+      <div className="ova-cinema-rows">
+        {scene.rows.map(([label, value]) => (
+          <div key={`${scene.title}-${label}`}>
+            <span>{label}</span>
+            <strong>{value}</strong>
+          </div>
+        ))}
+      </div>
+    </article>
+  );
 }
 
 export function OperavaultLandingPage() {
   const highlightedPlans = operavaultPlans.filter((plan) =>
     ["Basic", "Standard", "Premium", "Enterprise"].includes(plan.name)
   );
+  const firstSceneRow = productScenes.slice(0, 4);
+  const secondSceneRow = productScenes.slice(4);
 
   return (
     <main>
@@ -175,8 +272,8 @@ export function OperavaultLandingPage() {
             <Image
               src="/operavault-logo.png"
               alt="Operavault logo"
-              width={140}
-              height={94}
+              width={156}
+              height={156}
               priority
             />
             <div>
@@ -189,19 +286,16 @@ export function OperavaultLandingPage() {
           <p className="ova-hero-lede">{operavaultHeroLede}</p>
           <div className="hero-actions">
             <Link className="button button-primary" href="/request-demo">
-              <span>Request a demo</span>
+              <span>Book a guided demo</span>
               <ArrowRight aria-hidden="true" size={18} />
             </Link>
             <Link className="button button-secondary" href="/features">
               <span>Explore modules</span>
               <Layers3 aria-hidden="true" size={18} />
             </Link>
-            <Link className="button button-ghost" href="/pricing">
-              <span>View plans</span>
-              <Gauge aria-hidden="true" size={18} />
-            </Link>
           </div>
         </div>
+
         <div className="ova-command-shell" aria-label="Operavault product preview">
           <div className="ova-command-top">
             <span>Command center</span>
@@ -216,103 +310,68 @@ export function OperavaultLandingPage() {
               </div>
             ))}
           </div>
+          <div className="ova-command-route" aria-label="Operating route">
+            {commandRoute.map((step) => (
+              <span key={step}>{step}</span>
+            ))}
+          </div>
           <div className="ova-workflow-strip">
-            <strong>Profile to Workflow to Review to Report</strong>
-            <span>Illustrative product view for evaluating the operating model.</span>
+            <strong>Profile to workflow to review to report</strong>
+            <span>Synthetic product preview for a public website tour.</span>
           </div>
         </div>
       </section>
 
-      <section className="ova-proof-bar" aria-label="Operavault proof points">
-        {[
-          ["41", "public module entries"],
-          ["6", "school workstreams"],
-          ["5", "plan paths"],
-          ["0", "private records used"]
-        ].map(([value, label]) => (
-          <div key={label}>
-            <strong>{value}</strong>
-            <span>{label}</span>
-          </div>
-        ))}
-      </section>
-
-      <section className="page-section ova-section">
-        <div className="ova-split-heading">
-          <div>
-            <p className="eyebrow">The Operating Problem</p>
-            <h2>Schools do not fail from lack of forms. They struggle when records and responsibility are scattered.</h2>
-          </div>
+      <section className="page-section ova-section ova-cinema-section">
+        <div className="section-heading">
+          <p className="eyebrow">Public Product Tour</p>
+          <h2>See the operating surfaces schools usually ask to inspect first.</h2>
           <p>
-            Operavault is built for administrators who need one serious layer
-            for people records, academics, attendance, discipline, finance,
-            parent engagement, staff work, and management visibility.
+            These previews use fictional records, but they are shaped around
+            the working Operavault modules: reporting, broadsheets, lesson
+            evidence, attendance, finance, communication, workload, and review.
           </p>
         </div>
-        <div className="ova-pain-grid">
-          {painPoints.map((point, index) => (
-            <article key={point}>
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              <p>{point}</p>
-            </article>
-          ))}
+        <div className="ova-cinema-stage" aria-label="Illustrative product surfaces">
+          <div className="ova-cinema-track ova-cinema-track-left">
+            {[...firstSceneRow, ...firstSceneRow].map((scene, index) => (
+              <ProductSceneCard
+                key={`left-${scene.title}-${index}`}
+                duplicateIndex={index >= firstSceneRow.length ? 1 : 0}
+                scene={scene}
+              />
+            ))}
+          </div>
+          <div className="ova-cinema-track ova-cinema-track-right">
+            {[...secondSceneRow, ...secondSceneRow].map((scene, index) => (
+              <ProductSceneCard
+                key={`right-${scene.title}-${index}`}
+                duplicateIndex={index >= secondSceneRow.length ? 1 : 0}
+                scene={scene}
+              />
+            ))}
+          </div>
         </div>
       </section>
 
       <section className="page-section ova-section ova-operating-spine">
         <div>
           <p className="eyebrow">Operating Spine</p>
-          <h2>From profile to workflow to review to report.</h2>
+          <h2>Operavault is not a form library. It is a school operating layer.</h2>
           <p>
-            Operavault treats school administration as connected institutional
-            evidence. A student, staff member, parent, fee item, procurement
-            request, discipline case, lesson submission, or report card should
-            not live outside the operating record.
+            The product connects profiles, workflows, reviews, reports, roles,
+            and audit evidence so administrators can see how institutional work
+            moves from record creation to leadership decision.
           </p>
         </div>
         <div className="ova-spine-steps">
-          {[
-            ["Profile", "People, classes, departments, roles, and records"],
-            ["Workflow", "Attendance, academics, finance, HR, and requests"],
-            ["Review", "HODs, TICs, advisers, accounts, HR, and management"],
-            ["Report", "Dashboards, audit trail, parent visibility, and summaries"]
-          ].map(([title, detail]) => (
+          {operatingSteps.map(([title, detail]) => (
             <article key={title}>
               <Workflow aria-hidden="true" size={20} />
               <strong>{title}</strong>
               <span>{detail}</span>
             </article>
           ))}
-        </div>
-      </section>
-
-      <section className="page-section ova-section">
-        <div className="section-heading">
-          <p className="eyebrow">Premium Deliverables</p>
-          <h2>The platform is sold through real operational deliverables, not decorative software promises.</h2>
-          <p>
-            These are the areas a school administrator should understand
-            quickly before requesting a guided product conversation.
-          </p>
-        </div>
-        <div className="ova-deliverable-grid">
-          {conversionDeliverables.map((deliverable) => {
-            const Icon = deliverable.icon;
-            const names = moduleNames(deliverable.modules);
-
-            return (
-              <article key={deliverable.title}>
-                <Icon aria-hidden="true" size={24} />
-                <h3>{deliverable.title}</h3>
-                <p>{deliverable.description}</p>
-                <div>
-                  {names.map((name) => (
-                    <span key={name}>{name}</span>
-                  ))}
-                </div>
-              </article>
-            );
-          })}
         </div>
       </section>
 
@@ -354,55 +413,19 @@ export function OperavaultLandingPage() {
         </div>
       </section>
 
-      <section className="page-section ova-section">
-        <div className="section-heading">
-          <p className="eyebrow">Guided Product Tour</p>
-          <h2>The first workflows most school leaders ask to inspect.</h2>
-          <p>
-            These sections show the product areas most schools want to examine
-            first. Ready modules and active-development areas are labelled
-            clearly before a live walkthrough.
-          </p>
-        </div>
-        <div className="ova-tour-list">
-          {operavaultTourSections.slice(0, 8).map((section) => {
-            const moduleData = getOperavaultModuleBySlug(section.moduleSlug);
-
-            if (!moduleData) {
-              return null;
-            }
-
-            return (
-              <article key={section.title}>
-                <div>
-                  <span>{moduleData.group}</span>
-                  <em>{getOperavaultStatusLabel(moduleData.status)}</em>
-                </div>
-                <h3>{section.title}</h3>
-                <p>{section.summary}</p>
-                <ul>
-                  {section.proofPoints.map((point) => (
-                    <li key={point}>{point}</li>
-                  ))}
-                </ul>
-                <Link href={`/features/${moduleData.slug}`}>
-                  Inspect {moduleData.name}
-                </Link>
-              </article>
-            );
-          })}
-        </div>
-      </section>
-
       <section className="page-section ova-section ova-plan-section">
         <div>
           <p className="eyebrow">Plan-Aware Packaging</p>
-          <h2>Start with the right operating scope.</h2>
+          <h2>Start with the operating scope your school can adopt well.</h2>
           <p>
-            Pricing starts with module fit, institution size, rollout scope,
-            and support needs. During implementation, Operavault is configured
-            around enabled modules, roles, and feature access.
+            Operavault plans define which modules are enabled, how deeply the
+            rollout is configured, and what level of support your school needs.
+            A guided demo narrows the right starting point before adoption.
           </p>
+          <Link className="button button-secondary" href="/pricing">
+            <span>Compare plans</span>
+            <ArrowRight aria-hidden="true" size={18} />
+          </Link>
         </div>
         <div className="ova-plan-grid">
           {highlightedPlans.map((plan) => (
@@ -417,37 +440,12 @@ export function OperavaultLandingPage() {
       </section>
 
       <section className="page-section ova-section ova-trust-section">
-        <div>
+        <div className="section-heading">
           <p className="eyebrow">Institutional Trust</p>
           <h2>Serious school software should protect records by design.</h2>
         </div>
         <div className="ova-trust-grid">
-          {[
-            {
-              title: "Private-record protection",
-              detail:
-                "Demo examples are illustrative and never require your school to expose private student, staff, parent, or finance records.",
-              icon: LockKeyhole
-            },
-            {
-              title: "Governance-ready access",
-              detail:
-                "Plans define module ownership. Permissions define what people can see and do inside an institution.",
-              icon: ShieldCheck
-            },
-            {
-              title: "Audit-backed operations",
-              detail:
-                "Workflows are framed around evidence, actors, review states, and accountability trails.",
-              icon: FileCheck2
-            },
-            {
-              title: "Structured rollout",
-              detail:
-                "The demo conversation narrows module scope, plan fit, readiness, data boundaries, and adoption path.",
-              icon: ClipboardCheck
-            }
-          ].map((item) => {
+          {trustItems.map((item) => {
             const Icon = item.icon;
 
             return (
@@ -458,24 +456,6 @@ export function OperavaultLandingPage() {
               </article>
             );
           })}
-        </div>
-      </section>
-
-      <section className="page-section ova-section ova-demo-path">
-        <div>
-          <p className="eyebrow">Demo Path</p>
-          <h2>Use one focused conversation to understand fit.</h2>
-        </div>
-        <div>
-          {rolloutSteps.map((step, index) => (
-            <article key={step.title}>
-              <span>{index + 1}</span>
-              <div>
-                <h3>{step.title}</h3>
-                <p>{step.description}</p>
-              </div>
-            </article>
-          ))}
         </div>
       </section>
 

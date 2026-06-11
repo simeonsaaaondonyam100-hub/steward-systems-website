@@ -59,10 +59,10 @@ type OperavaultModuleSeed = {
 };
 
 export const operavaultHeroStatement =
-  "One operating system for school administration, academic records, parent engagement, compliance evidence, staff workflows, and management visibility.";
+  "One secure operating system for school records, academic work, parent engagement, compliance evidence, staff workflows, and leadership visibility.";
 
 export const operavaultHeroLede =
-  "Operavault gives school leaders one secure operating layer for people records, academics, attendance, discipline, finance workflows, parent communication, audit trails, staff duties, and decision intelligence.";
+  "Operavault gives school leaders one dependable layer for records, academics, attendance, discipline, finance workflows, parent communication, audit trails, staff duties, and decision intelligence.";
 
 export const operavaultModuleGroups: OperavaultModuleGroup[] = [
   "People Records",

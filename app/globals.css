@@ -3666,30 +3666,30 @@ h3,
 /* Operavault focused public landing page. */
 .ova-hero {
   display: grid;
-  grid-template-columns: minmax(0, 0.98fr) minmax(380px, 0.72fr);
-  gap: clamp(32px, 4.6vw, 70px);
+  grid-template-columns: minmax(0, 0.92fr) minmax(500px, 0.78fr);
+  gap: clamp(30px, 3.8vw, 56px);
   align-items: center;
   min-height: calc(100svh - 92px);
-  padding: clamp(54px, 7vw, 88px) max(20px, calc((100vw - var(--max-width)) / 2));
+  padding: clamp(48px, 6vw, 76px) max(20px, calc((100vw - var(--max-width)) / 2));
   background:
     linear-gradient(120deg, rgba(251, 247, 237, 0.96), rgba(255, 255, 255, 0.98) 48%, rgba(228, 235, 224, 0.92));
 }
 
 .ova-hero-copy {
   display: grid;
-  gap: 22px;
+  gap: 20px;
   min-width: 0;
-  max-width: 780px;
+  max-width: 720px;
 }
 
 .ova-brand-lockup {
   display: grid;
-  grid-template-columns: clamp(116px, 9.2vw, 164px) minmax(0, 1fr);
+  grid-template-columns: clamp(128px, 9.6vw, 170px) minmax(0, 1fr);
   gap: clamp(14px, 1.8vw, 22px);
   align-items: center;
   justify-items: start;
   min-width: 0;
-  max-width: 700px;
+  max-width: 730px;
 }
 
 .ova-brand-lockup > div {
@@ -3701,8 +3701,8 @@ h3,
 }
 
 .ova-brand-lockup img {
-  width: clamp(116px, 9.2vw, 164px);
-  height: clamp(116px, 9.2vw, 164px);
+  width: clamp(128px, 9.6vw, 170px);
+  height: clamp(128px, 9.6vw, 170px);
   object-fit: contain;
   padding: 10px;
   background: #fffdf7;
@@ -3715,7 +3715,7 @@ h3,
   margin: 0;
   color: var(--navy);
   font-family: var(--font-display);
-  font-size: clamp(3.05rem, 4.65vw, 4.95rem);
+  font-size: clamp(3.4rem, 4.85vw, 4.85rem);
   line-height: 0.98;
   overflow-wrap: normal;
   white-space: nowrap;
@@ -3729,17 +3729,17 @@ h3,
 }
 
 .ova-hero-statement {
-  max-width: 870px;
+  max-width: 690px;
   margin: 0;
   color: var(--navy);
   font-family: var(--font-display);
-  font-size: clamp(1.55rem, 2.6vw, 2.55rem);
+  font-size: clamp(1.55rem, 2.2vw, 2.2rem);
   font-weight: 800;
-  line-height: 1.13;
+  line-height: 1.16;
 }
 
 .ova-hero-lede {
-  max-width: 770px;
+  max-width: 660px;
   margin: 0;
   color: #526172;
   font-size: 1.08rem;
@@ -3748,11 +3748,11 @@ h3,
 
 .ova-command-shell {
   display: grid;
-  gap: 18px;
+  gap: 14px;
   justify-self: end;
   min-width: 0;
-  width: min(100%, 560px);
-  padding: clamp(20px, 2.8vw, 30px);
+  width: min(100%, 620px);
+  padding: clamp(18px, 2vw, 24px);
   color: #fff8df;
   background:
     linear-gradient(145deg, rgba(6, 26, 47, 0.98), rgba(7, 70, 56, 0.98));
@@ -3775,44 +3775,63 @@ h3,
 
 .ova-signal-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
 }
 
 .ova-signal-grid div,
 .ova-workflow-strip {
   display: grid;
-  gap: 8px;
-  min-height: 132px;
-  padding: 18px;
+  gap: 7px;
+  min-height: 118px;
+  padding: 14px;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 18px;
+  border-radius: 16px;
 }
 
 .ova-signal-grid span,
 .ova-signal-grid small,
 .ova-workflow-strip span {
   color: rgba(255, 248, 223, 0.75);
+  font-size: 0.82rem;
+  line-height: 1.3;
 }
 
 .ova-signal-grid strong {
   color: #ffffff;
-  font-size: clamp(1.75rem, 3vw, 2.55rem);
+  font-size: clamp(1.38rem, 2.2vw, 2.08rem);
   line-height: 1;
 }
 
+.ova-command-route {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.ova-command-route span {
+  min-height: 38px;
+  display: inline-grid;
+  place-items: center;
+  color: #061a2f;
+  background: var(--gold-2);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
 .ova-workflow-strip {
-  min-height: 150px;
+  min-height: 112px;
   background: rgba(232, 196, 111, 0.16);
 }
 
 .ova-workflow-strip strong {
-  max-width: 440px;
+  max-width: 100%;
   color: #ffffff;
   font-family: var(--font-display);
-  font-size: clamp(1.8rem, 3vw, 2.65rem);
-  line-height: 1;
+  font-size: clamp(1.35rem, 2vw, 1.95rem);
+  line-height: 1.05;
 }
 
 .ova-proof-bar {
@@ -3844,6 +3863,166 @@ h3,
 
 .ova-section {
   background: transparent;
+}
+
+.ova-cinema-section {
+  overflow: hidden;
+  padding-inline: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(251, 247, 237, 0.74));
+}
+
+.ova-cinema-section .section-heading {
+  margin-inline: max(20px, calc((100vw - var(--max-width)) / 2));
+}
+
+.ova-cinema-stage {
+  display: grid;
+  gap: 18px;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.ova-cinema-track {
+  display: flex;
+  width: max-content;
+  gap: 18px;
+  will-change: transform;
+}
+
+.ova-cinema-track-left {
+  animation: ova-cinema-left 42s linear infinite;
+}
+
+.ova-cinema-track-right {
+  animation: ova-cinema-right 48s linear infinite;
+}
+
+.ova-cinema-card {
+  display: grid;
+  grid-template-rows: auto auto minmax(58px, auto) auto 1fr;
+  gap: 12px;
+  width: clamp(318px, 31vw, 430px);
+  min-height: 342px;
+  padding: 20px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(250, 246, 236, 0.9));
+  border: 1px solid rgba(6, 26, 47, 0.12);
+  border-radius: 22px;
+  box-shadow: 0 18px 46px rgba(6, 26, 47, 0.1);
+}
+
+.ova-cinema-card-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.ova-cinema-card-head span {
+  color: var(--deep-green);
+  font-size: 0.76rem;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.ova-cinema-card-head em {
+  display: inline-flex;
+  min-height: 26px;
+  align-items: center;
+  padding: 4px 9px;
+  color: #061a2f;
+  background: var(--gold-2);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-style: normal;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.ova-cinema-card h3 {
+  margin: 0;
+  color: var(--navy);
+  font-size: 1.36rem;
+}
+
+.ova-cinema-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.ova-cinema-metric {
+  display: flex;
+  align-items: end;
+  gap: 10px;
+  padding: 14px;
+  color: #fff8df;
+  background:
+    linear-gradient(135deg, rgba(6, 26, 47, 0.98), rgba(7, 70, 56, 0.96));
+  border-radius: 16px;
+}
+
+.ova-cinema-metric strong {
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: 2.35rem;
+  line-height: 0.9;
+}
+
+.ova-cinema-metric span {
+  color: rgba(255, 248, 223, 0.78);
+  font-size: 0.84rem;
+  font-weight: 760;
+}
+
+.ova-cinema-rows {
+  display: grid;
+  gap: 8px;
+}
+
+.ova-cinema-rows div {
+  display: grid;
+  grid-template-columns: minmax(86px, 0.42fr) minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  min-height: 38px;
+  padding: 8px 10px;
+  background: rgba(6, 26, 47, 0.045);
+  border: 1px solid rgba(6, 26, 47, 0.08);
+  border-radius: 12px;
+}
+
+.ova-cinema-rows span {
+  color: #65716f;
+  font-size: 0.78rem;
+  font-weight: 780;
+}
+
+.ova-cinema-rows strong {
+  color: var(--navy);
+  font-size: 0.88rem;
+  line-height: 1.25;
+}
+
+@keyframes ova-cinema-left {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 9px));
+  }
+}
+
+@keyframes ova-cinema-right {
+  from {
+    transform: translateX(calc(-50% - 9px));
+  }
+
+  to {
+    transform: translateX(0);
+  }
 }
 
 .ova-split-heading {
@@ -4073,6 +4252,16 @@ h3,
   align-items: start;
 }
 
+.ova-plan-section > div:first-child {
+  display: grid;
+  gap: 16px;
+  align-content: start;
+}
+
+.ova-plan-section .button {
+  width: fit-content;
+}
+
 .ova-plan-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -4099,7 +4288,7 @@ h3,
 }
 
 .ova-trust-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .ova-trust-grid article {
@@ -4167,6 +4356,42 @@ h3,
   gap: 14px;
 }
 
+.product-visibility-control-strip {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.product-visibility-control-strip > div {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 14px;
+  padding: 18px;
+  background:
+    linear-gradient(135deg, rgba(6, 26, 47, 0.96), rgba(7, 70, 56, 0.92));
+  border: 1px solid rgba(213, 166, 50, 0.28);
+  border-radius: 18px;
+  box-shadow: 0 18px 46px rgba(6, 26, 47, 0.12);
+}
+
+.product-visibility-control-strip svg {
+  color: var(--gold-2);
+}
+
+.product-visibility-control-strip h3,
+.product-visibility-control-strip p {
+  margin: 0;
+}
+
+.product-visibility-control-strip h3 {
+  color: #ffffff;
+}
+
+.product-visibility-control-strip p {
+  color: rgba(255, 248, 223, 0.78);
+}
+
 .product-visibility-admin-grid article {
   display: grid;
   gap: 14px;
@@ -4192,6 +4417,41 @@ h3,
   color: var(--muted);
 }
 
+.product-visibility-action-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.62fr) minmax(320px, 1fr);
+  gap: 18px;
+  align-items: start;
+  margin-top: 18px;
+  padding: 20px;
+  background: rgba(15, 107, 79, 0.06);
+  border: 1px solid rgba(15, 107, 79, 0.14);
+  border-radius: 20px;
+}
+
+.product-visibility-action-panel h3 {
+  margin: 0;
+}
+
+.product-visibility-action-panel > div:last-child {
+  display: grid;
+  gap: 10px;
+}
+
+.product-visibility-action-panel a {
+  display: grid;
+  gap: 4px;
+  padding: 14px;
+  color: var(--navy);
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(6, 26, 47, 0.1);
+  border-radius: 14px;
+}
+
+.product-visibility-action-panel span {
+  color: var(--muted);
+}
+
 @media (max-width: 1100px) {
   .ova-hero,
   .ova-operating-spine,
@@ -4206,6 +4466,10 @@ h3,
     justify-self: stretch;
   }
 
+  .ova-signal-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .ova-pain-grid,
   .ova-trust-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -4213,6 +4477,8 @@ h3,
 
   .ova-deliverable-grid,
   .ova-workstream-grid,
+  .product-visibility-control-strip,
+  .product-visibility-action-panel,
   .product-visibility-admin-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -4257,13 +4523,14 @@ h3,
     font-size: 1.45rem;
   }
 
-  .ova-signal-grid,
   .ova-proof-bar,
   .ova-spine-steps,
   .ova-plan-grid,
   .ova-pain-grid,
   .ova-deliverable-grid,
   .ova-workstream-grid,
+  .product-visibility-control-strip,
+  .product-visibility-action-panel,
   .ova-trust-grid,
   .product-visibility-admin-grid {
     grid-template-columns: 1fr;
@@ -4271,6 +4538,11 @@ h3,
 
   .ova-proof-bar {
     padding-inline: 16px;
+  }
+
+  .ova-signal-grid,
+  .ova-command-route {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .ova-split-heading {
@@ -4291,5 +4563,19 @@ h3,
   .ova-final-cta {
     margin-inline: 16px;
     border-radius: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ova-cinema-track-left,
+  .ova-cinema-track-right {
+    animation: none;
+    transform: none;
+  }
+
+  .ova-cinema-stage {
+    overflow-x: auto;
+    mask-image: none;
+    padding-bottom: 8px;
   }
 }

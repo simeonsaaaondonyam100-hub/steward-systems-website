@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Eye, EyeOff, LockKeyhole, ShieldAlert } from "lucide-react";
+import {
+  ClipboardList,
+  ExternalLink,
+  Eye,
+  EyeOff,
+  LockKeyhole,
+  ShieldAlert,
+  SlidersHorizontal
+} from "lucide-react";
 
 import {
   getCurrentPublicProduct,
@@ -62,6 +70,23 @@ export default async function AdminProductVisibilityPage() {
   const currentProduct = getCurrentPublicProduct();
   const publicProducts = getPublicNavigationProducts();
   const hiddenProducts = getHiddenPortfolioProducts();
+  const adminActions = [
+    {
+      label: "Open public landing page",
+      href: currentProduct.publicUrl,
+      detail: "Check what visitors see first."
+    },
+    {
+      label: "Review demo requests",
+      href: "/admin/demo-requests",
+      detail: "Follow up submitted school enquiries."
+    },
+    {
+      label: "Open request-demo form",
+      href: "/request-demo",
+      detail: "Inspect the public lead capture path."
+    }
+  ];
 
   return (
     <main>
@@ -70,8 +95,10 @@ export default async function AdminProductVisibilityPage() {
           <p className="eyebrow">Public product control</p>
           <h1>Product visibility</h1>
           <p>
-            Review which Steward Systems product is currently promoted to the
-            public website. This view is protected by governance.manage_settings.
+            Control the public product focus for Steward Systems. Operavault is
+            currently the promoted public product; other product landing pages
+            remain hidden from public navigation until an admin deliberately
+            changes the visibility model.
           </p>
         </div>
       </section>
@@ -85,7 +112,33 @@ export default async function AdminProductVisibilityPage() {
           </div>
           <Link className="button button-primary" href={currentProduct.publicUrl}>
             Open public product
+            <ExternalLink aria-hidden="true" size={18} />
           </Link>
+        </div>
+        <div className="product-visibility-control-strip">
+          <div>
+            <SlidersHorizontal aria-hidden="true" size={24} />
+            <div>
+              <h3>Admin release position</h3>
+              <p>
+                The site can keep multiple product landing pages ready while
+                exposing only the selected product publicly. Runtime database
+                toggles can be added later with a Core visibility table and
+                audited server actions.
+              </p>
+            </div>
+          </div>
+          <div>
+            <ClipboardList aria-hidden="true" size={24} />
+            <div>
+              <h3>Safe operating boundary</h3>
+              <p>
+                This dashboard controls website presentation only. It does not
+                connect to product tenant data, portal records, or private
+                customer deployments.
+              </p>
+            </div>
+          </div>
         </div>
         <div className="product-visibility-admin-grid">
           <article>
@@ -104,7 +157,10 @@ export default async function AdminProductVisibilityPage() {
             {hiddenProducts.map((product) => (
               <div key={product.slug}>
                 <strong>{product.name}</strong>
-                <span>{product.publicStatusLabel}</span>
+                <span>
+                  {product.publicStatusLabel}. Hidden until the owner chooses
+                  to publish the product.
+                </span>
               </div>
             ))}
           </article>
@@ -121,6 +177,20 @@ export default async function AdminProductVisibilityPage() {
               editor can use the same visibility model.
             </p>
           </article>
+        </div>
+        <div className="product-visibility-action-panel">
+          <div>
+            <p className="eyebrow">Available admin actions</p>
+            <h3>Inspect the public path without exposing hidden products.</h3>
+          </div>
+          <div>
+            {adminActions.map((action) => (
+              <Link key={action.href} href={action.href}>
+                <strong>{action.label}</strong>
+                <span>{action.detail}</span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
     </main>
