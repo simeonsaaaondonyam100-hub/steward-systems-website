@@ -111,9 +111,9 @@ const productScenes: ProductScene[] = [
     title: "Full-term progress report",
     status: "Ready for use",
     metric: "88.4%",
-    metricLabel: "fictional student average",
+    metricLabel: "student average",
     summary:
-      "A public-safe report card sample shows how Operavault can present subject scores, class context, attendance, comments, and summary data.",
+      "A report-card view shows how Operavault can present subject scores, class context, attendance, comments, and summary data.",
     rows: [
       ["Student", "Maya Okonkwo"],
       ["Class", "JSS 2 Gold"],
@@ -385,7 +385,7 @@ const trustItems = [
   {
     title: "No private records in the public tour",
     detail:
-      "The website uses synthetic examples only. School tenant data stays inside each institution's Operavault deployment.",
+      "School tenant records stay inside each institution's Operavault deployment, with public views focused on the product experience.",
     icon: LockKeyhole
   },
   {
@@ -577,11 +577,9 @@ export function OperavaultLandingPage() {
               <p className="eyebrow">Unified School Operations Platform</p>
               <h1>Operavault</h1>
               <span>by Steward Systems</span>
+              <p className="ova-hero-statement">{operavaultHeroStatement}</p>
+              <p className="ova-hero-lede">{operavaultHeroLede}</p>
             </div>
-          </div>
-          <div className="ova-hero-notes">
-            <p className="ova-hero-statement">{operavaultHeroStatement}</p>
-            <p className="ova-hero-lede">{operavaultHeroLede}</p>
           </div>
         </div>
 
@@ -606,7 +604,7 @@ export function OperavaultLandingPage() {
           </div>
           <div className="ova-workflow-strip">
             <strong>Profile to workflow to review to report</strong>
-            <span>Synthetic product preview for a public website tour.</span>
+            <span>A connected operating model for school leadership.</span>
           </div>
         </div>
         <div className="hero-actions ova-hero-actions">
@@ -626,12 +624,12 @@ export function OperavaultLandingPage() {
           <p className="eyebrow">Public Product Tour</p>
           <h2>See the operating surfaces schools usually ask to inspect first.</h2>
           <p>
-            These previews use fictional records, but they are shaped around
-            the working Operavault modules: reporting, broadsheets, lesson
-            evidence, attendance, finance, communication, workload, and review.
+            Explore the working Operavault modules schools usually want to see
+            first: reporting, broadsheets, lesson evidence, attendance,
+            finance, communication, workload, and review.
           </p>
         </div>
-        <div className="ova-cinema-stage" aria-label="Illustrative product surfaces">
+        <div className="ova-cinema-stage" aria-label="Operavault product surfaces">
           <div className="ova-cinema-track ova-cinema-track-left">
             {[...firstSceneRow, ...firstSceneRow].map((scene, index) => (
               <ProductSceneCard
